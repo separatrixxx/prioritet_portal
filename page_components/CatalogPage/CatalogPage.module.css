@@ -1,0 +1,30 @@
+.wrapper {
+	display: grid;
+
+	width: 100%;
+	justify-items: center;
+}
+
+.catalogDiv {
+	position: relative;
+
+	display: grid;
+
+	width: 100%;
+
+	margin-top: 70px;
+	grid-template-columns: 20% auto;
+	gap: 70px;
+}
+
+@media (max-width: 1024px) {
+	.catalogDiv {
+		gap: 50px;
+	}
+}
+
+@media (max-width: 580px) {
+	.catalogDiv {
+		gap: 30px;
+	}
+}

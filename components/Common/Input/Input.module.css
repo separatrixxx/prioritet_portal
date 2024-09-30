@@ -1,0 +1,128 @@
+.input {
+	width: calc(100% - 130px);
+	height: 20px;
+	padding: 10px 15px;
+
+	cursor: text;
+	transition-duration: 300ms;
+
+	color: var(--second);
+	border: 2px solid var(--primary);
+	border-left: none;
+	border-radius: 0 10px 10px 0;
+	outline: none;
+	background: var(--white);
+
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.input::placeholder {
+	color: var(--darkLight);
+}
+
+.input:active,
+.input:focus {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	border-color: var(--second);
+}
+
+.inputWrapper {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+}
+
+.category {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+
+	width: 100px;
+	height: 20px;
+	padding: 10px 15px;
+
+	cursor: pointer;
+	user-select: none;
+	transition-duration: 300ms;
+
+	color: var(--second);
+	border: 2px solid var(--primary);
+	border-radius: 10px 0 0 10px;
+	background-color: var(--white);
+
+	font-weight: 700;
+}
+
+.dropdown {
+	position: absolute;
+	z-index: 10;
+	top: 97%;
+	left: 0;
+
+	overflow: hidden;
+
+	width: 128px;
+
+	border: 2px solid var(--primary);
+	border-radius: 10px 0 10px 10px;
+	background-color: var(--white);
+}
+
+.dropdownItem {
+	width: 100% !important;
+	padding: 10px;
+
+	cursor: pointer;
+	transition-duration: 300ms;
+}
+
+.category:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	border-color: var(--second);
+}
+
+.dropdownItem:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--white);
+	background-color: var(--second);
+}
+
+@media (min-width: 1024px) {
+	.input:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		border-color: var(--second);
+	}
+
+	.category:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		border-color: var(--second);
+	}
+
+	.dropdownItem:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--white);
+		background-color: var(--second);
+	}
+}
+
+@media (max-width: 1024px) {
+	.input {
+		width: calc(100% - 110px);
+	}
+
+	.category {
+		width: 80px;
+	}
+
+	.dropdown {
+		width: 108px;
+	}
+}
