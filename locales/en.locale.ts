@@ -11,6 +11,6 @@ export const en = {
     classes: {
         product: 'Products',
         harmful: 'Parasites',
-        procced: 'Processing facilities',
+        proceed: 'Processing facilities',
     },
 };

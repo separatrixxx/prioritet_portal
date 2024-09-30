@@ -6,16 +6,17 @@ import { Htag } from '../../Common/Htag/Htag';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getProducts, getProductsForCategories } from '../../../helpers/products.helper';
 import { setProductsDefault } from '../../../features/products/productsSlice';
+import { Categories } from '../../../interfaces/categories.interface';
 
 
 export const Sidebar = (): JSX.Element => {
     const { router, dispatch, categories } = useSetup();
 
-    const [expandedClass, setExpandedClass] = useState<string | null>('product');
-    const [activeClass, setActiveClass] = useState<string | null>('product');
+    const [expandedClass, setExpandedClass] = useState<Categories | null>(null);
+    const [activeClass, setActiveClass] = useState<Categories | null>(null);
     const [activeCategory, setActiveCategory] = useState<number | null>(null);
 
-    const classes = ['product', 'harmful', 'proceed'];
+    const classes: Categories[] = ['product', 'harmful', 'proceed'];
 
     const variants = {
         hidden: {
@@ -32,7 +33,7 @@ export const Sidebar = (): JSX.Element => {
         },
     };
 
-    const handleClassClick = (c: string) => {
+    const handleClassClick = (c: Categories) => {
         if (activeClass === c) return;
 
         setActiveCategory(null);
