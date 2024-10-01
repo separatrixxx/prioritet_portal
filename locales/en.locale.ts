@@ -13,4 +13,5 @@ export const en = {
         harmful: 'Parasites',
         proceed: 'Processing facilities',
     },
+    products_found: '$$$ products found',
 };

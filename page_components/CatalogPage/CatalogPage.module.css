@@ -20,11 +20,14 @@
 @media (max-width: 1024px) {
 	.catalogDiv {
 		gap: 50px;
+		grid-template-columns: 30% auto;
 	}
 }
 
 @media (max-width: 580px) {
 	.catalogDiv {
-		gap: 30px;
+		gap: 10px;
+		grid-template-columns: auto;
+		justify-items: center;
 	}
 }

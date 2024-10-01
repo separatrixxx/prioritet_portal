@@ -37,7 +37,7 @@
 }
 
 .m {
-	font-size: 26px;
+	font-size: 24px;
 	font-weight: 400;
 	font-style: normal;
 }
@@ -84,44 +84,18 @@
 	}
 
 	.xl {
-		font-size: 20px;
+		font-size: 24px;
 	}
 
 	.l {
-		font-size: 17px;
+		font-size: 18px;
 	}
 
 	.m {
-		font-size: 12px;
+		font-size: 16px;
 	}
 
 	.s {
-		font-size: 9px;
-	}
-}
-
-@media (max-width: 300px) {
-	.xxxl {
-		font-size: 40px;
-	}
-
-	.xxl {
-		font-size: 20px;
-	}
-
-	.xl {
-		font-size: 15px;
-	}
-
-	.l {
-		font-size: 12px;
-	}
-
-	.m {
-		font-size: 7px;
-	}
-
-	.s {
-		font-size: 6px;
+		font-size: 14px;
 	}
 }

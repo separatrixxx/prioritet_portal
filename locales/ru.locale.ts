@@ -13,4 +13,5 @@ export const ru = {
         harmful: 'Паразиты',
         proceed: 'Обрабатывающие объекты',
     },
+    products_found: 'Найдено $$$ товаров',
 };

@@ -102,3 +102,9 @@
 		color: var(--second);
 	}
 }
+
+@media (max-width: 580px) {
+	.catalogItem {
+		gap: 10px;
+	}
+}
