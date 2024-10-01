@@ -2,8 +2,9 @@ import { CatalogPage } from '../../page_components/CatalogPage/CatalogPage';
 import Head from 'next/head';
 import { setLocale } from '../../helpers/locale.helper';
 import { useEffect } from 'react';
-import { getCategories } from '../../helpers/categories.helper';
 import { useSetup } from '../../hooks/useSetup';
+import { getClasses } from '../../helpers/classes.helper';
+import { getCategories } from '../../helpers/categories.helper';
 import { getProducts } from '../../helpers/products.helper';
 
 
@@ -11,6 +12,10 @@ function Catalog(): JSX.Element {
     const { router, dispatch } = useSetup();
 
     useEffect(() => {
+        getClasses({
+            dispatch: dispatch,
+        });
+
         getCategories({
             dispatch: dispatch,
         });

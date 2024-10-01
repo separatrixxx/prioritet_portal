@@ -1,5 +1,6 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
+import classesSlice from "../classes/classesSlice";
 import categoriesSlice from "../categories/categoriesSlice";
 import productsSlice from "../products/productsSlice";
 
@@ -7,6 +8,7 @@ import productsSlice from "../products/productsSlice";
 const makeStore = () =>
   configureStore({
     reducer: {
+      classes: classesSlice,
       categories: categoriesSlice,
       products: productsSlice,
     },

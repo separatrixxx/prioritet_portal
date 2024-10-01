@@ -1,29 +1,26 @@
 import styles from './Sidebar.module.css';
 import { useState } from 'react';
-import { setLocale } from '../../../helpers/locale.helper';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
 import { motion } from 'framer-motion';
 import { getProducts, getProductsForCategories } from '../../../helpers/products.helper';
 import { setProductsDefault } from '../../../features/products/productsSlice';
-import { Categories } from '../../../interfaces/categories.interface';
 import { useResizeW } from '../../../hooks/useResize';
 import { BurgerMenu } from '../../Common/BurgerMenu/BurgenMenu';
+import Arrow from './arrow.svg';
 import cn from 'classnames';
 
 
 export const Sidebar = (): JSX.Element => {
-    const { router, dispatch, categories } = useSetup();
+    const { dispatch, classes, categories } = useSetup();
 
     const [expandedSidebar, setExpandedSidebar] = useState<boolean>(false);
 
     const width = useResizeW();
 
-    const [expandedClass, setExpandedClass] = useState<Categories | null>('product');
-    const [activeClass, setActiveClass] = useState<Categories | null>('product');
+    const [expandedClass, setExpandedClass] = useState<string | null>('product');
+    const [activeClass, setActiveClass] = useState<string | null>('product');
     const [activeCategory, setActiveCategory] = useState<number | null>(null);
-
-    const classes: Categories[] = ['product', 'harmful', 'proceed'];
 
     const variants = {
         visible: {
@@ -47,15 +44,24 @@ export const Sidebar = (): JSX.Element => {
         },
     };
 
-    const handleClassClick = (c: Categories) => {
-        if (activeClass === c) return;
+    const variantsArrow = {
+        visible: {
+            rotate: '90deg',
+        },
+        hidden: {
+            rotate: 0,
+        },
+    };
+
+    const handleClassClick = (classTag: string) => {
+        if (activeClass === classTag) return;
 
         setActiveCategory(null);
-        setActiveClass(c);
+        setActiveClass(classTag);
         dispatch(setProductsDefault());
-        setExpandedClass(c);
+        setExpandedClass(classTag);
         getProducts({
-            type: c,
+            type: classTag,
             dispatch: dispatch,
         });
     };
@@ -88,7 +94,7 @@ export const Sidebar = (): JSX.Element => {
                             handleClassClick(expandedClass);
                         }
                     }}>
-                        {setLocale(router.locale).classes[expandedClass as 'product']}
+                        {classes.findLast(it => it.class_tag === expandedClass)?.name}
                     </span>
                     {
                         activeCategory ?
@@ -105,22 +111,29 @@ export const Sidebar = (): JSX.Element => {
                 }
             </div>
             {classes.map(c => (
-                <motion.div key={c} className={styles.sidebarDiv}
+                <motion.div key={c.id} className={styles.sidebarDiv}
                     variants={variants}
                     initial={expandedSidebar || width > 580 ? 'visible' : 'hidden'}
                     transition={{ duration: 0.5 }}
                     animate={expandedSidebar || width > 580 ? 'visible' : 'hidden'}>
                     <Htag tag='s' className={styles.classTitle}
-                        onClick={() => handleClassClick(c)}>
-                        {setLocale(router.locale).classes[c as 'product']}
+                        onClick={() => handleClassClick(c.class_tag)}>
+                        {c.name}
+                        <motion.span className={styles.arrow}
+                            variants={variantsArrow}
+                            initial={expandedClass === c.class_tag ? 'visible' : 'hidden'}
+                            transition={{ duration: 0.3 }}
+                            animate={expandedClass === c.class_tag ? 'visible' : 'hidden'}>
+                            <Arrow />
+                        </motion.span>
                     </Htag>
                     <motion.div className={styles.categoryList}
                         variants={variants}
-                        initial={expandedClass === c ? 'visible' : 'hidden'}
+                        initial={expandedClass === c.class_tag ? 'visible' : 'hidden'}
                         transition={{ duration: 0.5 }}
-                        animate={expandedClass === c ? 'visible' : 'hidden'}>
+                        animate={expandedClass === c.class_tag ? 'visible' : 'hidden'}>
                         {categories
-                            // .filter(cat => cat.category_for === c)
+                            .filter(cat => cat.category_for === c.class_tag)
                             .map(c => (
                                 <Htag key={c.id} tag='s' className={styles.categoryItem}
                                     onClick={() => {

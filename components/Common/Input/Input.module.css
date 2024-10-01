@@ -64,7 +64,7 @@
 
 	overflow: hidden;
 
-	width: 128px;
+	width: fit-content;
 
 	border: 2px solid var(--primary);
 	border-radius: 10px 0 10px 10px;

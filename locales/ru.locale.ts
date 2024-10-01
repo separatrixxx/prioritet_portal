@@ -8,10 +8,5 @@ export const ru = {
     catalog: "Каталог",
     search: "Поиск",
     order: 'Заказать',
-    classes: {
-        product: 'Продукты',
-        harmful: 'Паразиты',
-        proceed: 'Обрабатывающие объекты',
-    },
     products_found: 'Найдено $$$ товаров',
 };

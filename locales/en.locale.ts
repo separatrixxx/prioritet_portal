@@ -8,10 +8,5 @@ export const en = {
     catalog: "Catalog",
     search: "Search",
     order: 'Order',
-    classes: {
-        product: 'Products',
-        harmful: 'Parasites',
-        proceed: 'Processing facilities',
-    },
     products_found: '$$$ products found',
 };

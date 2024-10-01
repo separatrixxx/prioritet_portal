@@ -3,25 +3,23 @@ import styles from './Input.module.css';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Htag } from '../Htag/Htag';
-import { setLocale } from '../../../helpers/locale.helper';
 import { useSetup } from '../../../hooks/useSetup';
-import { Categories } from '../../../interfaces/categories.interface';
+import { ClassInterface } from '../../../interfaces/classes.interface';
 
 
 export const Input = ({ text, value, onChange, onKeyPress }: InputProps): JSX.Element => {
-    const { router } = useSetup();
+    const { classes } = useSetup();
     
-    const [selectedCategory, setSelectedCategory] = useState<Categories>('product');
+    const [selectedClass, setSelectedClass] = useState<string>('product');
     const [isDropdownOpen, setDropdownOpen] = useState(false);
 
-    const categories: Categories[] = ['product', 'harmful', 'proceed'];
 
     const handleCategoryClick = () => {
         setDropdownOpen(!isDropdownOpen);
     };
 
-    const handleCategorySelect = (category: Categories) => {
-        setSelectedCategory(category);
+    const handleCategorySelect = (c: string) => {
+        setSelectedClass(c);
         setDropdownOpen(false);
     };
 
@@ -39,10 +37,12 @@ export const Input = ({ text, value, onChange, onKeyPress }: InputProps): JSX.El
         };
     }, []);
 
+    console.log(classes[0])
+
     return (
         <div className={styles.inputWrapper}>
             <div className={styles.category} onClick={handleCategoryClick}>
-                {setLocale(router.locale).classes[selectedCategory as 'product']}
+                {classes.findLast(it => it.class_tag === selectedClass)?.name}
             </div>
             <AnimatePresence>
                 {isDropdownOpen && (
@@ -53,10 +53,10 @@ export const Input = ({ text, value, onChange, onKeyPress }: InputProps): JSX.El
                         exit={{ opacity: 0, height: 0, y: -10 }}
                         transition={{ duration: 0.3 }}
                     >
-                        {categories.map((category) => (
-                            <Htag tag='s' key={category} className={styles.dropdownItem}
-                                onClick={() => handleCategorySelect(category)}>
-                                {setLocale(router.locale).classes[category as 'product']}
+                        {classes.map((c) => (
+                            <Htag tag='s' key={c.id} className={styles.dropdownItem}
+                                onClick={() => handleCategorySelect(c.class_tag)}>
+                                {c.name}
                             </Htag>
                         ))}
                     </motion.div>
