@@ -36,9 +36,7 @@ export const Input = ({ text, value, onChange, onKeyPress }: InputProps): JSX.El
             window.removeEventListener('click', handleClickOutside);
         };
     }, []);
-
-    console.log(classes[0])
-
+    
     return (
         <div className={styles.inputWrapper}>
             <div className={styles.category} onClick={handleCategoryClick}>

@@ -33,7 +33,7 @@ body {
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 30px;
-	background-color: var(--primary);
+	background-color: var(--second);
 }
 
 a {

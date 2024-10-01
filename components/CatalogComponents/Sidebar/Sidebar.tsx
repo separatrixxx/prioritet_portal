@@ -1,5 +1,5 @@
 import styles from './Sidebar.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
 import { motion } from 'framer-motion';
@@ -37,9 +37,11 @@ export const Sidebar = (): JSX.Element => {
 
     const variantsSidebar = {
         visible: {
+            height: 'calc(100vh - 110px)',
             gap: '20px',
         },
         hidden: {
+            height: '20px',
             gap: 0,
         },
     };
@@ -60,6 +62,7 @@ export const Sidebar = (): JSX.Element => {
         setActiveClass(classTag);
         dispatch(setProductsDefault());
         setExpandedClass(classTag);
+
         getProducts({
             type: classTag,
             dispatch: dispatch,
@@ -72,11 +75,24 @@ export const Sidebar = (): JSX.Element => {
         setActiveClass(null);
         setActiveCategory(categoryId);
         dispatch(setProductsDefault());
+        
         getProductsForCategories({
             categoryId: categoryId,
             dispatch: dispatch,
         });
     };
+
+    useEffect(() => {
+        if (expandedSidebar) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [expandedSidebar]);
 
     return (
         <motion.div className={styles.sidebar}
@@ -101,13 +117,13 @@ export const Sidebar = (): JSX.Element => {
                             <span>
                                 {' > ' + categories.find(it => it.id === activeCategory)?.name}
                             </span>
-                        : <></>
+                            : <></>
                     }
                 </Htag>
                 {
                     width <= 580 ?
                         <BurgerMenu open={expandedSidebar} setOpen={setExpandedSidebar} />
-                    : <></>
+                        : <></>
                 }
             </div>
             {classes.map(c => (
