@@ -4,6 +4,8 @@ export interface BaseArguments {
 
 export interface GetProductsArguments extends BaseArguments {
     type: string,
+    limit: number,
+    offset: number,
 }
 
 export interface GetProductsForCategoriesArguments extends BaseArguments {

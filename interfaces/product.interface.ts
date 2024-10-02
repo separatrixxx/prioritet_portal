@@ -5,6 +5,10 @@ export interface ProductsInterface {
     offset: number,
 }
 
+export interface ProductsState extends ProductsInterface {
+    activeType: string;
+}
+
 export interface ProductItem {
     type: string,
     id: number,

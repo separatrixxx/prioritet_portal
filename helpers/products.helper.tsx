@@ -5,19 +5,25 @@ import { setProducts } from "../features/products/productsSlice";
 
 
 export async function getProducts(args: GetProductsArguments) {
-    const { type, dispatch } = args;
+    const { type, limit, offset, dispatch } = args;
 
     try {
-        const { data : response }: AxiosResponse<ProductsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/list/' + type, 
+        const { data: response }: AxiosResponse<ProductsInterface> = await axios.get(
+            `${process.env.NEXT_PUBLIC_DOMAIN}/list/${type}?limit=${limit}&offset=${offset}`,
             {
                 headers: {
                     'X-API-Key': process.env.NEXT_PUBLIC_API_KEY,
                 },
-            });
+            }
+        );
 
-        dispatch(setProducts(response.results));
-    } catch (err) {      
+        dispatch(setProducts({
+            results: response.results,
+            total_count: response.total_count,
+            limit: response.limit,
+            offset: response.offset,
+        }));
+    } catch (err) {
         console.log(err);
     }
 }
@@ -26,16 +32,22 @@ export async function getProductsForCategories(args: GetProductsForCategoriesArg
     const { categoryId, dispatch } = args;
 
     try {
-        const { data : response }: AxiosResponse<ProductsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/category/' + categoryId, 
+        const { data: response }: AxiosResponse<ProductsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
+            '/category/' + categoryId,
             {
                 headers: {
                     'X-API-Key': process.env.NEXT_PUBLIC_API_KEY,
                 },
-            });
+            }
+        );
 
-        dispatch(setProducts(response));
-    } catch (err) {      
+        dispatch(setProducts({
+            results: response,
+            total_count: 0,
+            limit: 1000,
+            offset: 0,
+        }));
+    } catch (err) {
         console.log(err);
     }
 }

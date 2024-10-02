@@ -5,13 +5,13 @@
 	align-items: center;
 
 	width: 100%;
-	margin: 30px 0 50px 0;
+	margin: 40px 0;
 	gap: 20px;
 	justify-items: center;
 }
 
 .productsFound {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 
 	color: var(--darkLight);
 
@@ -22,11 +22,12 @@
 @media (max-width: 580px) {
 	.catalogList {
 		width: calc(100% - 40px);
-		margin: 15px 0 30px 0;
+		margin: 20px 0;
+		gap: 10px;
 		padding: 0 20px;
 	}
 
 	.productsFound {
-		margin-bottom: 5px;
+		margin-bottom: 10px;
 	}
 }

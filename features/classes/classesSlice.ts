@@ -4,7 +4,7 @@ import { ClassInterface } from '../../interfaces/classes.interface';
 
 const classesData: ClassInterface[] = [];
 
-export const userSlice = createSlice({
+export const classesSlice = createSlice({
   name: 'classes',
   initialState: {
     classes: classesData,
@@ -16,6 +16,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setClasses } = userSlice.actions;
+export const { setClasses } = classesSlice.actions;
 
-export default userSlice.reducer;
+export default classesSlice.reducer;

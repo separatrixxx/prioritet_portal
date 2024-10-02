@@ -4,7 +4,7 @@ import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
 import { motion } from 'framer-motion';
 import { getProducts, getProductsForCategories } from '../../../helpers/products.helper';
-import { setProductsDefault } from '../../../features/products/productsSlice';
+import { setActiveType, setProductsDefault } from '../../../features/products/productsSlice';
 import { useResizeW } from '../../../hooks/useResize';
 import { BurgerMenu } from '../../Common/BurgerMenu/BurgenMenu';
 import Arrow from './arrow.svg';
@@ -57,15 +57,21 @@ export const Sidebar = (): JSX.Element => {
 
     const handleClassClick = (classTag: string) => {
         if (activeClass === classTag) return;
-
+    
         setActiveCategory(null);
         setActiveClass(classTag);
         dispatch(setProductsDefault());
+        dispatch(setActiveType(classTag));
         setExpandedClass(classTag);
-
+    
+        const limit = 10;
+        const offset = 0;
+    
         getProducts({
             type: classTag,
             dispatch: dispatch,
+            limit: limit,
+            offset: offset,
         });
     };
 

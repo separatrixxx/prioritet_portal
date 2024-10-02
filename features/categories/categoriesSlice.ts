@@ -4,7 +4,7 @@ import { CategoryInterface } from '../../interfaces/categories.interface';
 
 const categoriesData: CategoryInterface[] = [];
 
-export const userSlice = createSlice({
+export const categoriesSlice = createSlice({
   name: 'categories',
   initialState: {
     categories: categoriesData,
@@ -16,6 +16,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { setCategories } = userSlice.actions;
+export const { setCategories } = categoriesSlice.actions;
 
-export default userSlice.reducer;
+export default categoriesSlice.reducer;

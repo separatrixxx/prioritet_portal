@@ -11,6 +11,9 @@ import { getProducts } from '../../helpers/products.helper';
 function Catalog(): JSX.Element {
     const { router, dispatch } = useSetup();
 
+    const limit = 20;
+    const offset = 0;
+
     useEffect(() => {
         getClasses({
             dispatch: dispatch,
@@ -23,7 +26,9 @@ function Catalog(): JSX.Element {
         getProducts({
             type: 'product',
             dispatch: dispatch,
-        });
+            limit: limit,
+            offset: offset,
+        })
     }, [dispatch]);
 
     return (
