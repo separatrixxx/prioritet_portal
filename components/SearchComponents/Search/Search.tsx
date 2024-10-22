@@ -22,6 +22,7 @@ export const Search = ({ text, value, onChange }: SearchProps): JSX.Element => {
         if (e.target.value.trim() === '') {
             setSearchResults([]);
             setDropdownOpen(false);
+
             return;
         }
 
@@ -85,7 +86,8 @@ export const Search = ({ text, value, onChange }: SearchProps): JSX.Element => {
                                 </Htag>
                             </Link>
                         ))}
-                        <Link href={`/search?q=${value}`} className={styles.viewAll} aria-label='search all results link'>
+                        <Link href={`/search?q=${value}`} className={styles.viewAll} aria-label='search all results link'
+                            onClick={() => setDropdownOpen(false)}>
                             <Htag tag='s'>
                                 {setLocale(router.locale).view_all_results}
                             </Htag>

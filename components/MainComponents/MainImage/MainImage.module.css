@@ -24,6 +24,8 @@
 }
 
 .mainImageTitle {
+	width: 90%;
+	text-align: center;
 	position: absolute;
 
 	color: var(--white);

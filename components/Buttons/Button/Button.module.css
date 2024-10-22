@@ -68,3 +68,9 @@
 		color: var(--white) !important;
 	}
 }
+
+@media (max-width: 580px) {
+	.button {
+		padding: 0 10px;
+	}
+}

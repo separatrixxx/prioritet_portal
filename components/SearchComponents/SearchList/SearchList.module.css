@@ -68,5 +68,16 @@
 	.searchList {
 		width: calc(100% - 40px);
 		margin: 140px 20px 40px 20px !important;
+		gap: 15px;
 	}
+
+	.searchDiv {
+		display: grid;
+		gap: 10px;
+	}
+
+	.searchClass {
+		margin: 5px 0;
+	}
+	
 }

@@ -24,6 +24,6 @@
 
 @media (max-width: 580px) {
 	.description {
-		width: calc(100% - 40px);
+		width: calc(100% - 40px) !important;
 	}
 }
