@@ -36,12 +36,13 @@
 	z-index: 20;
 	top: 100%;
 	left: 50%;
-	transform: translateX(-50%);
 
 	display: grid;
 
 	width: calc(100% - 20px);
 	padding: 10px;
+
+	transform: translateX(-50%);
 
 	border: 2px solid var(--second);
 	border-top: none;
