@@ -1,15 +1,14 @@
 import axios, { AxiosResponse } from "axios";
 import { BaseArguments } from "../interfaces/refactor.interface";
-import { CategoryInterface } from "../interfaces/categories.interface";
-import { setCategories } from "../features/categories/categoriesSlice";
 import { setClasses } from "../features/classes/classesSlice";
+import { ClassInterface } from "../interfaces/classes.interface";
 
 
 export async function getClasses(args: BaseArguments) {
     const { dispatch } = args;
 
     try {
-        const { data : response }: AxiosResponse<CategoryInterface[]> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
+        const { data : response }: AxiosResponse<ClassInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
             '/classes', 
             {
                 headers: {
@@ -17,8 +16,8 @@ export async function getClasses(args: BaseArguments) {
                 },
             });
 
-        dispatch(setClasses(response));
+        dispatch(setClasses(response.results));
     } catch (err) {      
-        console.log(err);
+        console.error('Get classes error: ' + err);
     }
 }

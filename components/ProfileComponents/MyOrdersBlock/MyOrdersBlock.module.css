@@ -1,0 +1,74 @@
+.myOrdersBlock {
+	display: grid;
+
+	width: 100%;
+
+	justify-items: left;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.myOrdersTitle {
+	color: var(--second);
+
+	font-weight: 600;
+}
+
+.tableContainer {
+	overflow-x: auto;
+
+	width: 100%;
+}
+
+.ordersTable {
+	width: 100%;
+	min-width: 800px;
+
+	border-collapse: collapse;
+}
+
+.ordersTable th,
+.ordersTable td {
+	padding: 10px;
+
+	text-align: left;
+
+	border: 1px solid var(--darkLight);
+}
+
+.ordersTable th {
+	white-space: nowrap;
+
+	background: var(--second);
+}
+
+.ordersTable th > h1 {
+	color: var(--white);
+
+	font-weight: 600;
+}
+
+.productLink {
+	cursor: pointer;
+	transition-duration: 500ms;
+}
+
+.productLink:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	background: var(--light);
+}
+
+@media (min-width: 1024px) {
+	.productLink:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		background: var(--light);
+	}
+}
+
+@media (max-width: 580px) {
+	.myOrdersBlock {
+		margin-top: 10px;
+	}
+}

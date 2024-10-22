@@ -1,5 +1,4 @@
 import styles from './LocaleChange.module.css';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState } from 'react';
 import { en } from '../../../locales/en.locale';
@@ -7,10 +6,11 @@ import { ru } from '../../../locales/ru.locale';
 import { setLocale } from '../../../helpers/locale.helper';
 import { Htag } from '../Htag/Htag';
 import { Modal } from '../Modal/Modal';
+import { useSetup } from '../../../hooks/useSetup';
 
 
 export const LocaleChange = (): JSX.Element => {
-    const router = useRouter();
+    const { router } = useSetup();
 
     const [active, setActive] = useState<boolean>(false);
 
@@ -30,7 +30,7 @@ export const LocaleChange = (): JSX.Element => {
                 <div className={styles.blockLanguages}>
                     {languages.map(m => (
                         <Link key={m.locale} href={router.asPath} locale={m.locale}
-                            onClick={() => setActive(false)}>
+                            onClick={() => setActive(false)} aria-label='change locale link'>
                             <Htag tag='l' className={styles.langLink}>{m.language}</Htag>
                         </Link>
                     ))}

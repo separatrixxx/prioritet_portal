@@ -8,19 +8,26 @@ import { setActiveType, setProductsDefault } from '../../../features/products/pr
 import { useResizeW } from '../../../hooks/useResize';
 import { BurgerMenu } from '../../Common/BurgerMenu/BurgenMenu';
 import Arrow from './arrow.svg';
+import { getCategories } from '../../../helpers/categories.helper';
 import cn from 'classnames';
 
 
 export const Sidebar = (): JSX.Element => {
-    const { dispatch, classes, categories } = useSetup();
+    const { dispatch, classes, categories, filters } = useSetup();
 
     const [expandedSidebar, setExpandedSidebar] = useState<boolean>(false);
 
     const width = useResizeW();
 
-    const [expandedClass, setExpandedClass] = useState<string | null>('product');
+    const [expandedClass, setExpandedClass] = useState<string>('product');
     const [activeClass, setActiveClass] = useState<string | null>('product');
     const [activeCategory, setActiveCategory] = useState<number | null>(null);
+
+    useEffect(() => {
+        getCategories(expandedClass, {
+            dispatch: dispatch,
+        });
+    }, [expandedClass, dispatch]);
 
     const variants = {
         visible: {
@@ -55,23 +62,24 @@ export const Sidebar = (): JSX.Element => {
         },
     };
 
+    const limit = 20;
+    const offset = 0;
+
     const handleClassClick = (classTag: string) => {
         if (activeClass === classTag) return;
-    
+
         setActiveCategory(null);
         setActiveClass(classTag);
-        dispatch(setProductsDefault());
         dispatch(setActiveType(classTag));
         setExpandedClass(classTag);
-    
-        const limit = 10;
-        const offset = 0;
-    
+        dispatch(setProductsDefault());
+
         getProducts({
             type: classTag,
             dispatch: dispatch,
             limit: limit,
             offset: offset,
+            filters: filters,
         });
     };
 
@@ -81,10 +89,13 @@ export const Sidebar = (): JSX.Element => {
         setActiveClass(null);
         setActiveCategory(categoryId);
         dispatch(setProductsDefault());
-        
+
         getProductsForCategories({
             categoryId: categoryId,
             dispatch: dispatch,
+            limit: limit,
+            offset: offset,
+            filters: filters,
         });
     };
 
@@ -123,7 +134,7 @@ export const Sidebar = (): JSX.Element => {
                             <span>
                                 {' > ' + categories.find(it => it.id === activeCategory)?.name}
                             </span>
-                            : <></>
+                        : <></>
                     }
                 </Htag>
                 {

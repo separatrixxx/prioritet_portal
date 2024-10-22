@@ -1,25 +1,29 @@
 import styles from './CatalogPage.module.css';
 import { Toaster } from 'react-hot-toast';
-import { HeaderCatalog } from '../../components/Headers/HeaderCatalog/HeaderCatalog';
 import { CatalogList } from '../../components/CatalogComponents/CatalogList/CatalogList';
 import { Sidebar } from '../../components/CatalogComponents/Sidebar/Sidebar';
+import { FiltersBar } from '../../components/CatalogComponents/FiltersBar/FiltersBar';
+import { Header } from '../../components/Headers/Header/Header';
 
 
-export const CatalogPage = (): JSX.Element => {   
+export const CatalogPage = (): JSX.Element => {
     return (
         <>
             <Toaster
-				position="top-center"
-				reverseOrder={true}
-				toastOptions={{
-					duration: 2000,
-				}}
-			/>
+                position="top-center"
+                reverseOrder={true}
+                toastOptions={{
+                    duration: 2000,
+                }}
+            />
             <div className={styles.wrapper}>
-                <HeaderCatalog />
+                <Header />
                 <div className={styles.catalogDiv}>
                     <Sidebar />
-                    <CatalogList />
+                    <div className={styles.listDiv}>
+                        <FiltersBar />
+                        <CatalogList />
+                    </div>
                 </div>
             </div>
         </>

@@ -1,11 +1,11 @@
 import { MainPage } from "../../page_components/MainPage/MainPage";
 import Head from 'next/head';
-import { useRouter } from "next/router";
+import { useSetup } from "../../hooks/useSetup";
 import { setLocale } from "../../helpers/locale.helper";
 
 
 function Main(): JSX.Element {
-  const router = useRouter();
+  const { router } = useSetup();
 
   return (
     <>

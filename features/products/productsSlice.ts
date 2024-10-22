@@ -4,7 +4,7 @@ import { ProductItem, ProductsState } from '../../interfaces/product.interface';
 
 const productsData: ProductsState = {
   results: [],
-  total_count: 0,
+  total_count: -1,
   limit: 0,
   offset: 0,
   activeType: 'product',

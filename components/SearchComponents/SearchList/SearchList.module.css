@@ -1,0 +1,72 @@
+.searchList {
+	display: grid;
+
+	width: calc(100% - 140px);
+
+	margin: 140px 70px 40px 70px !important;
+	gap: 20px;
+}
+
+.searchDiv {
+	display: grid;
+	gap: 15px;
+}
+
+.searchClass {
+	margin: 10px 0;
+
+	color: var(--second);
+
+	font-weight: 600;
+}
+
+.searchName {
+	width: fit-content;
+
+	cursor: pointer;
+}
+
+.searchName > h1 {
+	transition-duration: 500ms;
+
+	color: var(--primary) !important;
+
+	font-weight: 500;
+}
+
+.searchName:active h1 {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--second) !important;
+}
+
+.productsFound {
+	margin-bottom: 10px;
+
+	color: var(--darkLight);
+
+	font-weight: 600;
+	justify-self: left;
+}
+
+@media (min-width: 1024px) {
+	.searchName:hover h1 {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--second) !important;
+	}
+}
+
+@media (max-width: 1024px) {
+	.searchList {
+		width: calc(100% - 100px);
+		margin: 140px 50px 40px 50px !important;
+	}
+}
+
+@media (max-width: 580px) {
+	.searchList {
+		width: calc(100% - 40px);
+		margin: 140px 20px 40px 20px !important;
+	}
+}

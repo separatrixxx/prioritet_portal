@@ -4,31 +4,15 @@ import { setLocale } from '../../helpers/locale.helper';
 import { useEffect } from 'react';
 import { useSetup } from '../../hooks/useSetup';
 import { getClasses } from '../../helpers/classes.helper';
-import { getCategories } from '../../helpers/categories.helper';
-import { getProducts } from '../../helpers/products.helper';
 
 
 function Catalog(): JSX.Element {
-    const { router, dispatch } = useSetup();
-
-    const limit = 20;
-    const offset = 0;
+    const { router, dispatch, filters } = useSetup();
 
     useEffect(() => {
         getClasses({
             dispatch: dispatch,
         });
-
-        getCategories({
-            dispatch: dispatch,
-        });
-
-        getProducts({
-            type: 'product',
-            dispatch: dispatch,
-            limit: limit,
-            offset: offset,
-        })
     }, [dispatch]);
 
     return (

@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { CategoryInterface } from '../../interfaces/categories.interface';
+import { CategoryItem } from '../../interfaces/categories.interface';
 
 
-const categoriesData: CategoryInterface[] = [];
+const categoriesData: CategoryItem[] = [];
 
 export const categoriesSlice = createSlice({
   name: 'categories',
@@ -11,11 +11,14 @@ export const categoriesSlice = createSlice({
   },
   reducers: {
     setCategories: (state, action) => {
-        state.categories = action.payload;
+      state.categories = action.payload;
+    },
+    setCategoriesDefault: (state) => {
+      state.categories = categoriesData;
     },
   },
 });
 
-export const { setCategories } = categoriesSlice.actions;
+export const { setCategories, setCategoriesDefault } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

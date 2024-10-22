@@ -1,6 +1,6 @@
 import { ButtonProps } from './Button.props';
 import styles from './Button.module.css';
-import { Htag } from '../Htag/Htag';
+import { Htag } from '../../Common/Htag/Htag';
 
 
 export const Button = ({ text, isLoading, onClick }: ButtonProps): JSX.Element => {

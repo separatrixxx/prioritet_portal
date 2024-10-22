@@ -1,0 +1,45 @@
+.attachFileContainer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.attachFile {
+	display: none;
+}
+
+.customAttachFile {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 30px;
+	padding: 5px 15px;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	border: 2px solid var(--second);
+	border-radius: 10px;
+	background: var(--white);
+}
+
+.customAttachFile > h1 {
+	color: var(--darkLight);
+
+	font-weight: 600;
+}
+
+.customAttachFile:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	border-color: var(--primary);
+}
+
+@media (min-width: 1024px) {
+	.customAttachFile:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		border-color: var(--primary);
+	}
+}

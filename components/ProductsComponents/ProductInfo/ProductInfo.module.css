@@ -1,0 +1,65 @@
+.productInfo {
+	display: grid;
+
+	width: calc(100% - 140px);
+	height: auto;
+	margin: 140px 70px 40px 70px !important;
+	gap: 40px;
+	justify-items: left;
+	grid-template-columns: 20% 1fr;
+}
+
+.infoDiv {
+	display: grid;
+	gap: 20px;
+
+	height: fit-content;
+}
+
+.productName {
+	color: var(--primary);
+
+	font-weight: 600;
+}
+
+.productDescription {
+	max-width: 80%;
+
+	color: var(--darkLight);
+}
+
+.productSkladPrice {
+	color: var(--second);
+
+	font-weight: 600;
+}
+
+.priceDiv {
+	display: grid;
+	grid-template-columns: auto 1fr;
+
+	align-items: center;
+	gap: 20px;
+
+	margin-top: 20px;
+}
+
+.price {
+	color: var(--second);
+
+	font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+	.productInfo {
+		width: calc(100% - 100px);
+		margin: 140px 50px 40px 50px !important;
+	}
+}
+
+@media (max-width: 580px) {
+	.productInfo {
+		width: calc(100% - 40px);
+		margin: 140px 20px 40px 20px !important;
+	}
+}

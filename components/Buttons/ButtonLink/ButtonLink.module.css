@@ -1,10 +1,10 @@
-.button {
+.buttonLink {
 	display: grid;
 	align-items: center;
 
 	width: fit-content;
-	height: fit-content;
-	padding: 7px 20px;
+	height: 40px;
+	padding: 0 20px;
 
 	cursor: pointer;
 	transition-duration: 500ms;
@@ -15,7 +15,7 @@
 	justify-items: center;
 }
 
-.button:active {
+.buttonLink:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	color: var(--white);
@@ -31,7 +31,7 @@
 	font-weight: 600 !important;
 }
 
-.button:active > .text {
+.buttonLink:active > .text {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	color: var(--white) !important;
@@ -43,7 +43,8 @@
 
 	animation: spin 1s linear infinite;
 
-	border: 4px solid var(--second);
+	border: 4px solid var(--white);
+	border-top: 4px solid var(--second);
 	border-radius: 50%;
 }
 
@@ -53,7 +54,7 @@
 }
 
 @media (min-width: 1024px) {
-	.button:hover {
+	.buttonLink:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		color: var(--white);
@@ -61,7 +62,7 @@
 		background: var(--second);
 	}
 
-	.button:hover > .text {
+	.buttonLink:hover > .text {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		color: var(--white) !important;

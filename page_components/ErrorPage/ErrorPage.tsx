@@ -19,7 +19,7 @@ export const ErrorPage = ({ error }: ErrorPageProps): JSX.Element => {
 
     return (
         <div className={styles.errorPage}>
-            <Link href='/'>
+            <Link href='/' aria-label='error page link'>
                 <Htag tag="l" className={styles.errorText}>
                     {errorText}
                 </Htag>

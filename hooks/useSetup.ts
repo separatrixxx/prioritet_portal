@@ -10,6 +10,7 @@ export const useSetup = () => {
     const classes = useSelector((state: AppState) => state.classes.classes);
     const categories = useSelector((state: AppState) => state.categories.categories);
     const products = useSelector((state: AppState) => state.products.products);
+    const filters = useSelector((state: AppState) => state.filters.filters);
 
     return {
         router,
@@ -17,5 +18,6 @@ export const useSetup = () => {
         classes,
         categories,
         products,
+        filters,
     };
 };

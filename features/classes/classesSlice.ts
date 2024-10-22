@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ClassInterface } from '../../interfaces/classes.interface';
+import { ClassItem } from '../../interfaces/classes.interface';
 
 
-const classesData: ClassInterface[] = [];
+const classesData: ClassItem[] = [];
 
 export const classesSlice = createSlice({
   name: 'classes',

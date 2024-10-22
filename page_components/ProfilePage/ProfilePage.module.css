@@ -1,0 +1,31 @@
+.wrapper {
+	display: grid;
+
+	width: 100%;
+	justify-items: center;
+}
+
+.typesDiv {
+	display: grid;
+	align-items: top;
+
+	height: calc(100vh - 295.6px);
+	margin-top: 110px;
+	padding-top: 40px;
+	grid-template-columns: auto auto;
+	gap: 40px;
+}
+
+@media (max-width: 1024px) {
+	.typesDiv {
+		height: calc(100vh - 265.8px);
+		gap: 30px;
+	}
+}
+
+@media (max-width: 580px) {
+	.typesDiv {
+		height: calc(100vh - 308.8px);
+		gap: 20px;
+	}
+}
