@@ -80,7 +80,7 @@ export const Search = (): JSX.Element => {
                     <div className={styles.dropdown}>
                         {searchResults.map(item => (
                             <Link href={`/${item.class}/${item.id}`} key={item.id} className={styles.dropdownItem}
-                                aria-label='search link'>
+                                aria-label='search link' onClick={() => setDropdownOpen(false)}>
                                 <Htag tag='s'>
                                     {item.name}
                                 </Htag>
