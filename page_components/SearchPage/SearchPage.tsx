@@ -1,13 +1,11 @@
 import styles from './SearchPage.module.css';
 import { Toaster } from 'react-hot-toast';
-import { useSetup } from '../../hooks/useSetup';
 import { SearchList } from '../../components/SearchComponents/SearchList/SearchList';
 import { Header } from '../../components/Headers/Header/Header';
+import { Footer } from '../../components/Common/Footer/Footer';
 
 
 export const SearchPage = (): JSX.Element => {
-    const { router } = useSetup();
-
     return (
         <>
             <Toaster
@@ -20,6 +18,7 @@ export const SearchPage = (): JSX.Element => {
             <div className={styles.wrapper}>
                 <Header />
                 <SearchList />
+                <Footer />
             </div>
         </>
     );

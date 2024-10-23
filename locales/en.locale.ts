@@ -54,5 +54,15 @@ export const en = {
         proceed: "Treated objects",
         active_ingredient: "Active ingredients",
     },
+    types: {
+        product: "Product",
+        harmful: "Parasite",
+        proceed: "Treated object",
+        active_ingredient: "Active ingredient",
+    },
     select_file: "Select file",
+    name: "Name",
+    product_out_of_stock: "The product is out of stock",
+    latest_arrival_to_stock: "Latest arrival to stock",
+    latest_price_change: "Latest price change",
 };

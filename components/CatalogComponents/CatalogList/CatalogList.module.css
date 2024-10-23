@@ -13,9 +13,9 @@
 .productsFound {
 	margin-bottom: 10px;
 
-	color: var(--darkLight);
+	color: var(--darkLight) !important;
 
-	font-weight: 600;
+	font-weight: 600 !important;
 	justify-self: left;
 }
 

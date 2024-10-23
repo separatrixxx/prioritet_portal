@@ -5,20 +5,23 @@ import Link from 'next/link';
 
 
 export const RelatedProducts = ({ type, title, products }: RelatedProductsProps): JSX.Element => {
+    const sortedProducts = products && products.sort((a, b) => {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
+        return 0;
+    });
+
     return (
         <div className={styles.relatedProducts}>
             <Htag tag='m' className={styles.relatedTitle}>
-                {title}
+                {title + ':'}
             </Htag>
             <div className={styles.relatedProductsList}>
-                {products.map(p => (
+                {sortedProducts && sortedProducts.map(p => (
                     <Link href={`/${type}/${p.id}`} key={p.id} className={styles.relatedProductsItem}
                         aria-label={`related ${type} link`}>
                         <Htag tag='s' className={styles.relatedItemName}>
                             {p.name}
-                        </Htag>
-                        <Htag tag='s' className={styles.relatedItemDescription}>
-                            {p.description}
                         </Htag>
                     </Link>
                 ))}

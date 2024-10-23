@@ -29,19 +29,39 @@ export interface ProductById {
     result: {
         id: number,
         name: string,
-        product_category: number[],
-        product_class: string[],
-        active_ingredient: number[],
-        description: string,
-        harmful: number[],
-        proceed: number[],
-        sklad_price: number,
-        sklad_price_change: any,
-        sklad_latest_arrivals: any,
-        sklad_availability: any,
-        related_harmful: RelatedItem[],
-        related_proceed: RelatedItem[],
-        related_active_ingredient: RelatedItem[],
+        product_category: number[] | null,
+        product_class: string[] | null,
+        active_ingredient: number[] | null,
+        description: string | null,
+        harmful: number[] | null,
+        proceed: number[] | null,
+        sklad_price: number | null,
+        sklad_price_change: {
+            [key: string]: {
+                new_price: number;
+                old_price: number;
+                update_id: string;
+                update_by_user: number;
+                update_timestamp: number;
+            };
+        },
+        sklad_latest_arrivals: {
+            data: {
+                arrival_date: string,
+                batch_number: string,
+            },
+            latest_update: number,
+        },
+        availability: boolean,
+        sklad_availability: {
+            remainder: number,
+            measurement: string,
+            availability: boolean,
+            latest_update: number
+        },
+        related_harmful: RelatedItem[] | null,
+        related_proceed: RelatedItem[] | null,
+        related_active_ingredient: RelatedItem[] | null,
     }
 }
 
@@ -49,13 +69,8 @@ export interface CommonProductById {
     result: {
         id: number,
         name: string,
-        description: string,
-        product: number[],
-        additional_info: any,
-        related_products: RelatedItem[],
-        related_harmful: RelatedItem[],
-        related_proceed: RelatedItem[],
-        related_active_ingredient: RelatedItem[],
+        description: string | null,
+        additional_info: any | null,
     }
 }
 
@@ -70,5 +85,5 @@ export interface ManagerProductInterface {
     name: string,
     category: string,
     sklad_quantity: number,
-    price: number,   
+    price: number,
 }

@@ -9,7 +9,7 @@ export async function getProducts(args: GetProductsArguments) {
 
     try {       
         const { data: response }: AxiosResponse<ProductsInterface> = await axios.get(
-            `${process.env.NEXT_PUBLIC_DOMAIN}/list/${type}?limit=${limit}&offset=${offset}&${filters.sort}${filters.is_available === 'True' ? `&by_sklad_available=${filters.is_available}` : ''}`,
+            `${process.env.NEXT_PUBLIC_DOMAIN}/list/${type}?limit=${limit}&offset=${offset}&${filters.sort}${filters.is_available === 'True' ? `&by_sklad_available=${filters.is_available}` : ''}${filters.name?.trim() !== '' ? `&name=${filters.name?.trim()}` : ''}`,
             {
                 headers: {
                     'X-API-Key': process.env.NEXT_PUBLIC_API_KEY,

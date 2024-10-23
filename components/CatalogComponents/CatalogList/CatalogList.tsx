@@ -13,6 +13,7 @@ import { FiltersInterface } from '../../../interfaces/filters.interface';
 
 export const CatalogList = (): JSX.Element => {
     const { router, dispatch, products, filters } = useSetup();
+    
     const [page, setPage] = useState<number>(1);
     const [limit] = useState<number>(20);
     const [loading, setLoading] = useState<boolean>(false);

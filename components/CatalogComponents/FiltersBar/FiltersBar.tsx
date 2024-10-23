@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import styles from './FiltersBar.module.css';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
-import { switchIsAvailable, switchSort } from '../../../features/filters/filtersSlice';
+import { setFiltersName, switchIsAvailable, switchSort } from '../../../features/filters/filtersSlice';
 import { SortFilters } from '../../../interfaces/filters.interface';
 import { setLocale } from '../../../helpers/locale.helper';
 import ByNameAsc from './by_name_asc.svg';
@@ -11,11 +11,13 @@ import ByNameDesc from './by_name_desc.svg';
 import ByPriceLow from './by_price_low.svg';
 import ByPriceHigh from './by_price_high.svg';
 
+
 export const FiltersBar = (): JSX.Element => {
-    const { router, dispatch, filters } = useSetup();
+    const { router, dispatch, filters, products } = useSetup();
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-    
+
     const [currentSort, setCurrentSort] = useState<SortFilters>('by_name=asc');
 
     const toggleDropdown = () => {
@@ -67,6 +69,23 @@ export const FiltersBar = (): JSX.Element => {
 
     const sortFilters: SortFilters[] = ['by_name=asc', 'by_name=desc', 'by_price=low', 'by_price=high'];
 
+    const [name, setName] = useState<string>('');
+    const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout | null>(null);
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setName(e.target.value);
+
+        if (debounceTimeout) {
+            clearTimeout(debounceTimeout);
+        }
+
+        const newTimeout = setTimeout(() => {
+            dispatch(setFiltersName(e.target.value));
+        }, 200);
+
+        setDebounceTimeout(newTimeout);
+    };
+
     return (
         <div className={styles.filtersBar}>
             <div className={styles.dropdown} ref={dropdownRef}>
@@ -93,16 +112,25 @@ export const FiltersBar = (): JSX.Element => {
                     : <></>
                 }
             </div>
-            <label className={styles.checkboxLabel}>
-                <input
-                    type="checkbox"
-                    checked={filters.is_available === 'True'}
-                    onChange={() => dispatch(switchIsAvailable())}
-                />
-                <Htag tag='s' className={styles.sortTitle}>
-                    {setLocale(router.locale).in_stock}
-                </Htag>
-            </label>
+            <input className={styles.filtersName}
+                placeholder={setLocale(router.locale).name}
+                value={name}
+                onChange={handleInputChange}
+                type='text'
+                name='text filters name'
+                aria-label='text filters name'
+            />
+            {
+                products.results[0] && products.results[0].type === 'product' ?
+                    <label className={styles.checkboxLabel}>
+                        <input type="checkbox" checked={filters.is_available === 'True'}
+                            onChange={() => dispatch(switchIsAvailable())} />
+                        <Htag tag='s' className={styles.sortTitle}>
+                            {setLocale(router.locale).in_stock}
+                        </Htag>
+                    </label>
+                : <></>
+            }
         </div>
     );
 };

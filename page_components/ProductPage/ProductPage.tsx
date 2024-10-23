@@ -8,28 +8,11 @@ import { RelatedProducts } from '../../components/ProductsComponents/RelatedProd
 import { RelatedItem } from '../../interfaces/product.interface';
 import { Footer } from '../../components/Common/Footer/Footer';
 import { Header } from '../../components/Headers/Header/Header';
+import { CommonProductInfo } from '../../components/ProductsComponents/CommonProductInfo/CommonProductInfo';
 
 
 export const ProductPage = ({ product, commonProduct }: ProductPageProps): JSX.Element => {
     const { router } = useSetup();
-
-    const related: RelatedItem[] = [
-        {
-            id: 1,
-            name: 'Сопутствующий товар 1',
-            description: 'Описание сопутствующего товара 1',
-        },
-        {
-            id: 2,
-            name: 'Сопутствующий товар 2',
-            description: 'Описание сопутствующего товара 2',
-        },
-        {
-            id: 3,
-            name: 'Сопутствующий товар 3',
-            description: 'Описание сопутствующего товара 3',
-        },
-    ];
 
     return (
         <>
@@ -44,32 +27,20 @@ export const ProductPage = ({ product, commonProduct }: ProductPageProps): JSX.E
                 <Header />
                 {
                     product ?
-                        <ProductInfo name={product.result.name} description={product.result.description}
-                            skladPrice={product.result.sklad_price} />
+                        <ProductInfo product={product} />
                     : commonProduct ?
-                        <ProductInfo name={commonProduct.result.name} description={commonProduct.result.description} />
+                        <CommonProductInfo product={commonProduct} />
                     : <></>
                 }
                 {
                     product ?
                         <>
                             <RelatedProducts type='harmful' title={setLocale(router.locale).related_harmful}
-                                products={related} />
+                                products={product.result.related_harmful} />
                             <RelatedProducts type='proceed' title={setLocale(router.locale).related_proceed}
-                                products={related} />
+                                products={product.result.related_proceed} />
                             <RelatedProducts type='active_ingredient' title={setLocale(router.locale).related_active_ingredient}
-                                products={related} />
-                        </>
-                    : commonProduct ?
-                        <>
-                            <RelatedProducts type='product' title={setLocale(router.locale).related_products}
-                                products={related} />
-                            <RelatedProducts type='harmful' title={setLocale(router.locale).related_harmful}
-                                products={related} />
-                            <RelatedProducts type='proceed' title={setLocale(router.locale).related_proceed}
-                                products={related} />
-                            <RelatedProducts type='active_ingredient' title={setLocale(router.locale).related_active_ingredient}
-                                products={related} />
+                                products={product.result.related_active_ingredient} />
                         </>
                     : <></>
                 }

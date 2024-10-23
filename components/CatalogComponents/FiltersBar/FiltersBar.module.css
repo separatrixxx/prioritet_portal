@@ -14,7 +14,7 @@
 
 	background: var(--white);
 	filter: drop-shadow(5px 0 7px rgba(0, 0, 0, 0.1));
-	grid-template-columns: auto 1fr;
+	grid-template-columns: auto auto 1fr;
 	gap: 20px;
 }
 
@@ -138,6 +138,34 @@
 	border-color: var(--primary);
 }
 
+.filtersName {
+	width: calc(100% - 20px);
+	padding: 5px 10px;
+
+	transition-duration: 500ms;
+
+	color: var(--second);
+	border: 2px solid var(--primary);
+	border: 2px solid var(--second);
+	border-radius: 10px;
+	outline: none;
+	background: var(--white);
+
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.filtersName::placeholder {
+	color: var(--darkLight);
+}
+
+.filtersName:active,
+.filtersName:focus {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	border-color: var(--primary);
+}
+
 @media (min-width: 1024px) {
 	.sortTitle:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -160,16 +188,28 @@
 	.checkboxLabel input:hover {
 		border-color: var(--primary);
 	}
+
+	.filtersName:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		border-color: var(--primary);
+	}
 }
 
 @media (max-width: 1024px) {
 	.filtersBar {
 		width: calc(100% - 50px);
 		padding-left: 50px;
+		grid-template-columns: auto 1fr;
+		gap: 10px 20px;
 	}
 
 	.sortTitle > div > svg {
 		width: 12px;
+	}
+
+	.filtersName {
+		width: 80%;
 	}
 }
 
@@ -179,6 +219,7 @@
 
 		width: calc(100% - 20px);
 		padding-left: 20px;
+		gap: 15px;
 	}
 
 	.sortTitle {
@@ -194,9 +235,8 @@
 	}
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
 	.filtersBar {
 		grid-template-columns: auto;
-		gap: 10px;
 	}
 }

@@ -1,8 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import { ProductById } from '../../../interfaces/product.interface';
 
 
 export interface ProductInfoProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    name: string,
-    description: string,
-    skladPrice?: number,
+    product: ProductById,
 }

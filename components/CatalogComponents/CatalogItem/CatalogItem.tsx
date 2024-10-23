@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { Htag } from '../../Common/Htag/Htag';
 import { Button } from '../../Buttons/Button/Button';
 import { setLocale } from '../../../helpers/locale.helper';
+import { formatPrice } from '../../../helpers/format.helper';
 
 
 export const CatalogItem = ({ productId, url, name, type, description, price, availability }: CatalogItemProps): JSX.Element => {
@@ -33,7 +34,7 @@ export const CatalogItem = ({ productId, url, name, type, description, price, av
                 {
                     type ?
                         <Htag tag='s' className={styles.type}>
-                            {type}
+                            {setLocale(router.locale).types[type as 'product']}
                         </Htag>
                     : <></>
                 }
@@ -48,7 +49,7 @@ export const CatalogItem = ({ productId, url, name, type, description, price, av
                     price ?
                         <div className={styles.priceDiv}>
                             <Htag tag='m' className={styles.price}>
-                                {price + ' ₽'}
+                                {formatPrice(price) + ' ₽'}
                             </Htag>
                             <Button text={setLocale(router.locale).order} onClick={() => { }} />
                         </div>

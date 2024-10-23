@@ -67,12 +67,20 @@
 }
 
 .description {
+	display: -webkit-box;
+	overflow: hidden;
+
 	max-width: 70%;
 	margin: 10px 0;
+
+	text-overflow: ellipsis;
 
 	color: var(--darkLight);
 
 	font-weight: 500;
+	-webkit-line-clamp: 3;
+	line-clamp: 3;
+	-webkit-box-orient: vertical;
 }
 
 .priceDiv {
@@ -81,6 +89,8 @@
 
 	align-items: center;
 	gap: 20px;
+
+	margin-top: 10px;
 }
 
 .price {

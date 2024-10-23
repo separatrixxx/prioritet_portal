@@ -8,10 +8,10 @@
 	padding: 10px 15px;
 
 	cursor: text;
-	transition-duration: 300ms;
+	transition-duration: 500ms;
 
 	color: var(--second);
-	border: 2px solid var(--primary);
+	border: 2px solid var(--second);
 	border-radius: 10px;
 	outline: none;
 	background: var(--white);
@@ -28,7 +28,7 @@
 .search:focus {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	border-color: var(--second);
+	border-color: var(--primary);
 }
 
 .dropdown {
@@ -95,6 +95,12 @@
 }
 
 @media (min-width: 1024px) {
+	.search:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		border-color: var(--primary);
+	}
+
 	.dropdownItem:hover h1 {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 

@@ -49,10 +49,20 @@ export const ru = {
     stock_quantity: "Количество на складе",
     view_all_results: "Посмотреть все результаты",
     classes: {
-        product: "Товары",
+        product: "Продукты",
         harmful: "Паразиты",
         proceed: "Обрабатываемые объекты",
         active_ingredient: "Активные вещества",
     },
+    types: {
+        product: "Продукт",
+        harmful: "Паразит",
+        proceed: "Обрабатываемый объект",
+        active_ingredient: "Активное вещество",
+    },
     select_file: "Выбрать файл",
+    name: "Название",
+    product_out_of_stock: "Товар отсутствует на складе",
+    latest_arrival_to_stock: "Последнее поступление на склад",
+    latest_price_change: "Последнее изменение цены",
 };

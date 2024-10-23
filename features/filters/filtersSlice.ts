@@ -3,9 +3,9 @@ import { FiltersInterface } from '../../interfaces/filters.interface';
 
 
 const filtersData: FiltersInterface = {
-    sort: 'by_name=asc',
-    is_available: 'False',
-    name: '',
+  sort: 'by_name=asc',
+  is_available: 'False',
+  name: '',
 }
 
 export const filtersSlice = createSlice({
@@ -15,14 +15,17 @@ export const filtersSlice = createSlice({
   },
   reducers: {
     switchSort: (state, action) => {
-        state.filters.sort = action.payload;
+      state.filters.sort = action.payload;
     },
     switchIsAvailable: (state) => {
-        state.filters.is_available = (state.filters.is_available === 'False' ? 'True' : 'False');
+      state.filters.is_available = (state.filters.is_available === 'False' ? 'True' : 'False');
+    },
+    setFiltersName: (state, action) => {
+      state.filters.name = action.payload;
     },
   },
 });
 
-export const { switchSort, switchIsAvailable } = filtersSlice.actions;
+export const { switchSort, switchIsAvailable, setFiltersName } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

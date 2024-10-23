@@ -1,4 +1,3 @@
-import { SearchProps } from './Search.props';
 import styles from './Search.module.css';
 import { useState } from 'react';
 import { Htag } from '../../Common/Htag/Htag';
@@ -9,15 +8,16 @@ import Link from 'next/link';
 import { useSetup } from '../../../hooks/useSetup';
 
 
-export const Search = ({ text, value, onChange }: SearchProps): JSX.Element => {
+export const Search = (): JSX.Element => {
     const { router } = useSetup();
 
+    const [search, setSearch] = useState<string>('');
     const [searchResults, setSearchResults] = useState<SearchItemInterface[]>([]);
     const [isDropdownOpen, setDropdownOpen] = useState(false);
     const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout | null>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange(e);
+        setSearch(e.target.value);
 
         if (e.target.value.trim() === '') {
             setSearchResults([]);
@@ -51,24 +51,24 @@ export const Search = ({ text, value, onChange }: SearchProps): JSX.Element => {
                     console.error("Search error: ", error);
                 }
             }
-        }, 100);
+        }, 200);
 
         setDebounceTimeout(newTimeout);
     };
 
     const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter' && value.trim() !== '') {
+        if (e.key === 'Enter' && search.trim() !== '') {
             setDropdownOpen(false);
 
-            router.push(`/search?q=${value}`);
+            router.push(`/search?q=${search}`);
         }
     };
 
     return (
         <div className={styles.searchWrapper}>
             <input className={styles.search}
-                placeholder={text}
-                value={value}
+                placeholder={setLocale(router.locale).search + '...'}
+                value={search}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 type='text'
@@ -86,7 +86,7 @@ export const Search = ({ text, value, onChange }: SearchProps): JSX.Element => {
                                 </Htag>
                             </Link>
                         ))}
-                        <Link href={`/search?q=${value}`} className={styles.viewAll} aria-label='search all results link'
+                        <Link href={`/search?q=${search}`} className={styles.viewAll} aria-label='search all results link'
                             onClick={() => setDropdownOpen(false)}>
                             <Htag tag='s'>
                                 {setLocale(router.locale).view_all_results}

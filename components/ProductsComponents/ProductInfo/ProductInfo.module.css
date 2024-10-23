@@ -1,29 +1,58 @@
-.productInfo {
+.productInfo,
+.productInfo > div {
 	display: grid;
 
 	width: calc(100% - 140px);
 	height: auto;
-	margin: 140px 70px 40px 70px !important;
 	gap: 40px;
 	justify-items: left;
+}
+
+.productInfo {
+	margin: 140px 70px 40px 70px !important;
+}
+
+.productInfo > div {
+	width: 100%;
 	grid-template-columns: 20% 1fr;
 }
 
 .infoDiv {
 	display: grid;
-	gap: 20px;
+
+	width: 100%;
 
 	height: fit-content;
+	gap: 20px;
 }
 
 .productName {
-	color: var(--primary);
+	display: grid;
+	align-items: center;
 
-	font-weight: 600;
+	color: var(--primary) !important;
+
+	font-weight: 600 !important;
+	grid-template-columns: auto 1fr;
+	gap: 20px;
+}
+
+.productName > svg {
+	width: 30px;
+	fill: var(--error);
+
+	cursor: pointer;
+	transition-duration: 500ms;
+}
+
+.productName > svg:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
 }
 
 .productDescription {
-	max-width: 80%;
+	width: 100%;
 
 	color: var(--darkLight);
 }
@@ -45,15 +74,73 @@
 }
 
 .price {
-	color: var(--second);
+	color: var(--second) !important;
 
-	font-weight: 600;
+	font-weight: 600 !important;
+}
+
+.outOfStock {
+	color: var(--error) !important;
+}
+
+.updatesInfoDiv {
+	display: grid;
+	gap: 10px;
+}
+
+.updatesTitle {
+	color: var(--darkLight);
+
+	font-weight: 500;
+}
+
+.updatesText {
+	color: var(--second);
+}
+
+@media (min-width: 1024px) {
+	.productName > svg:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
+@media (max-width: 1400px) {
+	.productInfo > div {
+		grid-template-columns: 25% 1fr;
+	}
 }
 
 @media (max-width: 1024px) {
+	.productInfo,
+	.productInfo > div {
+		gap: 30px;
+	}
+
 	.productInfo {
 		width: calc(100% - 100px);
 		margin: 140px 50px 40px 50px !important;
+	}
+
+	.productInfo > div {
+		grid-template-columns: 30% 1fr;
+	}
+
+	.infoDiv {
+		gap: 15px;
+	}
+
+	.productName {
+		gap: 15px;
+	}
+
+	.productName > svg {
+		width: 20px;
+	}
+
+	.priceDiv {
+		margin-top: 15px;
 	}
 }
 
@@ -61,5 +148,34 @@
 	.productInfo {
 		width: calc(100% - 40px);
 		margin: 140px 20px 40px 20px !important;
+	}
+
+	.productInfo > div {
+		grid-template-columns: auto;
+		gap: 40px;
+	}
+
+	.infoDiv {
+		gap: 20px;
+	}
+
+	.priceDiv {
+		margin-top: 20px;
+	}
+
+	.productDescription {
+		padding-top: 25px;
+
+		border-top: 1px solid var(--darkLight);
+	}
+}
+
+@media (max-width: 300px) {
+	.productName {
+		gap: 10px;
+	}
+
+	.productName > svg {
+		width: 15px;
 	}
 }
