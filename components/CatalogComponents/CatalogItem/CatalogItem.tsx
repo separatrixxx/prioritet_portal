@@ -51,7 +51,7 @@ export const CatalogItem = ({ productId, url, name, type, description, price, av
                             <Htag tag='m' className={styles.price}>
                                 {formatPrice(price)}
                             </Htag>
-                            <Button text={setLocale(router.locale).order} onClick={() => { }} />
+                            <Button text={setLocale(router.locale).buy} onClick={() => { }} />
                         </div>
                     : <></>
                 }

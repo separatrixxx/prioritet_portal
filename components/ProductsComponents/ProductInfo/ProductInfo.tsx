@@ -64,7 +64,7 @@ export const ProductInfo = ({ product }: ProductInfoProps): JSX.Element => {
                                 <Htag tag='l' className={styles.price}>
                                     {formatPrice(product.result.sklad_price || 0)}
                                 </Htag>
-                                <Button text={setLocale(router.locale).order} onClick={() => { }} />
+                                <Button text={setLocale(router.locale).buy} onClick={() => { }} />
                             </div>
                             :
                             <Htag tag='m' className={cn(styles.price, styles.outOfStock)}>

@@ -6,8 +6,6 @@ import Link from 'next/link';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 import FavoriteIcon from './favorite.svg';
-import CartIcon from './cart.svg';
-import cn from 'classnames';
 import { formatPrice } from '../../../helpers/format.helper';
 
 
@@ -41,22 +39,21 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
             <Htag tag='s' className={styles.productDescription}>
                 {description}
             </Htag>
+            <Htag tag='l' className={styles.productPrice}>
+                {formatPrice(price || 0)}
+            </Htag>
             <div className={styles.buttonsDiv} onClick={(e) => {
                 e.stopPropagation();
                 e.preventDefault();
             }}>
-                <div className={styles.pricePlate}>
-                    <Htag tag='m' className={styles.productPrice}>
-                        {formatPrice(price || 0)}
+                <button className={styles.buyButton}>
+                    <Htag tag='m' className={styles.productBuy}>
+                        {setLocale(router.locale).buy}
                     </Htag>
-                </div>
-                <div className={cn(styles.buttonPlate, styles.favoriteButton)}>
+                </button>
+                <div className={styles.favoriteButton}>
                     <div />
                     <FavoriteIcon />
-                </div>
-                <div className={cn(styles.buttonPlate, styles.cartButton)}>
-                    <div />
-                    <CartIcon />
                 </div>
             </div>
         </Link>

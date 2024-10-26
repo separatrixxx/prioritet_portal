@@ -61,35 +61,53 @@
 	-webkit-box-orient: vertical;
 }
 
-.buttonsDiv {
-	display: grid;
-
-	width: 100%;
-
-	cursor: default;
-	grid-template-columns: 1fr auto auto;
-	gap: 10px;
-}
-
-.pricePlate {
-	display: grid;
-	align-items: center;
-
-	width: calc(100% - 20px);
-	height: 100%;
-	padding: 0 10px;
-
-	border-radius: 5px;
-	background: var(--lighter);
-}
-
 .productPrice {
 	color: var(--second);
 
 	font-weight: 600;
 }
 
-.buttonPlate {
+.buttonsDiv {
+	display: grid;
+
+	width: 100%;
+	margin-top: -10px;
+
+	cursor: default;
+	grid-template-columns: 1fr auto;
+	gap: 10px;
+}
+
+.buyButton {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+	height: 100%;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	border: none;
+
+	border-radius: 5px;
+	outline: none;
+	background: var(--second);
+	justify-items: center;
+}
+
+.buyButton:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	filter: brightness(0.9);
+}
+
+.productBuy {
+	color: var(--white);
+
+	font-weight: 600;
+}
+
+.favoriteButton {
 	position: relative;
 
 	display: grid;
@@ -105,59 +123,50 @@
 	justify-items: center;
 }
 
-.buttonPlate > div {
+.favoriteButton > div {
 	width: 100%;
 	height: 100%;
 
 	transition-duration: 500ms;
 
 	opacity: 0.15;
-}
-
-.favoriteButton > div {
 	background: var(--heart);
 }
 
-.buttonPlate > svg {
+.favoriteButton > svg {
 	position: absolute;
+
+	width: 20px;
+	fill: var(--heart);
 
 	transition-duration: 500ms;
 }
 
-.favoriteButton > svg {
-	width: 20px;
-	fill: var(--heart);
-}
-
-.cartButton > div {
-	background: var(--second);
-}
-
-.cartButton > svg {
-	height: 20px;
-	fill: var(--second);
-}
-
-.buttonPlate:active > div {
+.favoriteButton:active > div {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	opacity: 1;
 }
 
-.buttonPlate:active > svg {
+.favoriteButton:active > svg {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	fill: var(--white);
 }
 
 @media (min-width: 1024px) {
-	.buttonPlate:hover > div {
+	.buyButton:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		filter: brightness(0.9);
+	}
+
+	.favoriteButton:hover > div {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		opacity: 1 !important;
 	}
 
-	.buttonPlate:hover > svg {
+	.favoriteButton:hover > svg {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		fill: var(--white) !important;
@@ -168,11 +177,15 @@
 	.productItem {
 		gap: 15px;
 	}
+
+	.buttonsDiv {
+		margin-top: -5px;
+	}
 }
 
 @media (max-width: 580px) {
-	.productItem {
-		gap: 10px;
+	.pricePlate {
+		height: 35px;
 	}
 
 	.buttonsDiv {

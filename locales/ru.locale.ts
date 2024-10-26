@@ -7,7 +7,7 @@ export const ru = {
     error500: "Нарушение работы сервера, ошибка 500",
     catalog: "Каталог",
     search: "Поиск",
-    order: "Заказать",
+    buy: "Купить",
     products_found: "Найдено товаров: $$$",
     in_stock: "В наличии",
     sort: {

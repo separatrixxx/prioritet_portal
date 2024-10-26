@@ -7,7 +7,7 @@ export const en = {
     error500: "Server failure, error 500",
     catalog: "Catalog",
     search: "Search",
-    order: "Order",
+    buy: "Buy",
     products_found: "$$$ products found",
     in_stock: "In stock",
     sort: {
