@@ -103,12 +103,12 @@ export const MyOrdersBlock = (): JSX.Element => {
                                 </td>
                                 <td>
                                     <Htag tag='s'>
-                                        {formatPrice(order.unit_price) + ' ₽'}
+                                        {formatPrice(order.unit_price)}
                                     </Htag>
                                 </td>
                                 <td>
                                     <Htag tag='s'>
-                                        {formatPrice(order.total_price) + ' ₽'}
+                                        {formatPrice(order.total_price)}
                                     </Htag>
                                 </td>
                                 <td>

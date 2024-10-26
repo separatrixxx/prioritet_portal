@@ -6,7 +6,7 @@ export interface CatalogItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLD
     url: string,
     name: string,
     type: string,
-    description?: string,
-    price?: number | null,
-    availability?: boolean | null,
+    description: string | null,
+    price: number | null,
+    availability: boolean | null,
 }

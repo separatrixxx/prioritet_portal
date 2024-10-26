@@ -2,11 +2,7 @@ import { CommonProductInfoProps } from './CommonProductInfoprops';
 import styles from './CommonProductInfo.module.css';
 import { Htag } from '../../Common/Htag/Htag';
 import { Slider } from '../../Slider/Slider/Slider';
-import { Button } from '../../Buttons/Button/Button';
 import { useSetup } from '../../../hooks/useSetup';
-import { setLocale } from '../../../helpers/locale.helper';
-import { formatDate, formatPrice, formatTimestamp } from '../../../helpers/format.helper';
-import cn from 'classnames';
 
 
 export const CommonProductInfo = ({ product }: CommonProductInfoProps): JSX.Element => {

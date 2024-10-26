@@ -4,12 +4,15 @@ import { setLocale } from '../../helpers/locale.helper';
 import { useEffect } from 'react';
 import { useSetup } from '../../hooks/useSetup';
 import { getClasses } from '../../helpers/classes.helper';
+import { setProductsDefault } from '../../features/products/productsSlice';
 
 
 function Catalog(): JSX.Element {
-    const { router, dispatch, filters } = useSetup();
+    const { router, dispatch } = useSetup();
 
     useEffect(() => {
+        dispatch(setProductsDefault());
+
         getClasses({
             dispatch: dispatch,
         });

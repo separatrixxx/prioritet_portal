@@ -20,9 +20,9 @@ export interface ProductItem {
     type: string,
     id: number,
     name: string,
-    description?: string,
-    price?: number | null,
-    availability?: boolean | null,
+    description: string | null,
+    price: number | null,
+    availability: boolean | null,
 }
 
 export interface ProductById {

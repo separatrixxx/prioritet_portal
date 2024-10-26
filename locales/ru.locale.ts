@@ -65,4 +65,5 @@ export const ru = {
     product_out_of_stock: "Товар отсутствует на складе",
     latest_arrival_to_stock: "Последнее поступление на склад",
     latest_price_change: "Последнее изменение цены",
+    popular_products: "Популярные товары",
 };

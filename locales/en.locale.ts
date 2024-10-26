@@ -65,4 +65,5 @@ export const en = {
     product_out_of_stock: "The product is out of stock",
     latest_arrival_to_stock: "Latest arrival to stock",
     latest_price_change: "Latest price change",
+    popular_products: "Popular products",
 };

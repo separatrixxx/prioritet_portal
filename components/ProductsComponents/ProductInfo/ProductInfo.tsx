@@ -62,7 +62,7 @@ export const ProductInfo = ({ product }: ProductInfoProps): JSX.Element => {
                         product.result.availability ?
                             <div className={styles.priceDiv}>
                                 <Htag tag='l' className={styles.price}>
-                                    {formatPrice(product.result.sklad_price || 0) + ' ₽'}
+                                    {formatPrice(product.result.sklad_price || 0)}
                                 </Htag>
                                 <Button text={setLocale(router.locale).order} onClick={() => { }} />
                             </div>

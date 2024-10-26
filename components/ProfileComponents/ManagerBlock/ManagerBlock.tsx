@@ -204,7 +204,7 @@ export const ManagerBlock = (): JSX.Element => {
                                     </td>
                                     <td>
                                         <Htag tag='s'>
-                                            {formatPrice(product.price) + ' ₽'}
+                                            {formatPrice(product.price)}
                                         </Htag>
                                     </td>
                                 </tr>

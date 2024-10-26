@@ -3,29 +3,6 @@
 
 	width: 100%;
 	min-height: 100vh;
-	justify-items: center;
+	justify-items: left;
 	grid-template-rows: 1fr auto;
-}
-
-.description {
-	width: calc(100% - 140px) !important;
-	margin: 40px 0 !important;
-
-	text-align: center;
-
-	color: var(--darkLight) !important;
-
-	font-weight: 600 !important;
-}
-
-@media (max-width: 1024px) {
-	.description {
-		width: calc(100% - 100px);
-	}
-}
-
-@media (max-width: 580px) {
-	.description {
-		width: calc(100% - 40px) !important;
-	}
 }
