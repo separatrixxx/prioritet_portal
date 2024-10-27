@@ -3,8 +3,8 @@
 
 	width: 100%;
 
-	height: fit-content;
+	height: fit-content !important;
 
-	border-radius: 10px;
-	box-shadow: 0 20px 13px rgb(0 0 0 / 0.03), 0 8px 5px rgb(0 0 0 / 0.08);
+	border-radius: 5px;
+	background: var(--lighter);
 }

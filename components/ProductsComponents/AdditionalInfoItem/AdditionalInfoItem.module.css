@@ -1,0 +1,28 @@
+.additionalInfoItem {
+	color: var(--darkLight) !important;
+	gap: 5px;
+}
+
+.additionalInfoItem > span,
+.additionalInfoItem > span > a {
+	color: var(--second) !important;
+}
+
+.additionalInfoItem > span > a {
+	cursor: pointer;
+	transition-duration: 500ms;
+}
+
+.additionalInfoItem > span > a:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--primary) !important;
+}
+
+@media (min-width: 1024px) {
+	.additionalInfoItem > span > a:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--primary) !important;
+	}
+}

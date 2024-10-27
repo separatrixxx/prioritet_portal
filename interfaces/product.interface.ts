@@ -31,10 +31,7 @@ export interface ProductById {
         name: string,
         product_category: number[] | null,
         product_class: string[] | null,
-        active_ingredient: number[] | null,
         description: string | null,
-        harmful: number[] | null,
-        proceed: number[] | null,
         sklad_price: number | null,
         sklad_price_change: {
             [key: string]: {
@@ -86,4 +83,9 @@ export interface ManagerProductInterface {
     category: string,
     sklad_quantity: number,
     price: number,
+}
+
+export interface AdditionalInfoInterface {
+    name: string,
+    url: string,
 }

@@ -1,181 +1,113 @@
-.productInfo,
-.productInfo > div {
-	display: grid;
-
-	width: calc(100% - 140px);
-	height: auto;
-	gap: 40px;
-	justify-items: left;
-}
-
 .productInfo {
-	margin: 140px 70px 40px 70px !important;
+	display: grid;
+	justify-items: center;
+
+	width: calc(100% - 160px);
+	margin-top: 110px;
+	padding: 40px 80px;
+	gap: 40px;
 }
 
 .productInfo > div {
-	width: 100%;
-	grid-template-columns: 20% 1fr;
+	display: grid;
+	gap: 40px;
+
+	width: calc(100% - 30px);
+	height: fit-content;
+	padding: 15px 15px 40px 15px;
+
+	border-radius: 15px;
+	background: var(--white);
 }
 
-.infoDiv {
+.mainInfoDiv {
 	display: grid;
 
 	width: 100%;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+}
+
+.mainInfoDiv > div {
+	display: grid;
+
+	width: 100%;
+	height: 100%;
+	grid-template-rows: 1fr auto;
+}
+
+.productNameDiv {
+	display: grid;
 
 	height: fit-content;
-	gap: 20px;
+
+	transition-duration: 500ms;
+	gap: 5px;
 }
 
 .productName {
-	display: grid;
-	align-items: center;
-
 	color: var(--primary) !important;
-
-	font-weight: 600 !important;
-	grid-template-columns: auto 1fr;
-	gap: 20px;
 }
 
-.productName > svg {
-	width: 30px;
-	fill: var(--error);
+.productCategory {
+	color: var(--second) !important;
 
-	cursor: pointer;
-	transition-duration: 500ms;
-}
-
-.productName > svg:active {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	filter: brightness(0.9);
+	font-weight: 500 !important;
 }
 
 .productDescription {
-	width: 100%;
-
-	color: var(--darkLight);
-}
-
-.productSkladPrice {
-	color: var(--second);
-
-	font-weight: 600;
-}
-
-.priceDiv {
-	display: grid;
-	grid-template-columns: auto 1fr;
-
-	align-items: center;
-	gap: 20px;
-
-	margin-top: 20px;
-}
-
-.price {
-	color: var(--second) !important;
-
-	font-weight: 600 !important;
-}
-
-.outOfStock {
-	color: var(--error) !important;
-}
-
-.updatesInfoDiv {
-	display: grid;
-	gap: 10px;
-}
-
-.updatesTitle {
-	color: var(--darkLight);
-
-	font-weight: 500;
-}
-
-.updatesText {
-	color: var(--second);
-}
-
-@media (min-width: 1024px) {
-	.productName > svg:hover {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-		filter: brightness(0.9);
-	}
+	color: var(--darkLight) !important;
 }
 
 @media (max-width: 1400px) {
-	.productInfo > div {
-		grid-template-columns: 25% 1fr;
+	.mainInfoDiv {
+		grid-template-columns: repeat(3, 1fr);
 	}
 }
 
 @media (max-width: 1024px) {
-	.productInfo,
-	.productInfo > div {
+	.productInfo {
+		width: calc(100% - 80px);
+		padding: 30px 40px;
 		gap: 30px;
 	}
 
-	.productInfo {
-		width: calc(100% - 100px);
-		margin: 140px 50px 40px 50px !important;
-	}
-
 	.productInfo > div {
-		grid-template-columns: 30% 1fr;
+		gap: 30px;
+
+		padding-bottom: 30px;
+	}
+}
+
+@media (max-width: 800px) {
+	.productInfo {
+		width: calc(100% - 60px);
+		padding: 20px 30px;
 	}
 
-	.infoDiv {
-		gap: 15px;
-	}
-
-	.productName {
-		gap: 15px;
-	}
-
-	.productName > svg {
-		width: 20px;
-	}
-
-	.priceDiv {
-		margin-top: 15px;
+	.mainInfoDiv {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media (max-width: 580px) {
 	.productInfo {
-		width: calc(100% - 40px);
-		margin: 140px 20px 40px 20px !important;
-	}
-
-	.productInfo > div {
-		grid-template-columns: auto;
-		gap: 40px;
-	}
-
-	.infoDiv {
+		width: calc(100% - 20px);
+		padding: 10px;
 		gap: 20px;
 	}
 
-	.priceDiv {
-		margin-top: 20px;
+	.productInfo > div {
+		gap: 20px;
+
+		padding-bottom: 20px;
 	}
 
-	.productDescription {
-		padding-top: 25px;
-
-		border-top: 1px solid var(--darkLight);
-	}
-}
-
-@media (max-width: 300px) {
-	.productName {
-		gap: 10px;
+	.mainInfoDiv {
+		grid-template-columns: 1fr;
 	}
 
-	.productName > svg {
-		width: 15px;
+	.mainInfoDiv > div {
+		gap: 20px;
 	}
 }

@@ -5,8 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
-import FavoriteIcon from './favorite.svg';
-import { formatPrice } from '../../../helpers/format.helper';
+import { ProductPriceBlock } from '../ProductPriceBlock/ProductPriceBlock';
 
 
 export const ProductItem = ({ productId, type, name, description, price, url, isImage }: ProductItemProps): JSX.Element => {
@@ -39,23 +38,7 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
             <Htag tag='s' className={styles.productDescription}>
                 {description}
             </Htag>
-            <Htag tag='l' className={styles.productPrice}>
-                {formatPrice(price || 0)}
-            </Htag>
-            <div className={styles.buttonsDiv} onClick={(e) => {
-                e.stopPropagation();
-                e.preventDefault();
-            }}>
-                <button className={styles.buyButton}>
-                    <Htag tag='m' className={styles.productBuy}>
-                        {setLocale(router.locale).buy}
-                    </Htag>
-                </button>
-                <div className={styles.favoriteButton}>
-                    <div />
-                    <FavoriteIcon />
-                </div>
-            </div>
+            <ProductPriceBlock size='l' price={price} />
         </Link>
     );
 };

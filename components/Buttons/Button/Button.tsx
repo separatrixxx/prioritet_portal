@@ -8,7 +8,7 @@ export const Button = ({ text, isLoading, onClick }: ButtonProps): JSX.Element =
         <button className={styles.button} onClick={onClick}>
             {
                 !isLoading ?
-                    <Htag tag='s' className={styles.text}>
+                    <Htag tag='m' className={styles.text}>
                         {text}
                     </Htag>
                 : <div className={styles.spinner} />

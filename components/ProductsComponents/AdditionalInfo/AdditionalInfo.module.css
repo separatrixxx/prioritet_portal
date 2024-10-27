@@ -1,0 +1,38 @@
+.additionalInfo {
+	display: grid;
+	gap: 20px !important;
+
+	width: calc(100% - 30px);
+	height: fit-content;
+	padding: 15px 15px 40px 15px;
+
+	border-radius: 15px;
+	background: var(--white);
+}
+
+.additionalInfoTitle {
+	color: var(--primary);
+}
+
+.additionalInfoDiv {
+	display: grid;
+
+	width: 100%;
+	gap: 10px;
+}
+
+@media (max-width: 1024px) {
+	.additionalInfo {
+		gap: 15px;
+
+		padding-bottom: 30px;
+	}
+}
+
+@media (max-width: 580px) {
+	.additionalInfo {
+		gap: 10px;
+
+		padding-bottom: 20px;
+	}
+}

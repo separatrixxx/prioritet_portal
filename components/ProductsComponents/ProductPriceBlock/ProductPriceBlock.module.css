@@ -1,0 +1,124 @@
+.productPriceBlock {
+	display: grid;
+
+	width: 100%;
+	gap: 20px;
+}
+
+.productPrice {
+	color: var(--second);
+
+	font-weight: 600;
+}
+
+.buttonsDiv {
+	display: grid;
+
+	width: 100%;
+	height: fit-content;
+	margin-top: -10px;
+
+	cursor: default;
+	grid-template-columns: 1fr auto;
+	gap: 10px;
+}
+
+.favoriteButton {
+	position: relative;
+
+	display: grid;
+	overflow: hidden;
+	align-items: center;
+
+	width: 40px;
+	height: 40px;
+
+	cursor: pointer;
+
+	border-radius: 5px;
+	justify-items: center;
+}
+
+.sizeXL {
+	width: 50px;
+	height: 50px;
+}
+
+.favoriteButton > div {
+	width: 100%;
+	height: 100%;
+
+	transition-duration: 500ms;
+
+	opacity: 0.15;
+	background: var(--heart);
+}
+
+.favoriteButton > svg {
+	position: absolute;
+
+	width: 20px;
+	fill: var(--heart);
+
+	transition-duration: 500ms;
+}
+
+.sizeXL > svg {
+	width: 25px;
+}
+
+.favoriteButton:active > div {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	opacity: 1;
+}
+
+.favoriteButton:active > svg {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--white);
+}
+
+@media (min-width: 1024px) {
+	.favoriteButton:hover > div {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		opacity: 1 !important;
+	}
+
+	.favoriteButton:hover > svg {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--white) !important;
+	}
+}
+
+@media (max-width: 1024px) {
+	.buttonsDiv {
+		margin-top: -5px;
+	}
+}
+
+@media (max-width: 580px) {
+	.buttonsDiv {
+		gap: 5px;
+	}
+
+	.favoriteButton {
+		width: 35px;
+		height: 35px;
+	}
+
+	.sizeXL {
+		width: 40px;
+		height: 40px;
+	}
+
+	.favoriteButton > svg {
+		width: 17px;
+	}
+
+	.sizeXL > svg {
+		width: 20px;
+	}
+}
