@@ -10,6 +10,7 @@ export const ru = {
     buy: "Купить",
     products_found: "Найдено товаров: $$$",
     in_stock: "В наличии",
+    sort_title: "Сортировка",
     sort: {
         by_name_asc: "По названию (А > Я)",
         by_name_desc: "По названию (Я > А)",

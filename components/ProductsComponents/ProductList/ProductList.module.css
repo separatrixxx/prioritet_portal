@@ -1,17 +1,20 @@
 .productList {
 	display: grid;
 
+	width: 100%;
+	gap: 20px;
+	grid-template-columns: auto;
+}
+
+.displayMain {
 	width: calc(100% - 160px);
 	margin: 40px 0;
 	padding: 0 80px;
-	gap: 20px;
 	grid-template-columns: repeat(4, 1fr);
 }
 
-.productListTitle {
-	margin: 40px 80px 0 80px;
-
-	color: var(--primary);
+.displayGrid {
+	grid-template-columns: repeat(3, 1fr);
 }
 
 .spinnerDiv {
@@ -23,23 +26,28 @@
 }
 
 @media (max-width: 1400px) {
-	.productList {
+	.displayMain {
 		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.displayGrid {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
 @media (max-width: 1024px) {
 	.productList {
-		width: calc(100% - 120px);
-		margin: 30px 0;
-		padding: 0 60px;
 		gap: 15px;
 	}
 
-	.productListTitle {
-		margin: 30px 60px 0 60px;
+	.displayMain {
+		width: calc(100% - 120px);
+		margin: 30px 0;
+		padding: 0 60px;
+	}
 
-		color: var(--primary);
+	.displayGrid {
+		grid-template-columns: 1fr;
 	}
 
 	.spinnerDiv {
@@ -48,30 +56,31 @@
 }
 
 @media (max-width: 800px) {
-	.productList {
-		width: calc(100% - 80px);
-		padding: 0 40px;
+	.displayMain,
+	.displayGrid {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	.productListTitle {
-		margin: 20px 40px 0 40px;
+	.displayMain {
+		width: calc(100% - 80px);
+		padding: 0 40px;
 	}
 }
 
 @media (max-width: 580px) {
 	.productList {
-		width: calc(100% - 40px);
-		margin: 20px 0;
-		padding: 0 20px;
 		gap: 10px;
+	}
+
+	.displayMain,
+	.displayGrid {
 		grid-template-columns: 1fr;
 	}
 
-	.productListTitle {
-		margin: 20px 20px 0 20px;
-
-		color: var(--primary);
+	.displayMain {
+		width: calc(100% - 40px);
+		margin: 20px 0;
+		padding: 0 20px;
 	}
 
 	.spinnerDiv {

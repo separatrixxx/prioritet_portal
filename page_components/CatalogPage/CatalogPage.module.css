@@ -6,31 +6,3 @@
 	grid-template-rows: 1fr auto;
 	justify-items: center;
 }
-
-.catalogDiv {
-	position: relative;
-
-	display: grid;
-
-	width: 100%;
-
-	margin-top: 70px;
-	grid-template-columns: 20% auto;
-}
-
-.listDiv {
-	width: 100%;
-}
-
-@media (max-width: 1024px) {
-	.catalogDiv {
-		grid-template-columns: 30% auto;
-	}
-}
-
-@media (max-width: 580px) {
-	.catalogDiv {
-		grid-template-columns: auto;
-		justify-items: center;
-	}
-}

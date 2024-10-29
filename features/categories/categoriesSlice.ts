@@ -13,12 +13,9 @@ export const categoriesSlice = createSlice({
     setCategories: (state, action) => {
       state.categories = action.payload;
     },
-    setCategoriesDefault: (state) => {
-      state.categories = categoriesData;
-    },
   },
 });
 
-export const { setCategories, setCategoriesDefault } = categoriesSlice.actions;
+export const { setCategories } = categoriesSlice.actions;
 
 export default categoriesSlice.reducer;

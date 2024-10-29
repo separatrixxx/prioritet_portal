@@ -9,4 +9,5 @@ export interface ProductItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLL
     price: number | null,
     url: string,
     isImage?: boolean,
+    isMain?: boolean,
 }

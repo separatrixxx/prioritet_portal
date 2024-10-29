@@ -1,53 +1,31 @@
 import axios, { AxiosResponse } from "axios";
-import { GetProductsArguments, GetProductsForCategoriesArguments } from "../interfaces/refactor.interface";
-import { ProductsForCategoriesInterface, ProductsInterface } from "../interfaces/product.interface";
-import { setProducts } from "../features/products/productsSlice";
+import { GetProductsArguments } from "../interfaces/refactor.interface";
+import { ProductsInterface } from "../interfaces/product.interface";
+import { setProducts, setProductsDefault } from "../features/products/productsSlice";
 
 
 export async function getProducts(args: GetProductsArguments, isFavorite?: boolean) {
-    const { type, limit, offset, filters, dispatch } = args;
+    const { filters, dispatch } = args;
+
+    let apiUrl: string = `/list/${filters.start.class}?favorite=${isFavorite}&limit=${filters.start.limit}&offset=${filters.start.offset}&${filters.sort}${filters.is_available === 'True' ? `&by_sklad_available=${filters.is_available}` : ''}${filters.name?.trim() ? `&name=${filters.name?.trim()}` : ''}`;
+
+    if (filters.start.categoryId) {
+        apiUrl = `/category/${filters.start.categoryId}?limit=${filters.start.limit}&offset=${filters.start.offset}&${filters.sort}${filters.is_available === 'True' ? `&by_sklad_available=${filters.is_available}` : ''}`;
+    }
 
     try {
-        const { data: response }: AxiosResponse<ProductsInterface> = await axios.get(
-            `${process.env.NEXT_PUBLIC_DOMAIN}/list/${type}?favorite=${isFavorite}&limit=${limit}&offset=${offset}&${filters.sort}${filters.is_available === 'True' ? `&by_sklad_available=${filters.is_available}` : ''}${filters.name?.trim() ? `&name=${filters.name?.trim()}` : ''}`,
+        dispatch(setProductsDefault());
+
+        const { data: response }: AxiosResponse<ProductsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN + apiUrl,
             {
                 headers: {
                     'X-API-Key': process.env.NEXT_PUBLIC_API_KEY,
                 },
             }
         );
-        
-        dispatch(setProducts({
-            results: response.results,
-            total_count: response.total_count,
-            limit: response.limit,
-            offset: response.offset,
-        }));
+                
+        dispatch(setProducts(response));
     } catch (err) {
         console.error('Get products error: ' + err);
-    }
-}
-
-export async function getProductsForCategories(args: GetProductsForCategoriesArguments) {
-    const { categoryId, limit, offset, filters, dispatch } = args;
-
-    try {       
-        const { data: response }: AxiosResponse<ProductsForCategoriesInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            `/category/${categoryId}?limit=${limit}&offset=${offset}&${filters.sort}${filters.is_available === 'True' ? `&by_sklad_available=${filters.is_available}` : ''}`,
-            {
-                headers: {
-                    'X-API-Key': process.env.NEXT_PUBLIC_API_KEY,
-                },
-            }
-        );
-
-        dispatch(setProducts({
-            results: response.results,
-            total_count: response.total_count,
-            limit: response.limit,
-            offset: response.offset,
-        }));
-    } catch (err) {
-        console.error('Get products for categories error: ' + err);
     }
 }

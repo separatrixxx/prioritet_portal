@@ -40,7 +40,7 @@ export const AdditionalInfo = ({ product }: AdditionalInfoProps): JSX.Element =>
                         url: `/proceed/${p.id}`
                     }))} />
                 <AdditionalInfoItem text={setLocale(router.locale).latest_arrival_to_stock}
-                    item={formatDate(product.result.sklad_latest_arrivals.data.arrival_date)} />
+                    item={formatDate(product.result?.sklad_latest_arrivals?.data?.arrival_date || '2024-10-30')} />
             </div>
         </div>
     );

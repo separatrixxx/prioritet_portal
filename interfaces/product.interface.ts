@@ -5,17 +5,6 @@ export interface ProductsInterface {
     offset: number,
 }
 
-export interface ProductsForCategoriesInterface {
-    results: ProductItem[],
-    total_count: number,
-    limit: number,
-    offset: number,
-}
-
-export interface ProductsState extends ProductsInterface {
-    activeType: string;
-}
-
 export interface ProductItem {
     type: string,
     id: number,

@@ -10,6 +10,7 @@ export const en = {
     buy: "Buy",
     products_found: "$$$ products found",
     in_stock: "In stock",
+    sort_title: "Sort",
     sort: {
         by_name_asc: "By name asc",
         by_name_desc: "By name desc",

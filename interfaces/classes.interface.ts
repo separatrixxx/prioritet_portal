@@ -9,4 +9,10 @@ export interface ClassItem {
     id: number,
     name: string,
     class_tag: string,
+    filters: ClassFilterInterface[],
+}
+
+export interface ClassFilterInterface {
+    id: number,
+    tag: string,
 }

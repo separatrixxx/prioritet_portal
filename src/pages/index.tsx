@@ -4,25 +4,20 @@ import { useSetup } from "../../hooks/useSetup";
 import { setLocale } from "../../helpers/locale.helper";
 import { useEffect } from "react";
 import { getProducts } from "../../helpers/products.helper";
-import { setProductsDefault } from "../../features/products/productsSlice";
+import { setFiltersDefault } from "../../features/filters/filtersSlice";
 
 
 function Main(): JSX.Element {
-  const { router, dispatch } = useSetup();
+  const { router, dispatch, filters } = useSetup();
 
   useEffect(() => {
-      dispatch(setProductsDefault());
-      
-      getProducts({
-        type: 'product',
-        dispatch: dispatch,
-        limit: 100,
-        offset: 0,
-        filters: {
-          sort: 'by_name=asc',
-        },
-      }, true);
-  }, [dispatch]);
+    dispatch(setFiltersDefault());
+    
+    getProducts({
+      dispatch: dispatch,
+      filters: filters,
+    }, true);
+  }, [filters, dispatch]);
 
   return (
     <>

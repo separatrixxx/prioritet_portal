@@ -1,28 +1,34 @@
 .additionalInfoItem {
 	color: var(--darkLight) !important;
-	gap: 5px;
 }
 
 .additionalInfoItem > span,
 .additionalInfoItem > span > a {
 	color: var(--second) !important;
+
+	line-height: 1.7;
 }
 
 .additionalInfoItem > span > a {
+	padding: 2px 7px;
+
 	cursor: pointer;
 	transition-duration: 500ms;
+
+	border-radius: 5px;
+	background: var(--light);
 }
 
 .additionalInfoItem > span > a:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	color: var(--primary) !important;
+	filter: brightness(0.9);
 }
 
 @media (min-width: 1024px) {
 	.additionalInfoItem > span > a:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		color: var(--primary) !important;
+		filter: brightness(0.9);
 	}
 }

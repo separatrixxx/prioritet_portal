@@ -5,6 +5,12 @@
 	gap: 20px;
 }
 
+.displayPriceLines {
+	grid-template-columns: 1fr auto;
+
+	align-items: center;
+}
+
 .productPrice {
 	color: var(--second);
 
@@ -21,6 +27,10 @@
 	cursor: default;
 	grid-template-columns: 1fr auto;
 	gap: 10px;
+}
+
+.displayPriceLines > .buttonsDiv {
+	margin: 0;
 }
 
 .favoriteButton {

@@ -10,10 +10,12 @@ import cn from 'classnames';
 
 
 export const ProductPriceBlock = ({ size, price }: ProductPriceBlockProps): JSX.Element => {
-    const { router } = useSetup();
+    const { router, filters } = useSetup();
 
     return (
-        <div className={styles.productPriceBlock}>
+        <div className={cn(styles.productPriceBlock, {
+            [styles.displayPriceLines]: filters.display === 'lines',
+        })}>
             <Htag tag={size} className={styles.productPrice}>
                 {formatPrice(price || 0)}
             </Htag>
@@ -21,7 +23,7 @@ export const ProductPriceBlock = ({ size, price }: ProductPriceBlockProps): JSX.
                 e.stopPropagation();
                 e.preventDefault();
             }}>
-                <Button text={setLocale(router.locale).buy} onClick={() => {}} />
+                <Button text={setLocale(router.locale).buy} isSmall={size === 'm'} onClick={() => {}} />
                 <div className={cn(styles.favoriteButton, {
                     [styles.sizeXL]: size === 'xl',
                 })}>

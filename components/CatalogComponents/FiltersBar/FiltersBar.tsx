@@ -1,76 +1,24 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
 import styles from './FiltersBar.module.css';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
-import { setFiltersName, switchIsAvailable, switchSort } from '../../../features/filters/filtersSlice';
-import { SortFilters } from '../../../interfaces/filters.interface';
 import { setLocale } from '../../../helpers/locale.helper';
-import ByNameAsc from './by_name_asc.svg';
-import ByNameDesc from './by_name_desc.svg';
-import ByPriceLow from './by_price_low.svg';
-import ByPriceHigh from './by_price_high.svg';
+import { useEffect, useRef, useState } from 'react';
+import RowsIcon from './rows.svg';
+import GridIcon from './grid.svg';
+import LinesIcon from './lines.svg';
+import { setDisplay, setFiltersName, switchIsAvailable, switchSort } from '../../../features/filters/filtersSlice';
+import { SortFilters } from '../../../interfaces/filters.interface';
+import cn from 'classnames';
 
 
 export const FiltersBar = (): JSX.Element => {
-    const { router, dispatch, filters, products } = useSetup();
-
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null);
-
-    const [currentSort, setCurrentSort] = useState<SortFilters>('by_name=asc');
-
-    const toggleDropdown = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
-
-    const handleSortChange = (sortOption: SortFilters) => {
-        setCurrentSort(sortOption);
-        dispatch(switchSort(sortOption));
-        setIsDropdownOpen(false);
-    };
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setIsDropdownOpen(false);
-            }
-        };
-
-        if (isDropdownOpen) {
-            document.addEventListener('click', handleClickOutside);
-        } else {
-            document.removeEventListener('click', handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener('click', handleClickOutside);
-        };
-    }, [isDropdownOpen]);
-
-    const iconVariants = {
-        flip: { scaleX: 1, transition: { duration: 0.5 } },
-    };
-
-    const renderIcon = () => {
-        switch (currentSort) {
-            case 'by_name=asc':
-                return <ByNameAsc />;
-            case 'by_name=desc':
-                return <ByNameDesc />;
-            case 'by_price=low':
-                return <ByPriceLow />;
-            case 'by_price=high':
-                return <ByPriceHigh />;
-            default:
-                return <ByNameAsc />;
-        }
-    };
-
-    const sortFilters: SortFilters[] = ['by_name=asc', 'by_name=desc', 'by_price=low', 'by_price=high'];
+    const { router, dispatch, filters } = useSetup();
 
     const [name, setName] = useState<string>('');
     const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout | null>(null);
+
+    const [dropdownVisible, setDropdownVisible] = useState<boolean>(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setName(e.target.value);
@@ -86,32 +34,25 @@ export const FiltersBar = (): JSX.Element => {
         setDebounceTimeout(newTimeout);
     };
 
+    useEffect(() => {
+        const handleOutsideClick = (event: MouseEvent) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setDropdownVisible(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleOutsideClick);
+        return () => {
+            document.removeEventListener('mousedown', handleOutsideClick);
+        };
+    }, [dropdownRef]);
+
+    const sortFilters: SortFilters[] = ['by_name=asc', 'by_name=desc', 'by_price=low', 'by_price=high'];
+
     return (
-        <div className={styles.filtersBar}>
-            <div className={styles.dropdown} ref={dropdownRef}>
-                <Htag tag='s' className={styles.sortTitle} onClick={toggleDropdown}>
-                    <motion.div
-                        key={currentSort}
-                        variants={iconVariants}
-                        initial={{ scaleX: -1 }}
-                        animate="flip"
-                    >
-                        {renderIcon()}
-                    </motion.div>
-                    {setLocale(router.locale).sort[filters.sort.replace('=', '_') as 'by_name_asc']}
-                </Htag>
-                {
-                    isDropdownOpen ?
-                        <div className={styles.dropdownContent}>
-                            {sortFilters.map((s) => (
-                                <Htag key={s} tag='s' onClick={() => handleSortChange(s)}>
-                                    {setLocale(router.locale).sort[s.replace('=', '_') as 'by_name_asc']}
-                                </Htag>
-                            ))}
-                        </div>
-                    : <></>
-                }
-            </div>
+        <div className={cn(styles.filtersBar, {
+            [styles.commonFiltersBar]: filters.start.class !== 'product',
+        })}>
             <input className={styles.filtersName}
                 placeholder={setLocale(router.locale).name}
                 value={name}
@@ -120,17 +61,48 @@ export const FiltersBar = (): JSX.Element => {
                 name='text filters name'
                 aria-label='text filters name'
             />
+            <div className={styles.dropdownContainer}>
+                <Htag tag='s' className={styles.filterText} onClick={() => setDropdownVisible(!dropdownVisible)}>
+                    {setLocale(router.locale).sort_title + ': '}
+                    <span>{setLocale(router.locale).sort[filters.sort.replace('=', '_') as 'by_name_asc']}</span>
+                </Htag>
+                {  
+                    dropdownVisible ?
+                        <div ref={dropdownRef} className={styles.dropdown}>
+                            {sortFilters.map((s) => (
+                                <Htag key={s} tag='s' className={styles.dropdownItem} onClick={() => {
+                                    dispatch(switchSort(s));
+                                    setDropdownVisible(false);
+                                }}>
+                                    {setLocale(router.locale).sort[s.replace('=', '_') as 'by_name_asc']}
+                                </Htag>
+                            ))}
+                        </div>
+                    : <></>
+                }
+            </div>
             {
-                products.results[0] && products.results[0].type === 'product' ?
+                filters.start.class === 'product' ?
                     <label className={styles.checkboxLabel}>
                         <input type="checkbox" checked={filters.is_available === 'True'}
                             onChange={() => dispatch(switchIsAvailable())} />
-                        <Htag tag='s' className={styles.sortTitle}>
+                        <Htag tag='s' className={styles.filterText}>
                             {setLocale(router.locale).in_stock}
                         </Htag>
                     </label>
                 : <></>
             }
+            <div className={styles.displayDiv}>
+                <LinesIcon className={cn(styles.displayIcon, {
+                    [styles.activeIcon]: filters.display === 'lines',
+                })} onClick={() => dispatch(setDisplay('lines'))} />
+                <GridIcon className={cn(styles.displayIcon, {
+                    [styles.activeIcon]: filters.display === 'grid',
+                })} onClick={() => dispatch(setDisplay('grid'))} />
+                <RowsIcon className={cn(styles.displayIcon, {
+                    [styles.activeIcon]: filters.display === 'rows',
+                })} onClick={() => dispatch(setDisplay('rows'))} />
+            </div>
         </div>
     );
 };

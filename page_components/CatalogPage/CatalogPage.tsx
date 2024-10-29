@@ -1,9 +1,7 @@
 import styles from './CatalogPage.module.css';
 import { Toaster } from 'react-hot-toast';
-import { CatalogList } from '../../components/CatalogComponents/CatalogList/CatalogList';
-import { Sidebar } from '../../components/CatalogComponents/Sidebar/Sidebar';
-import { FiltersBar } from '../../components/CatalogComponents/FiltersBar/FiltersBar';
 import { Header } from '../../components/Headers/Header/Header';
+import { CatalogBlock } from '../../components/CatalogComponents/CatalogBlock/CatalogBlock';
 
 
 export const CatalogPage = (): JSX.Element => {
@@ -18,13 +16,7 @@ export const CatalogPage = (): JSX.Element => {
             />
             <div className={styles.wrapper}>
                 <Header />
-                <div className={styles.catalogDiv}>
-                    <Sidebar />
-                    <div className={styles.listDiv}>
-                        <FiltersBar />
-                        <CatalogList />
-                    </div>
-                </div>
+                <CatalogBlock />
             </div>
         </>
     );
