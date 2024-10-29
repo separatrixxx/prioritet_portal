@@ -17,6 +17,10 @@
 	grid-template-columns: repeat(3, 1fr);
 }
 
+.displayLines {
+	grid-template-columns: repeat(2, 1fr);
+}
+
 .spinnerDiv {
 	display: grid;
 
@@ -32,6 +36,10 @@
 
 	.displayGrid {
 		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.displayLines {
+		grid-template-columns: 1fr;
 	}
 }
 

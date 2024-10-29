@@ -3,7 +3,7 @@ import toast from 'react-hot-toast';
 export const ToastSuccess = (message: string | undefined): void => {
     if (message) {
         toast.error(message, {
-            icon: '🤩',
+            icon: '👍',
             style: {
                 borderRadius: '9999px',
                 color: 'var(--textDark)',
@@ -15,7 +15,7 @@ export const ToastSuccess = (message: string | undefined): void => {
 export const ToastError = (message: string | undefined): void => {
     if (message) {
         toast.error(message, {
-            icon: '🙄',
+            icon: '👎',
             style: {
                 borderRadius: '9999px',
                 color: 'var(--error)',

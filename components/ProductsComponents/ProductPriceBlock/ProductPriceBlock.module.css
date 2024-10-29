@@ -29,6 +29,10 @@
 	gap: 10px;
 }
 
+.buttonsDivRows {
+	grid-template-columns: auto 0.9fr;
+}
+
 .displayPriceLines > .buttonsDiv {
 	margin: 0;
 }
@@ -107,11 +111,19 @@
 	.buttonsDiv {
 		margin-top: -5px;
 	}
+
+	.buttonsDivRows {
+		grid-template-columns: auto 0.8fr;
+	}
 }
 
 @media (max-width: 580px) {
 	.buttonsDiv {
 		gap: 5px;
+	}
+
+	.buttonsDivRows {
+		grid-template-columns: auto 0.7fr;
 	}
 
 	.favoriteButton {

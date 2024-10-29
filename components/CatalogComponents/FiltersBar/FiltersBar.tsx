@@ -3,8 +3,8 @@ import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 import { useEffect, useRef, useState } from 'react';
-import RowsIcon from './rows.svg';
 import GridIcon from './grid.svg';
+import RowsIcon from './rows.svg';
 import LinesIcon from './lines.svg';
 import { setDisplay, setFiltersName, switchIsAvailable, switchSort } from '../../../features/filters/filtersSlice';
 import { SortFilters } from '../../../interfaces/filters.interface';
@@ -66,7 +66,7 @@ export const FiltersBar = (): JSX.Element => {
                     {setLocale(router.locale).sort_title + ': '}
                     <span>{setLocale(router.locale).sort[filters.sort.replace('=', '_') as 'by_name_asc']}</span>
                 </Htag>
-                {  
+                {
                     dropdownVisible ?
                         <div ref={dropdownRef} className={styles.dropdown}>
                             {sortFilters.map((s) => (
@@ -78,7 +78,7 @@ export const FiltersBar = (): JSX.Element => {
                                 </Htag>
                             ))}
                         </div>
-                    : <></>
+                        : <></>
                 }
             </div>
             {
@@ -90,18 +90,18 @@ export const FiltersBar = (): JSX.Element => {
                             {setLocale(router.locale).in_stock}
                         </Htag>
                     </label>
-                : <></>
+                    : <></>
             }
             <div className={styles.displayDiv}>
                 <LinesIcon className={cn(styles.displayIcon, {
                     [styles.activeIcon]: filters.display === 'lines',
                 })} onClick={() => dispatch(setDisplay('lines'))} />
-                <GridIcon className={cn(styles.displayIcon, {
-                    [styles.activeIcon]: filters.display === 'grid',
-                })} onClick={() => dispatch(setDisplay('grid'))} />
                 <RowsIcon className={cn(styles.displayIcon, {
                     [styles.activeIcon]: filters.display === 'rows',
                 })} onClick={() => dispatch(setDisplay('rows'))} />
+                <GridIcon className={cn(styles.displayIcon, {
+                    [styles.activeIcon]: filters.display === 'grid',
+                })} onClick={() => dispatch(setDisplay('grid'))} />
             </div>
         </div>
     );

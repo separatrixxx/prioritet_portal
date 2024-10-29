@@ -59,6 +59,7 @@ export const ManagerBlock = (): JSX.Element => {
                 <div className={styles.loadDiv}>
                     <AttachFile />
                     <Button text={setLocale(router.locale).load_users} onClick={() => ToastSuccess('Вы загрузили пользователей')} />
+                    <Button text={setLocale(router.locale).add_manually} onClick={() => ToastSuccess('Здесь будет реализована логика ручного ввода для добавления пользователя через всплывающее модальное окно')} />
                 </div>
                 <div className={styles.tableContainer}>
                     <table className={styles.ordersTable}>
@@ -142,6 +143,7 @@ export const ManagerBlock = (): JSX.Element => {
                 <div className={styles.loadDiv}>
                     <AttachFile />
                     <Button text={setLocale(router.locale).load_products} onClick={() => ToastSuccess('Вы загрузили товары')} />
+                    <Button text={setLocale(router.locale).add_manually} onClick={() => ToastSuccess('Здесь будет реализована логика ручного ввода для добавления продукта через всплывающее модальное окно')} />
                 </div>
                 <div className={styles.tableContainer}>
                     <table className={styles.ordersTable}>

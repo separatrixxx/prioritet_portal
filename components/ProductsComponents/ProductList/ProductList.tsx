@@ -16,6 +16,7 @@ export const ProductList = ({ isMain }: ProductListProps): JSX.Element => {
                     <div className={cn(styles.productList, {
                         [styles.displayMain]: isMain,
                         [styles.displayGrid]: filters.display === 'grid' && !isMain,
+                        [styles.displayLines]: filters.display === 'lines' && !isMain,
                     })}>
                         {products.results.map(p => 
                             <ProductItem key={p.id} productId={p.id} type={p.type} name={p.name}

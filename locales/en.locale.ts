@@ -70,4 +70,5 @@ export const en = {
     supplied_packaging: "Supplied packaging",
     supplied_packaging_volume: "Supplied packaging volume",
     toxicity_level: "Toxicity level",
+    add_manually: "Add manually",
 };

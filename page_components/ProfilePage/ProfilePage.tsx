@@ -4,15 +4,20 @@ import { Footer } from '../../components/Common/Footer/Footer';
 import { useSetup } from '../../hooks/useSetup';
 import { ProfileInfo } from '../../components/ProfileComponents/ProfileInfo/ProfileInfo';
 import { Header } from '../../components/Headers/Header/Header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '../../components/Buttons/Button/Button';
 import { setLocale } from '../../helpers/locale.helper';
+import { ToastSuccess } from '../../components/Common/Toast/Toast';
 
 
 export const ProfilePage = (): JSX.Element => {
     const { router } = useSetup();
 
     const [type, setType] = useState<'customer' | 'manager' | null>(null);
+
+    useEffect(() => {
+        ToastSuccess('Будет реализована проверка авторизации в личном кабинете')
+      }, []);
 
     return (
         <>

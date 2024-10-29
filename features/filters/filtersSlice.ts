@@ -12,7 +12,7 @@ const filtersData: FiltersInterface = {
   sort: 'by_name=asc',
   is_available: 'False',
   name: '',
-  display: 'rows',
+  display: 'grid',
 }
 
 export const filtersSlice = createSlice({

@@ -70,4 +70,5 @@ export const ru = {
     supplied_packaging: "Поставляемая тара",
     supplied_packaging_volume: "Объём поставляемой тары",
     toxicity_level: "Уровень токсичности",
+    add_manually: "Добавить вручную",
 };

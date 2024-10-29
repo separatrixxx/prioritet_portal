@@ -11,5 +11,5 @@ export interface FiltersInterface {
     sort: SortFilters,
     is_available?: 'True' | 'False',
     name?: string,
-    display: 'main' | 'rows' | 'grid' | 'lines',
+    display: 'main' | 'grid' | 'rows' | 'lines',
 }

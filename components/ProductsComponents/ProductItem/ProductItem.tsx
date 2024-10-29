@@ -49,7 +49,7 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
                     </Htag>
                 : <></>
             }
-            <ProductPriceBlock size={isMain ? 'l' : 'm'} price={price} />
+            <ProductPriceBlock size={isMain ? 'l' : 'm'} price={price} isRows={filters.display === 'rows'} />
         </Link>
     );
 };
