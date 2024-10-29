@@ -45,11 +45,16 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
             {
                 filters.display !== 'lines' ?
                     <Htag tag='s' className={styles.productDescription}>
-                        {description}
+                        {description || setLocale(router.locale).description}
                     </Htag>
                 : <></>
             }
-            <ProductPriceBlock size={isMain ? 'l' : 'm'} price={price} isRows={filters.display === 'rows'} />
+            {
+                filters.start.class === 'product' ?
+                    <ProductPriceBlock size={isMain ? 'l' : 'm'} price={price}
+                        isRows={filters.display === 'rows'} />
+                : <></>
+            }
         </Link>
     );
 };
