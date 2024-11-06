@@ -6,6 +6,8 @@ import { useSetup } from '../../../hooks/useSetup';
 import { setLocale } from '../../../helpers/locale.helper';
 import { ProductPriceBlock } from '../ProductPriceBlock/ProductPriceBlock';
 import { AdditionalInfo } from '../AdditionalInfo/AdditionalInfo';
+import { formatPrice } from '../../../helpers/format.helper';
+import { ProductBuyBlock } from '../ProductBuyBlock/ProductBuyBlock';
 
 
 export const ProductInfo = ({ product, commonProduct }: ProductInfoProps): JSX.Element => {
@@ -20,8 +22,15 @@ export const ProductInfo = ({ product, commonProduct }: ProductInfoProps): JSX.E
                     <Slider name={product?.result.name || setLocale(router.locale).name} images={images} />
                     <div>
                         <div className={styles.productNameDiv}>
-                            <Htag tag='xl' className={styles.productName}>
+                            <Htag tag='xxl' className={styles.productName}>
                                 {product?.result.name || commonProduct?.result.name}
+                                {
+                                    product ?
+                                        <span>
+                                            {formatPrice(product?.result.sklad_price || 0)}
+                                        </span>
+                                    : <></>
+                                }
                             </Htag>
                             {
                                 product ?
@@ -33,7 +42,12 @@ export const ProductInfo = ({ product, commonProduct }: ProductInfoProps): JSX.E
                         </div>
                         {
                             product ?
-                                <ProductPriceBlock size='xl' price={product.result.sklad_price} />
+                                <>
+                                    <Htag tag='xxl' className={styles.productPrice}>
+                                        {formatPrice(product?.result.sklad_price || 0)}
+                                    </Htag>
+                                    <ProductBuyBlock />
+                                </>
                             : <></>
                         }
                     </div>
@@ -45,7 +59,7 @@ export const ProductInfo = ({ product, commonProduct }: ProductInfoProps): JSX.E
             {
                 product ?
                     <AdditionalInfo product={product} />
-                : <></>
+                    : <></>
             }
         </div>
     );

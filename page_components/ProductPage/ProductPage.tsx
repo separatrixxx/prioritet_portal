@@ -3,7 +3,7 @@ import styles from './ProductPage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { ProductInfo } from '../../components/ProductsComponents/ProductInfo/ProductInfo';
 import { Footer } from '../../components/Common/Footer/Footer';
-import { Header } from '../../components/Headers/Header/Header';
+import { Header } from '../../components/HeaderComponents/Header/Header';
 
 
 export const ProductPage = ({ product, commonProduct }: ProductPageProps): JSX.Element => {
@@ -17,7 +17,7 @@ export const ProductPage = ({ product, commonProduct }: ProductPageProps): JSX.E
                 }}
             />
             <div className={styles.wrapper}>
-                <Header />
+                <Header type='catalog' />
                 <ProductInfo product={product} commonProduct={commonProduct} />
                 <Footer />
             </div>

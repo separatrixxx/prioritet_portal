@@ -1,0 +1,42 @@
+.headerWebLink {
+	display: grid;
+	align-items: center;
+
+	width: fit-content;
+	height: fit-content;
+	padding: 7px 15px;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	border-radius: 5px;
+	background: var(--light);
+	grid-template-columns: auto 1fr;
+	justify-items: center;
+	gap: 5px;
+}
+
+.headerWebLink:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.headerWebLink > svg {
+	width: 24px;
+	fill: var(--primary);
+}
+
+.linkText {
+	color: var(--primary);
+
+	font-weight: 500 !important;
+}
+
+@media (min-width: 1024px) {
+	.headerWebLink:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}

@@ -67,7 +67,7 @@ export const Search = (): JSX.Element => {
     return (
         <div className={styles.searchWrapper}>
             <input className={styles.search}
-                placeholder={setLocale(router.locale).search + '...'}
+                placeholder={setLocale(router.locale).search}
                 value={search}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}

@@ -9,10 +9,11 @@ export const AdditionalInfoItem = ({ text, item }: AdditionalInfoItemProps): JSX
         if (Array.isArray(item)) {
             return item.map((el, index) => (
                 <span key={index}>
-                    <Link href={el.url}>
+                    <Link href={el.url} className={styles.itemLink}>
                         {el.name}
+                        <div />
                     </Link>
-                    {index < item.length - 1 && ', '}
+                    {index < item.length - 1 && ' '}
                 </span>
             ));
         }

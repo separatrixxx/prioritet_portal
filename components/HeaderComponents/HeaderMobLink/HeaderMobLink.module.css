@@ -1,0 +1,32 @@
+.headerMobLink {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+	grid-template-columns: 1fr auto;
+}
+
+.headerMobLink:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.firstLink {
+	margin-top: 60px;
+}
+
+.linkText {
+	color: var(--darkLight) !important;
+
+	font-weight: 500 !important;
+}
+
+.headerMobLink > svg {
+	fill: var(--darkLight);
+
+	width: 30px;
+}

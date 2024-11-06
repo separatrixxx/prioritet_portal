@@ -3,32 +3,67 @@
 }
 
 .additionalInfoItem > span,
-.additionalInfoItem > span > a {
-	color: var(--second) !important;
+.itemLink {
+	font-weight: 500;
 
 	line-height: 1.7;
 }
 
-.additionalInfoItem > span > a {
+.additionalInfoItem > span {
+	color: var(--primary) !important;
+}
+
+.itemLink {
+	position: relative;
+
 	padding: 2px 7px;
 
 	cursor: pointer;
 	transition-duration: 500ms;
 
+	color: var(--second);
 	border-radius: 5px;
-	background: var(--light);
 }
 
-.additionalInfoItem > span > a:active {
+.itemLink > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	transition-duration: 500ms;
+
+	opacity: 0.15;
+	border-radius: 5px;
+	background: var(--second);
+}
+
+.itemLink:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	filter: brightness(0.9);
+	color: var(--white) !important;
+	background: var(--second);
+}
+
+.itemLink:active > div {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	opacity: 0;
 }
 
 @media (min-width: 1024px) {
-	.additionalInfoItem > span > a:hover {
+	.itemLink:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		filter: brightness(0.9);
+		color: var(--white) !important;
+		background: var(--second);
+	}
+
+	.itemLink:hover > div {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		opacity: 0;
 	}
 }

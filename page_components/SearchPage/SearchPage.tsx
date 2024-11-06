@@ -1,7 +1,7 @@
 import styles from './SearchPage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { SearchList } from '../../components/SearchComponents/SearchList/SearchList';
-import { Header } from '../../components/Headers/Header/Header';
+import { Header } from '../../components/HeaderComponents/Header/Header';
 import { Footer } from '../../components/Common/Footer/Footer';
 
 
@@ -16,7 +16,7 @@ export const SearchPage = (): JSX.Element => {
 				}}
 			/>
             <div className={styles.wrapper}>
-                <Header />
+                <Header type='catalog' />
                 <SearchList />
                 <Footer />
             </div>

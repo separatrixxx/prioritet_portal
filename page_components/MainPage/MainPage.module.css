@@ -10,7 +10,7 @@
 .productTitle {
 	margin: 40px 80px 0 80px !important;
 
-	color: var(--primary);
+	color: var(--primary) !important;
 }
 
 @media (max-width: 1024px) {

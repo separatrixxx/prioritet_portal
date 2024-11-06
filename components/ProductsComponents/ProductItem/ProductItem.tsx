@@ -51,8 +51,7 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
             }
             {
                 filters.start.class === 'product' ?
-                    <ProductPriceBlock size={isMain ? 'l' : 'm'} price={price}
-                        isRows={filters.display === 'rows'} />
+                    <ProductPriceBlock size={isMain ? 'l' : 'm'} price={price} />
                 : <></>
             }
         </Link>

@@ -6,7 +6,7 @@
 	height: fit-content;
 	padding: 15px 20px;
 
-	border-radius: 15px;
+	border-radius: 5px;
 	background: var(--white);
 	gap: 20px;
 	grid-template-columns: auto auto auto 1fr;
@@ -34,7 +34,7 @@
 .filterText > span:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	color: var(--primary);
+	filter: brightness(0.9);
 }
 
 .filtersName {
@@ -44,10 +44,10 @@
 	transition-duration: 500ms;
 
 	color: var(--second);
-	border: 2px solid var(--second);
+	border: none;
 	border-radius: 5px;
 	outline: none;
-	background: var(--white);
+	background: var(--light);
 
 	font-size: 16px;
 }
@@ -60,7 +60,7 @@
 .filtersName:focus {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	border-color: var(--primary);
+	filter: brightness(0.9);
 }
 
 .dropdownContainer {
@@ -139,7 +139,7 @@
 .checkboxLabel input:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	border-color: var(--primary);
+	filter: brightness(0.9);
 }
 
 .checkboxLabel > h1 {
@@ -158,7 +158,7 @@
 
 .displayIcon {
 	width: 20px;
-	fill: var(--second);
+	fill: var(--darkLight);
 
 	cursor: pointer;
 	transition-duration: 500ms;
@@ -169,10 +169,12 @@
 .displayIcon:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	opacity: 1;
+	fill: var(--second);
 }
 
 .activeIcon {
+	fill: var(--second);
+
 	opacity: 1;
 }
 
@@ -180,13 +182,13 @@
 	.filtersName:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		border-color: var(--primary);
+		filter: brightness(0.9);
 	}
 
 	.filterText > span:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		color: var(--primary);
+		filter: brightness(0.9);
 	}
 
 	.dropdownItem:hover {
@@ -198,13 +200,13 @@
 	.checkboxLabel input:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		border-color: var(--primary);
+		filter: brightness(0.9);
 	}
 
 	.displayIcon:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		opacity: 1;
+		fill: var(--second);
 	}
 }
 

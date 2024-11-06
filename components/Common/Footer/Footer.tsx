@@ -3,26 +3,36 @@ import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 import { setFooterYear } from '../../../helpers/footer_year.helper';
-import { ByBlock } from '../ByBlock/ByBlock';
+import Link from 'next/link';
+import cn from 'classnames';
 
 
 export const Footer = (): JSX.Element => {
     const { router } = useSetup();
-    
+
     return (
         <footer className={styles.footer}>
-            <div className={styles.footerDiv}>
-                <Htag tag='s' className={styles.name}>
-                    {'© ' + setFooterYear(2024) + ' ' + setLocale(router.locale).prioritet_portal}
-                </Htag>
+            <Htag tag='s'>
+                {'© ' + setFooterYear(2024) + ' ' + setLocale(router.locale).prioritet_portal}
+            </Htag>
+            <Link href='/' className={styles.footerLink}
+                aria-label='footer legal information link'>
                 <Htag tag='s'>
-                    {setLocale(router.locale).offer}
+                    {setLocale(router.locale).legal_information}
                 </Htag>
+            </Link>
+            <Link href='/' className={styles.footerLink}
+                aria-label='footer privacy policy link'>
                 <Htag tag='s'>
                     {setLocale(router.locale).privacy_policy}
                 </Htag>
-            </div>
-            <ByBlock color='light' />
+            </Link>
+            <Link href='https://www.banana.codes' className={cn(styles.footerLink, styles.bananaLink)}
+                target='_blank' aria-label='footer by link'>
+                <Htag tag='s'>
+                    {'by 🍌 codes'}
+                </Htag>
+            </Link>
         </footer>
     );
 };

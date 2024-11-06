@@ -4,8 +4,8 @@
 
 	animation: spin 1s linear infinite;
 
-	border: 5px solid var(--lighter);
-	border-top: 5px solid var(--second);
+	border: 5px solid var(--background);
+	border-top: 5px solid var(--primary);
 	border-radius: 50%;
 }
 

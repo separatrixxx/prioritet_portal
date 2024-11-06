@@ -6,8 +6,8 @@
 	align-items: center;
 
 	width: 100%;
-	height: calc(40vh - 110px);
-	margin-top: 110px;
+	height: calc(40vh - 80px);
+	margin-top: 80px;
 
 	user-select: none;
 
@@ -33,4 +33,10 @@
 	color: var(--white);
 
 	font-weight: 800;
+}
+
+@media (max-width: 1024px) {
+	.mainImageDiv {
+		margin-top: 70px;
+	}
 }

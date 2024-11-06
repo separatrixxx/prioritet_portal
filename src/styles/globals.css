@@ -8,7 +8,7 @@ body {
 	-ms-user-select: auto;
 	user-select: auto;
 
-	background: var(--lighter);
+	background: var(--background);
 
 	font-family: 'Roboto', sans-serif;
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
@@ -32,8 +32,8 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-	border-radius: 30px;
-	background-color: var(--second);
+	border-radius: 5px;
+	background-color: var(--primary);
 }
 
 a {
@@ -41,7 +41,7 @@ a {
 }
 
 .swiper-pagination-bullet-active {
-	background: var(--second) !important;
+	background: var(--primary) !important;
 }
 
 @media (max-width: 480px) {
@@ -52,14 +52,13 @@ a {
 }
 
 :root {
-	--primary: #003D18;
-	--second: #3FAC3B;
+	--primary: #00412D;
+	--second: #F2AB43;
 	--white: #FFF;
-	--dark: #1F1F1F;
-	--light: #E5E5E5;
-	--lighter: #F7F7F7;
+	--dark: #252525;
+	--light: #F3F0E9;
 	--darkLight: #A6A6A6;
-	--heart: #FF4848;
+	--background: #F7F7F7;
 	--error: #FF1500;
 	--banana: #FFC803;
 	--font-family: 'Roboto', sans-serif;

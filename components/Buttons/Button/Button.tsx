@@ -1,11 +1,14 @@
 import { ButtonProps } from './Button.props';
 import styles from './Button.module.css';
 import { Htag } from '../../Common/Htag/Htag';
+import cn from 'classnames';
 
 
-export const Button = ({ text, isLoading, isSmall, onClick }: ButtonProps): JSX.Element => {
+export const Button = ({ text, isLoading, isSmall, isPrimary, onClick }: ButtonProps): JSX.Element => {
     return (
-        <button className={styles.button} onClick={onClick}>
+        <button className={cn(styles.button, {
+            [styles.buttonPrimary]: isPrimary,
+        })} onClick={onClick}>
             {
                 !isLoading ?
                     <Htag tag={!isSmall ? 'm' : 's'} className={styles.text}>

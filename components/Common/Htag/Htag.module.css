@@ -19,11 +19,12 @@
 }
 
 .xxl {
-	font-size: 64px;
+	font-size: 48px;
+	font-weight: 700;
 }
 
 .xl {
-	font-size: 36px;
+	font-size: 32px;
 	font-weight: 700;
 }
 
@@ -39,17 +40,27 @@
 	font-size: 16px;
 }
 
+@media (max-width: 1400px) {
+	.xxxl {
+		font-size: 70px;
+	}
+
+	.xxl {
+		font-size: 40px;
+	}
+}
+
 @media (max-width: 1024px) {
 	.xxxl {
 		font-size: 60px;
 	}
 
 	.xxl {
-		font-size: 40px;
+		font-size: 36px;
 	}
 
 	.xl {
-		font-size: 32px;
+		font-size: 28px;
 	}
 
 	.l {
@@ -75,7 +86,7 @@
 	}
 
 	.xl {
-		font-size: 26px;
+		font-size: 24px;
 	}
 
 	.l {

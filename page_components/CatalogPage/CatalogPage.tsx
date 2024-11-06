@@ -1,6 +1,6 @@
 import styles from './CatalogPage.module.css';
 import { Toaster } from 'react-hot-toast';
-import { Header } from '../../components/Headers/Header/Header';
+import { Header } from '../../components/HeaderComponents/Header/Header';
 import { CatalogBlock } from '../../components/CatalogComponents/CatalogBlock/CatalogBlock';
 
 
@@ -15,7 +15,7 @@ export const CatalogPage = (): JSX.Element => {
                 }}
             />
             <div className={styles.wrapper}>
-                <Header />
+                <Header type='catalog' />
                 <CatalogBlock />
             </div>
         </>

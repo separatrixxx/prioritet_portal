@@ -8,7 +8,7 @@ import { ProductList } from '../../ProductsComponents/ProductList/ProductList';
 
 
 export const CatalogBlock = (): JSX.Element => {
-    const { router, products, filters } = useSetup();
+    const { router, products, filters, categories } = useSetup();
 
     return (
         <div className={styles.catalogBlock}>
@@ -17,7 +17,9 @@ export const CatalogBlock = (): JSX.Element => {
                 <FiltersBar />
                 <Htag tag='m' className={styles.totalProducts}>
                     {products.total_count > -1 ?
-                        setLocale(router.locale).classes[filters.start.class as 'product'] + ': ' + products.total_count
+                        `${setLocale(router.locale).classes[filters.start.class as 'product']}
+                        ${filters.start.categoryId ? ' > ' + categories.find(el => el.id === filters.start.categoryId)?.name : ''}
+                        (${products.total_count})`
                         : setLocale(router.locale).search + '...'}
                 </Htag>
                 <ProductList />

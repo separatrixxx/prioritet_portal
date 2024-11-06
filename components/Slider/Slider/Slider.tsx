@@ -24,8 +24,8 @@ export const Slider = ({ name, images }: SliderProps): JSX.Element => {
                 disableOnInteraction: false,
             }}>
             {images.map((img, i) => (
-                <SwiperSlide key={img}>
-                            <Slide image={img} alt={name + ' image ' + i} />
+                <SwiperSlide key={img + i}>
+                    <Slide image={img} alt={name + ' image ' + i} />
                 </SwiperSlide>
             ))}
         </Swiper>

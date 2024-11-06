@@ -4,7 +4,7 @@
 	width: calc(100% - 30px);
 	padding: 15px;
 
-	border-radius: 15px;
+	border-radius: 5px;
 	outline: 1px solid var(--light);
 	background: var(--white);
 	gap: 20px;
@@ -50,7 +50,8 @@
 }
 
 .productCategory {
-	color: var(--second);
+	opacity: 0.4;
+	color: var(--primary);
 
 	font-weight: 500;
 }

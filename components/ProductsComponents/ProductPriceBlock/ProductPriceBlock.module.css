@@ -1,14 +1,12 @@
 .productPriceBlock {
 	display: grid;
+	align-items: center;
 
 	width: 100%;
-	gap: 20px;
-}
 
-.displayPriceLines {
-	grid-template-columns: 1fr auto;
-
-	align-items: center;
+	cursor: default;
+	gap: 10px;
+	grid-template-columns: 1fr auto auto;
 }
 
 .productPrice {
@@ -17,27 +15,7 @@
 	font-weight: 600;
 }
 
-.buttonsDiv {
-	display: grid;
-
-	width: 100%;
-	height: fit-content;
-	margin-top: -10px;
-
-	cursor: default;
-	grid-template-columns: 1fr auto;
-	gap: 10px;
-}
-
-.buttonsDivRows {
-	grid-template-columns: auto 0.9fr;
-}
-
-.displayPriceLines > .buttonsDiv {
-	margin: 0;
-}
-
-.favoriteButton {
+.productButton {
 	position: relative;
 
 	display: grid;
@@ -58,75 +36,45 @@
 	height: 50px;
 }
 
-.favoriteButton > div {
+.sizeXL > svg {
+	width: 30px;
+}
+
+.productButton > div {
 	width: 100%;
 	height: 100%;
 
 	transition-duration: 500ms;
 
 	opacity: 0.15;
-	background: var(--heart);
+	background: var(--second);
 }
 
-.favoriteButton > svg {
+.productButton > svg {
 	position: absolute;
 
-	width: 20px;
-	fill: var(--heart);
+	width: 24px;
+	fill: var(--second);
 
 	transition-duration: 500ms;
 }
 
-.sizeXL > svg {
-	width: 25px;
-}
-
-.favoriteButton:active > div {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	opacity: 1;
-}
-
-.favoriteButton:active > svg {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	fill: var(--white);
-}
-
 @media (min-width: 1024px) {
-	.favoriteButton:hover > div {
+	.productButton:hover > div {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		opacity: 1 !important;
 	}
 
-	.favoriteButton:hover > svg {
+	.productButton:hover > svg {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		fill: var(--white) !important;
+		fill: var(--white);
 	}
 }
 
 @media (max-width: 1024px) {
-	.buttonsDiv {
-		margin-top: -5px;
-	}
-
-	.buttonsDivRows {
-		grid-template-columns: auto 0.8fr;
-	}
-}
-
-@media (max-width: 580px) {
-	.buttonsDiv {
-		gap: 5px;
-	}
-
-	.buttonsDivRows {
-		grid-template-columns: auto 0.7fr;
-	}
-
-	.favoriteButton {
+	.productButton {
 		width: 35px;
 		height: 35px;
 	}
@@ -136,11 +84,31 @@
 		height: 40px;
 	}
 
-	.favoriteButton > svg {
-		width: 17px;
+	.productButton > svg {
+		width: 22px;
 	}
 
 	.sizeXL > svg {
+		width: 24px;
+	}
+}
+
+@media (max-width: 580px) {
+	.productButton {
+		width: 30px;
+		height: 30px;
+	}
+
+	.sizeXL {
+		width: 35px;
+		height: 35px;
+	}
+
+	.productButton > svg {
 		width: 20px;
+	}
+
+	.sizeXL > svg {
+		width: 22px;
 	}
 }

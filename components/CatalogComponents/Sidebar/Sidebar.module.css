@@ -5,7 +5,7 @@
 	height: auto;
 	padding: 20px;
 
-	border-radius: 15px;
+	border-radius: 5px;
 	background: var(--white);
 	gap: 15px;
 	grid-template-rows: auto auto auto 1fr;
@@ -19,23 +19,34 @@
 
 .classTitle,
 .categoryTitle {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+
 	cursor: pointer;
 	user-select: none;
 	transition-duration: 500ms;
+	grid-template-columns: 1fr auto;
 }
 
 .classTitle {
 	height: fit-content;
 
-	color: var(--second);
+	color: var(--primary);
 
 	font-weight: 500;
 }
 
-.classTitle:active {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+.classTitle > span > svg {
+	width: 5px;
+	fill: var(--primary);
 
-	color: var(--primary) !important;
+	transform-origin: center;
+}
+
+.active > span > svg {
+	fill: var(--second);
 }
 
 .categoriesDiv {
@@ -51,22 +62,22 @@
 	color: var(--darkLight);
 }
 
+.classTitle:active,
 .categoryTitle:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	color: var(--second);
 }
 
+.active {
+	color: var(--second) !important;
+}
+
 @media (min-width: 1024px) {
-	.classTitle:hover {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-		color: var(--primary) !important;
-	}
-
+	.classTitle:hover,
 	.categoryTitle:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		color: var(--second);
+		color: var(--second) !important;
 	}
 }
