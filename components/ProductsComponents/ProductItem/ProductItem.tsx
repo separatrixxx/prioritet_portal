@@ -21,6 +21,8 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
             [styles.displayLines]: display.display === 'lines' && !isMain,
         })}
             onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
+            onMouseDown={() => setIsHovered(true)} onMouseUp={() => setIsHovered(false)}
+            onTouchStart={() => setIsHovered(true)} onTouchEnd={() => setIsHovered(false)}
             aria-label={`${type} link`}>
             {
                 isImage ?
