@@ -16,7 +16,7 @@ export const SearchPage = (): JSX.Element => {
 				}}
 			/>
             <div className={styles.wrapper}>
-                <Header type='catalog' />
+                <Header type='other' />
                 <SearchList />
                 <Footer />
             </div>

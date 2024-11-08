@@ -10,34 +10,40 @@
 }
 
 .productPrice {
+	transition-duration: 300ms;
+
 	color: var(--second);
 
 	font-weight: 600;
 }
 
-.productButton {
+.hoveredPrice {
+	color: var(--light);
+}
+
+.productButton,
+.productMobButton {
 	position: relative;
 
-	display: grid;
 	overflow: hidden;
 	align-items: center;
 
 	width: 40px;
 	height: 40px;
+	padding: 0;
 
 	cursor: pointer;
 
+	border: none;
+
 	border-radius: 5px;
+	outline: none;
+	background: none;
 	justify-items: center;
 }
 
-.sizeXL {
-	width: 50px;
-	height: 50px;
-}
-
-.sizeXL > svg {
-	width: 30px;
+.productButton {
+	display: grid;
 }
 
 .productButton > div {
@@ -50,6 +56,10 @@
 	background: var(--second);
 }
 
+.hoveredButton > div {
+	background: var(--light);
+}
+
 .productButton > svg {
 	position: absolute;
 
@@ -57,6 +67,32 @@
 	fill: var(--second);
 
 	transition-duration: 500ms;
+}
+
+.hoveredButton > svg {
+	fill: var(--light);
+}
+
+.productButton:active > div {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	opacity: 1 !important;
+}
+
+.productButton:active > svg {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--white);
+}
+
+.hoveredButton:active > svg {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--second);
+}
+
+.productMobButton {
+	display: none;
 }
 
 @media (min-width: 1024px) {
@@ -71,6 +107,12 @@
 
 		fill: var(--white);
 	}
+
+	.hoveredButton:hover > svg {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--second);
+	}
 }
 
 @media (max-width: 1024px) {
@@ -79,36 +121,146 @@
 		height: 35px;
 	}
 
-	.sizeXL {
-		width: 40px;
-		height: 40px;
-	}
-
 	.productButton > svg {
 		width: 22px;
-	}
-
-	.sizeXL > svg {
-		width: 24px;
 	}
 }
 
 @media (max-width: 580px) {
+	.productPriceBlock {
+		margin-top: 20px;
+		grid-template-columns: auto;
+	}
+
+	.productPriceLines {
+		grid-template-columns: 1fr auto;
+	}
+
 	.productButton {
-		width: 30px;
-		height: 30px;
+		display: none;
 	}
 
-	.sizeXL {
-		width: 35px;
-		height: 35px;
+	.productMobButton {
+		display: grid;
+
+		width: 100%;
+		height: 40px;
+		padding: 0 10px;
+
+		transition-duration: 500ms;
+		grid-template-columns: auto 1fr;
 	}
 
-	.productButton > svg {
-		width: 20px;
+	.hoveredMobButton {
+		display: grid;
 	}
 
-	.sizeXL > svg {
-		width: 22px;
+	.productMobButton > svg {
+		width: 24px;
+		fill: var(--second);
+
+		transition-duration: 500ms;
+	}
+
+	.hoveredMobButton > svg {
+		fill: var(--light);
+	}
+
+	.buyText {
+		transition-duration: 500ms;
+
+		color: var(--second);
+
+		font-weight: 500 !important;
+	}
+
+	.hoveredMobButton .buyText {
+		color: var(--light);
+	}
+
+	.productMobButton > div {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 100%;
+		height: 100%;
+
+		transition-duration: 500ms;
+
+		opacity: 0.15;
+		border-radius: 5px;
+		background: var(--second);
+	}
+
+	.hoveredMobButton > div {
+		background: var(--light);
+	}
+
+	.productMobButton:active {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		background: var(--second);
+	}
+
+	.productMobButton:active .buyText {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--white);
+	}
+
+	.hoveredMobButton:active .buyText {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--second);
+	}
+
+	.productMobButton:active > svg {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--white);
+	}
+
+	.hoveredMobButton:active > svg {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		fill: var(--second);
+	}
+
+	.productMobButton:active > div {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		opacity: 0;
+	}
+
+	.hoveredMobButton:active {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		background: var(--light);
+	}
+}
+
+@media (max-width: 300px) {
+	.productMobButton {
+		height: 28px;
+	}
+
+	.productMobButton > svg {
+		width: 18px;
+	}
+}
+
+@media (max-width: 250px) {
+	.productMobButton {
+		grid-template-columns: auto;
+	}
+
+	.productMobButton > svg {
+		display: none;
+	}
+}
+
+@media (max-width: 150px) {
+	.productPriceLines {
+		grid-template-columns: auto;
 	}
 }

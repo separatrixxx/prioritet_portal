@@ -1,0 +1,54 @@
+.displayFilter {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+	justify-items: right;
+	gap: 20px;
+	grid-template-columns: 1fr auto auto;
+	grid-area: filterDisplay;
+}
+
+.displayIcon {
+	width: 20px;
+	fill: var(--darkLight);
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	opacity: 0.5;
+}
+
+.displayIcon:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--second);
+}
+
+.activeIcon {
+	fill: var(--second);
+
+	opacity: 1;
+}
+
+@media (min-width: 1024px) {
+	.displayIcon:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--second);
+	}
+}
+
+@media (max-width: 580px) {
+	.displayFilter {
+		grid-template-columns: auto;
+	}
+
+	.displayIcon {
+		display: none;
+	}
+
+	.activeIcon {
+		display: grid;
+	}
+}

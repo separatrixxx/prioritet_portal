@@ -1,0 +1,107 @@
+.filtersBar {
+	display: grid;
+	align-items: center;
+
+	width: calc(100% - 40px);
+	height: fit-content;
+	padding: 15px 20px;
+
+	border-radius: 5px;
+	background: var(--white);
+	gap: 20px;
+	grid-template-columns: auto auto 1fr;
+	grid-template-areas: "filterName filterSort filterDisplay";
+}
+
+.filterText {
+	cursor: pointer;
+	user-select: none;
+	transition-duration: 500ms;
+
+	color: var(--darkLight);
+}
+
+.filterText:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--second);
+}
+
+.filtersName {
+	width: calc(100% - 20px);
+	padding: 5px 10px;
+
+	transition-duration: 500ms;
+
+	color: var(--second);
+	border: none;
+	border-radius: 5px;
+	outline: none;
+	background: var(--light);
+
+	font-size: 16px;
+	grid-area: filterName;
+}
+
+.filtersName::placeholder {
+	color: var(--darkLight);
+}
+
+.filtersName:active,
+.filtersName:focus {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+@media (min-width: 1024px) {
+	.filtersName:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+
+	.filterText:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--second);
+	}
+}
+
+@media (max-width: 1024px) {
+	.filtersBar {
+		width: calc(100% - 30px);
+		padding: 10px 15px;
+		gap: 15px;
+	}
+
+	.filtersName {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 580px) {
+	.filtersBar {
+		grid-template-columns: auto auto 1fr;
+		grid-template-areas: "filterDisplay filterSort filterName";
+	}
+
+	.filtersName {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 300px) {
+	.filtersName {
+		font-size: 10px;
+	}
+}
+
+@media (max-width: 200px) {
+	.filtersBar {
+		grid-template-columns: auto 1fr;
+		grid-template-areas:
+			"filterDisplay filterSort"
+			"filterName filterName";
+	}
+}

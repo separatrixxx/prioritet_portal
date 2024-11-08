@@ -74,4 +74,5 @@ export const ru = {
     cart: "Корзина",
     favorites: "Избранное",
     go_back: "Вернуться назад",
+    filters: "Фильтры",
 };

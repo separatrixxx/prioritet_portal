@@ -23,6 +23,8 @@
 
 .footerLink > h1 {
 	transition-duration: 500ms;
+	word-break: break-word;
+	hyphens: auto;
 }
 
 .footerLink:active > h1 {

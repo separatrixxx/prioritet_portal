@@ -30,3 +30,27 @@
 
 	width: 30px;
 }
+
+.searchLink {
+	display: none;
+}
+
+@media (max-width: 300px) {
+	.headerMobLink > svg {
+		width: 20px;
+	}
+
+	.firstLink {
+		margin-top: 40px;
+	}
+}
+
+@media (max-width: 200px) {
+	.headerMobLink > svg {
+		display: none;
+	}
+
+	.searchLink {
+		display: grid;
+	}
+}

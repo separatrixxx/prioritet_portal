@@ -1,0 +1,162 @@
+.sortFilters {
+	position: relative;
+
+	display: grid;
+
+	width: fit-content;
+	grid-area: filterSort;
+}
+
+.filterText {
+	display: grid;
+	align-items: center;
+
+	cursor: pointer;
+	user-select: none;
+	transition-duration: 500ms;
+
+	color: var(--darkLight);
+	grid-template-columns: auto 1fr;
+	gap: 5px;
+}
+
+.filterText:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--second);
+}
+
+.filterText > svg {
+	width: 20px;
+	fill: var(--second);
+}
+
+.dropdown {
+	position: absolute;
+	z-index: 10;
+	top: calc(100% + 10px);
+
+	display: grid;
+
+	width: max-content;
+	height: fit-content;
+	padding: 10px;
+
+	border-radius: 5px;
+	background: var(--white);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	gap: 10px;
+}
+
+.sortTitle {
+	margin-bottom: 5px;
+
+	color: var(--second);
+
+	font-weight: 500;
+}
+
+.dropdownItem {
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	color: var(--darkLight);
+}
+
+.activeItem {
+	color: var(--second);
+}
+
+.dropdownItem:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--second);
+}
+
+.checkboxLabel {
+	display: grid;
+	align-items: center;
+
+	width: fit-content;
+	grid-template-columns: auto 1fr;
+	margin-top: 10px;
+}
+
+.checkboxLabel input {
+	position: relative;
+
+	width: 15px;
+	height: 15px;
+	margin: 0 10px 0 0;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	border: 2px solid var(--darkLight);
+	border-radius: 5px;
+	outline: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.checkboxLabel input:checked {
+	border-color: var(--second);
+	background-color: var(--second);
+}
+
+.checkboxLabel input:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	border-color: var(--second);
+}
+
+.checkboxLabel > h1 {
+	cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+	.filterText:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--second);
+	}
+
+	.dropdownItem:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--second);
+	}
+
+	.checkboxLabel input:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		border-color: var(--second);
+	}
+}
+
+@media (max-width: 580px) {
+	.checkboxLabel input {
+		margin-right: 5px;
+
+		border-width: 1px;
+	}
+}
+
+@media (max-width: 300px) {
+	.filterText > span {
+		display: none;
+	}
+}
+
+@media (max-width: 200px) {
+	.filterText > span {
+		display: grid;
+	}
+}
+
+@media (max-width: 150px) {
+	.filterText > span {
+		display: none;
+	}
+}

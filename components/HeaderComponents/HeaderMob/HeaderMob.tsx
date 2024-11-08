@@ -1,3 +1,4 @@
+import { HeaderMobProps } from './HeaderMob.props';
 import styles from './HeaderMob.module.css';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,7 +15,7 @@ import { setLocale } from '../../../helpers/locale.helper';
 import cn from 'classnames';
 
 
-export const HeaderMob = (): JSX.Element => {
+export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
     const { router } = useSetup();
     const previousUrl = usePreviousUrl();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -33,12 +34,12 @@ export const HeaderMob = (): JSX.Element => {
                         <>
                             {
                                 router.asPath !== '/' ?
-                                    <Link href={previousUrl} className={styles.headerButton}>
+                                    <Link href={type !== 'catalog' ? previousUrl : '/'} className={styles.headerButton}>
                                         <BackIcon />
                                     </Link>
                                 : <></>
                             }
-                                <Search />
+                                <Search isHeader={true} />
                             </>
                     :
                             <Htag tag='xxl' className={styles.headerTitle}>
@@ -62,6 +63,7 @@ export const HeaderMob = (): JSX.Element => {
                                 <HeaderMobLink link='favorites' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='cart' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='profile' onClick={() => setIsMenuOpen(false)} />
+                                <HeaderMobLink link='search' onClick={() => setIsMenuOpen(false)} />
                                 <div />
                             </motion.div>
                         )

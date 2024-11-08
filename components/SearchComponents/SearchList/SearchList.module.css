@@ -1,9 +1,12 @@
 .searchList {
 	display: grid;
+	align-items: center;
 
-	width: calc(100% - 140px);
-
-	margin: 140px 70px 40px 70px !important;
+	width: calc(100% - 80px);
+	height: fit-content;
+	margin-top: 80px;
+	padding: 20px 40px;
+	grid-template-rows: auto auto 1fr;
 	gap: 20px;
 }
 
@@ -13,11 +16,12 @@
 }
 
 .searchClass {
-	margin: 10px 0;
+	word-break: break-word;
+	hyphens: auto;
 
-	color: var(--second);
+	color: var(--second) !important;
 
-	font-weight: 600;
+	font-weight: 600 !important;
 }
 
 .searchName {
@@ -28,6 +32,8 @@
 
 .searchName > h1 {
 	transition-duration: 500ms;
+	word-break: break-word;
+	hyphens: auto;
 
 	color: var(--primary) !important;
 
@@ -41,11 +47,11 @@
 }
 
 .productsFound {
-	margin-bottom: 10px;
+	margin: 10px 0;
 
-	color: var(--darkLight);
+	color: var(--darkLight) !important;
 
-	font-weight: 600;
+	font-weight: 600 !important;
 	justify-self: left;
 }
 
@@ -57,17 +63,33 @@
 	}
 }
 
+@media (max-width: 1400px) {
+	.searchList {
+		width: calc(100% - 60px);
+		padding: 30px;
+		gap: 30px;
+	}
+
+	.productsFound {
+		margin: 0;
+	}
+}
+
 @media (max-width: 1024px) {
 	.searchList {
-		width: calc(100% - 100px);
-		margin: 140px 50px 40px 50px !important;
+		width: calc(100% - 40px);
+		margin-top: 70px;
+		padding: 20px;
+		gap: 20px;
+	}
+
+	.productsFound {
+		margin: 5px 0;
 	}
 }
 
 @media (max-width: 580px) {
 	.searchList {
-		width: calc(100% - 40px);
-		margin: 140px 20px 40px 20px !important;
 		gap: 15px;
 	}
 
@@ -78,5 +100,12 @@
 
 	.searchClass {
 		margin: 5px 0;
+	}
+}
+
+@media (max-width: 300px) {
+	.searchList {
+		margin-top: 55px;
+		grid-template-rows: auto auto auto 1fr;
 	}
 }

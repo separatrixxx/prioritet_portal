@@ -1,3 +1,4 @@
+import { SearchProps } from './Search.props';
 import styles from './Search.module.css';
 import { useState } from 'react';
 import { Htag } from '../../Common/Htag/Htag';
@@ -6,9 +7,11 @@ import { SearchInterface, SearchItemInterface } from '../../../interfaces/search
 import { globalSearch } from '../../../helpers/search.helper';
 import Link from 'next/link';
 import { useSetup } from '../../../hooks/useSetup';
+import SearchIcon from './search.svg';
+import cn from 'classnames';
 
 
-export const Search = (): JSX.Element => {
+export const Search = ({ isHeader }: SearchProps): JSX.Element => {
     const { router } = useSetup();
 
     const [search, setSearch] = useState<string>('');
@@ -65,36 +68,47 @@ export const Search = (): JSX.Element => {
     };
 
     return (
-        <div className={styles.searchWrapper}>
-            <input className={styles.search}
-                placeholder={setLocale(router.locale).search}
-                value={search}
-                onChange={handleInputChange}
-                onKeyPress={handleKeyPress}
-                type='text'
-                name='text search'
-                aria-label='text search'
-            />
-            {
-                isDropdownOpen && searchResults.length > 0 ?
-                    <div className={styles.dropdown}>
-                        {searchResults.map(item => (
-                            <Link href={`/${item.class}/${item.id}`} key={item.id} className={styles.dropdownItem}
-                                aria-label='search link' onClick={() => setDropdownOpen(false)}>
+        <>
+            <div className={cn(styles.searchWrapper, {
+                [styles.searchWrapperHeader]: isHeader,
+                [styles.searchWrapperSearch]: !isHeader,
+            })}>
+                <input className={styles.search}
+                    placeholder={setLocale(router.locale).search}
+                    value={search}
+                    onChange={handleInputChange}
+                    onKeyPress={handleKeyPress}
+                    type='text'
+                    name='text search'
+                    aria-label='text search'
+                />
+                <SearchIcon className={styles.searchIcon} />
+                {
+                    isDropdownOpen && searchResults.length > 0 ?
+                        <div className={styles.dropdown}>
+                            {searchResults.map(item => (
+                                <Link href={`/${item.class}/${item.id}`} key={item.id} className={styles.dropdownItem}
+                                    aria-label='search link' onClick={() => setDropdownOpen(false)}>
+                                    <Htag tag='s'>
+                                        {item.name}
+                                    </Htag>
+                                </Link>
+                            ))}
+                            <Link href={`/search?q=${search}`} className={styles.viewAll} aria-label='search all results link'
+                                onClick={() => setDropdownOpen(false)}>
                                 <Htag tag='s'>
-                                    {item.name}
+                                    {setLocale(router.locale).view_all_results}
                                 </Htag>
                             </Link>
-                        ))}
-                        <Link href={`/search?q=${search}`} className={styles.viewAll} aria-label='search all results link'
-                            onClick={() => setDropdownOpen(false)}>
-                            <Htag tag='s'>
-                                {setLocale(router.locale).view_all_results}
-                            </Htag>
-                        </Link>
-                    </div>
-                : <></>
-            }
-        </div>
+                        </div>
+                    : <></>
+                }
+            </div>
+            <Link href='search' className={cn(styles.searchButton, {
+                [styles.searchButtonHeader]: isHeader,
+            })}>
+                <SearchIcon />
+            </Link>
+        </>
     );
 };

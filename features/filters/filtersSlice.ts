@@ -12,7 +12,6 @@ const filtersData: FiltersInterface = {
   sort: 'by_name=asc',
   is_available: 'False',
   name: '',
-  display: 'grid',
 }
 
 export const filtersSlice = createSlice({
@@ -42,9 +41,6 @@ export const filtersSlice = createSlice({
     setFiltersName: (state, action) => {
       state.filters.name = action.payload;
     },
-    setDisplay: (state, action) => {
-      state.filters.display = action.payload;
-    },
     setFiltersDefault: (state) => {
       state.filters = filtersData;
     },
@@ -52,6 +48,6 @@ export const filtersSlice = createSlice({
 });
 
 export const { setClass, setLimit, setOffset, setCategoryId, switchSort,
-  switchIsAvailable, setFiltersName, setDisplay, setFiltersDefault } = filtersSlice.actions;
+  switchIsAvailable, setFiltersName, setFiltersDefault } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

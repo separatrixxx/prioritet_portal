@@ -5,6 +5,7 @@ import { setLocale } from "../../helpers/locale.helper";
 import { useEffect } from "react";
 import { getProducts } from "../../helpers/products.helper";
 import { setFiltersDefault } from "../../features/filters/filtersSlice";
+import { setDisplay } from "../../features/display/displaySlice";
 
 
 function Main(): JSX.Element {
@@ -12,6 +13,7 @@ function Main(): JSX.Element {
 
   useEffect(() => {
     dispatch(setFiltersDefault());
+    dispatch(setDisplay('grid'));
     
     getProducts({
       dispatch: dispatch,

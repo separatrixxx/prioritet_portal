@@ -14,6 +14,7 @@ export const HeaderMobLink = ({ link, isFirst, onClick }: HeaderMobLinkProps): J
     return (
         <Link href={`/${link === 'main' ? '/' : link}`} className={cn(styles.headerMobLink, {
             [styles.firstLink]: isFirst,
+            [styles.searchLink]: link === 'search',
         })} onClick={onClick} aria-label='header mobile link'>
             <Htag tag='xxl' className={styles.linkText}>
                 {setLocale(router.locale)[link as 'main']}

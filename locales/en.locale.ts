@@ -74,4 +74,5 @@ export const en = {
     cart: "Cart",
     favorites: "Favorites",
     go_back: "Go back",
+    filters: "Filters",
 };

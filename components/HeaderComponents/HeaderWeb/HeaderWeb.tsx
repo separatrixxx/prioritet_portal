@@ -22,7 +22,7 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
         })}>
             {
                 type !== 'main' ?
-                    <Link href={previousUrl} className={styles.backLink}>
+                    <Link href={type !== 'catalog' ? previousUrl : '/'} className={styles.backLink}>
                         <BackIcon />
                         <Htag tag='s'>
                             {setLocale(router.locale).go_back}
@@ -30,7 +30,7 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
                     </Link>
                 : <></>
             }
-            <Search />
+            <Search isHeader={true} />
             {
                 type === 'main' ?
                     <div />

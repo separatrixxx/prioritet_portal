@@ -1,11 +1,23 @@
 .searchWrapper {
 	position: relative;
+
+	display: grid;
+	align-items: center;
+}
+
+.searchIcon {
+	position: absolute;
+	right: 10px;
+
+	width: 24px;
+
+	fill: var(--darkLight);
 }
 
 .search {
-	width: calc(100% - 30px);
+	width: calc(100% - 55px);
 	height: 20px;
-	padding: 10px 15px;
+	padding: 10px 40px 10px 15px;
 
 	cursor: text;
 	transition-duration: 500ms;
@@ -92,6 +104,11 @@
 	filter: brightness(0.9);
 }
 
+.searchButton,
+.searchWrapperSearch {
+	display: none;
+}
+
 @media (min-width: 1024px) {
 	.search:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -115,5 +132,56 @@
 @media (max-width: 580px) {
 	.dropdown {
 		width: max-content;
+	}
+}
+
+@media (max-width: 300px) {
+	.searchWrapperHeader {
+		display: none;
+	}
+
+	.searchWrapperSearch {
+		display: grid;
+	}
+
+	.searchButtonHeader {
+		justify-self: end;
+
+		display: grid;
+		align-items: center;
+
+		width: 35px;
+		height: 35px;
+
+		cursor: pointer;
+		transition-duration: 500ms;
+
+		border: none;
+
+		border-radius: 5px;
+		outline: none;
+		background: var(--light);
+		justify-items: center;
+	}
+
+	.searchButtonHeader:active {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+
+	.searchButtonHeader > svg {
+		width: 20px;
+		fill: var(--primary);
+	}
+
+	.dropdown {
+		width: calc(100% - 20px);
+	}
+}
+
+@media (max-width: 200px) {
+	.searchButtonHeader {
+		display: none;
 	}
 }

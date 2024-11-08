@@ -4,7 +4,6 @@ import { Htag } from '../../Common/Htag/Htag';
 import { Slider } from '../../Slider/Slider/Slider';
 import { useSetup } from '../../../hooks/useSetup';
 import { setLocale } from '../../../helpers/locale.helper';
-import { ProductPriceBlock } from '../ProductPriceBlock/ProductPriceBlock';
 import { AdditionalInfo } from '../AdditionalInfo/AdditionalInfo';
 import { formatPrice } from '../../../helpers/format.helper';
 import { ProductBuyBlock } from '../ProductBuyBlock/ProductBuyBlock';
@@ -59,7 +58,7 @@ export const ProductInfo = ({ product, commonProduct }: ProductInfoProps): JSX.E
             {
                 product ?
                     <AdditionalInfo product={product} />
-                    : <></>
+                : <></>
             }
         </div>
     );

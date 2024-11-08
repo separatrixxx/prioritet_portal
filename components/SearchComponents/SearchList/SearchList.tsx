@@ -6,6 +6,7 @@ import { SearchInterface, SearchItemInterface } from '../../../interfaces/search
 import { setLocale } from '../../../helpers/locale.helper';
 import Link from 'next/link';
 import { useSetup } from '../../../hooks/useSetup';
+import { Search } from '../Search/Search';
 
 
 export const SearchList = (): JSX.Element => {
@@ -33,6 +34,7 @@ export const SearchList = (): JSX.Element => {
 
     return (
         <div className={styles.searchList}>
+            <Search />
             <Htag tag='s' className={styles.productsFound}>
                 {setLocale(router.locale).products_found.replace('$$$', totalProducts.toString())}
             </Htag>

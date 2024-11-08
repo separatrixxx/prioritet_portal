@@ -7,7 +7,7 @@ export const Header = ({ type }: HeaderProps): JSX.Element => {
     return (
         <>
             <HeaderWeb type={type} />
-            <HeaderMob />
+            <HeaderMob type={type} />
         </>
     );
 };
