@@ -36,9 +36,7 @@ export const ProductPriceBlock = ({ price, isMain, isHovered }: ProductPriceBloc
                 <div />
                 <BuyIcon />
             </button>
-            <button className={cn(styles.productMobButton, {
-                [styles.hoveredMobButton]: isHovered,
-            })}>
+            <button className={styles.productMobButton}>
                 <div />
                 <BuyIcon />
                 <Htag tag='m' className={styles.buyText}>

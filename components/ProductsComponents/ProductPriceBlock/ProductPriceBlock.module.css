@@ -17,10 +17,6 @@
 	font-weight: 600;
 }
 
-.hoveredPrice {
-	color: var(--light);
-}
-
 .productButton,
 .productMobButton {
 	position: relative;
@@ -113,6 +109,10 @@
 
 		fill: var(--second);
 	}
+
+	.hoveredPrice {
+		color: var(--light);
+	}
 }
 
 @media (max-width: 1024px) {
@@ -151,19 +151,11 @@
 		grid-template-columns: auto 1fr;
 	}
 
-	.hoveredMobButton {
-		display: grid;
-	}
-
 	.productMobButton > svg {
 		width: 24px;
 		fill: var(--second);
 
 		transition-duration: 500ms;
-	}
-
-	.hoveredMobButton > svg {
-		fill: var(--light);
 	}
 
 	.buyText {
@@ -172,10 +164,6 @@
 		color: var(--second);
 
 		font-weight: 500 !important;
-	}
-
-	.hoveredMobButton .buyText {
-		color: var(--light);
 	}
 
 	.productMobButton > div {
@@ -193,10 +181,6 @@
 		background: var(--second);
 	}
 
-	.hoveredMobButton > div {
-		background: var(--light);
-	}
-
 	.productMobButton:active {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -209,33 +193,16 @@
 		color: var(--white);
 	}
 
-	.hoveredMobButton:active .buyText {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-		color: var(--second);
-	}
-
 	.productMobButton:active > svg {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		fill: var(--white);
 	}
 
-	.hoveredMobButton:active > svg {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-		fill: var(--second);
-	}
-
 	.productMobButton:active > div {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		opacity: 0;
-	}
-
-	.hoveredMobButton:active {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-		background: var(--light);
 	}
 }
 
