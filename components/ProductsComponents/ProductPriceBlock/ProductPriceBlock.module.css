@@ -160,12 +160,12 @@
 
 	.buyText {
 		transition-duration: 500ms;
+		word-break: break-word;
+		hyphens: auto;
 
 		color: var(--second);
 
 		font-weight: 500 !important;
-		word-break: break-word;
-		hyphens: auto;
 	}
 
 	.productMobButton > div {

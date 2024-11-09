@@ -2,9 +2,6 @@
 	display: grid;
 	gap: 10px;
 	grid-template-rows: auto 1fr;
-	position: absolute;
-	top: 0;
-	left: 0;
 }
 
 .classTitle,
@@ -23,11 +20,12 @@
 .classTitle {
 	height: fit-content;
 
+	word-break: break-word;
+	hyphens: auto;
+
 	color: var(--primary);
 
 	font-weight: 500;
-    word-break: break-word;
-    hyphens: auto;
 }
 
 .classTitle > span > svg {
@@ -51,10 +49,12 @@
 }
 
 .categoryTitle {
-	color: var(--darkLight);
-    word-break: break-word;
-    hyphens: auto;
 	width: fit-content;
+
+	word-break: break-word;
+	hyphens: auto;
+
+	color: var(--darkLight);
 }
 
 .classTitle:active,
@@ -78,15 +78,15 @@
 }
 
 @media (max-width: 580px) {
-    .sidebarContent {
-        gap: 5px;
-    }    
+	.sidebarContent {
+		gap: 5px;
+	}
 }
 
 @media (max-width: 200px) {
-    .sidebarContent {
-        gap: 0;
-    }
+	.sidebarContent {
+		gap: 0;
+	}
 
 	.categoriesDiv {
 		padding-left: 5px;

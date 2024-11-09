@@ -4,12 +4,12 @@
 	display: grid;
 
 	width: calc(100% - 80px);
+	height: fit-content;
 	margin-top: 80px;
 	padding: 20px 40px;
 	justify-items: center;
 	gap: 20px;
 	grid-template-columns: 1fr 3fr;
-	height: fit-content;
 }
 
 .catalogDiv {

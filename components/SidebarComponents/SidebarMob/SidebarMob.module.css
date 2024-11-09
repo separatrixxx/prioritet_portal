@@ -1,4 +1,7 @@
 .sidebar {
+	position: relative;
+	z-index: 22;
+
 	display: grid;
 
 	width: 100%;
@@ -6,28 +9,27 @@
 
 	border-radius: 5px;
 	gap: 20px;
-	position: relative;
-	z-index: 22;
 }
 
 .fixedSidebar {
-    position: fixed;
+	position: fixed;
 	top: 70px;
 	left: 0;
 }
 
 .sidebarWrapper {
-	border-radius: 5px;
+	display: grid;
+	align-items: center;
 
 	width: calc(100% - 30px);
 	padding: 15px;
 
-	display: grid;
-	grid-template-columns: 1fr auto;
-	align-items: center;
-	gap: 10px;
 	transition-duration: 500ms;
+
+	border-radius: 5px;
 	background: var(--white);
+	grid-template-columns: 1fr auto;
+	gap: 10px;
 }
 
 .sidebarWrapper:active {
@@ -38,7 +40,9 @@
 
 .arrowIcon {
 	fill: var(--second);
+
 	width: 7px;
+
 	transform-origin: center;
 }
 
@@ -82,4 +86,3 @@
 		width: 5px;
 	}
 }
-
