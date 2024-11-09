@@ -164,6 +164,8 @@
 		color: var(--second);
 
 		font-weight: 500 !important;
+		word-break: break-word;
+		hyphens: auto;
 	}
 
 	.productMobButton > div {

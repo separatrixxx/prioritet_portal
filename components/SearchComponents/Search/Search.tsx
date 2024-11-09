@@ -16,7 +16,7 @@ export const Search = ({ isHeader }: SearchProps): JSX.Element => {
 
     const [search, setSearch] = useState<string>('');
     const [searchResults, setSearchResults] = useState<SearchItemInterface[]>([]);
-    const [isDropdownOpen, setDropdownOpen] = useState(false);
+    const [isDropdownOpen, setDropdownOpen] = useState<boolean>(false);
     const [debounceTimeout, setDebounceTimeout] = useState<NodeJS.Timeout | null>(null);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

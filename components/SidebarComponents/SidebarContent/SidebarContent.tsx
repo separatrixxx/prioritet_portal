@@ -1,4 +1,5 @@
-import styles from './Sidebar.module.css';
+import { SidebarContentProps } from './SidebarContent.props';
+import styles from './SidebarContent.module.css';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
 import { setCategoryId, setClass } from '../../../features/filters/filtersSlice';
@@ -8,13 +9,13 @@ import { motion } from 'framer-motion';
 import cn from 'classnames';
 
 
-export const Sidebar = (): JSX.Element => {
+export const SidebarContent = ({ setDropdownOpen }: SidebarContentProps): JSX.Element => {
     const { router, dispatch, classes, categories, filters } = useSetup();
 
     return (
-        <div className={styles.sidebar}>
+        <>
             {classes.map(c => (
-                <div key={c.class_tag} className={styles.sidebarDiv}>
+                <div key={c.class_tag} className={styles.sidebarContent}>
                     <Htag tag='s' className={cn(styles.classTitle, {
                         [styles.active]: filters.start.class === c.class_tag && !filters.start.categoryId,
                     })}
@@ -37,7 +38,10 @@ export const Sidebar = (): JSX.Element => {
                                     <Htag key={c.id} tag='s' className={cn(styles.categoryTitle, {
                                         [styles.active]: filters.start.categoryId === c.id,
                                     })}
-                                        onClick={() => dispatch(setCategoryId(c.id))}>
+                                        onClick={() => {
+                                            setDropdownOpen ? setDropdownOpen(false) : null;
+                                            dispatch(setCategoryId(c.id));
+                                        }}>
                                         {c.name}
                                     </Htag>
                                 ))}
@@ -46,6 +50,6 @@ export const Sidebar = (): JSX.Element => {
                     }
                 </div>
             ))}
-        </div>
+        </>
     );
 };

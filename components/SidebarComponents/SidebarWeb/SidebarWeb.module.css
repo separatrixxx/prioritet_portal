@@ -1,0 +1,24 @@
+.sidebar {
+	display: grid;
+
+	width: calc(100% - 40px);
+	height: auto;
+	padding: 20px;
+
+	border-radius: 5px;
+	background: var(--white);
+	gap: 15px;
+	grid-template-rows: auto auto auto 1fr;
+}
+
+@media (max-width: 1024px) {
+	.sidebar {
+		gap: 15px;
+	}
+}
+
+@media (max-width: 800px) {
+	.sidebar {
+		display: none;
+	}
+}

@@ -13,7 +13,7 @@
 	cursor: pointer;
 	transition-duration: 500ms;
 
-	color: var(--second) !important;
+	color: var(--primary) !important;
 
 	font-weight: 600 !important;
 }
@@ -21,13 +21,13 @@
 .errorText:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	color: var(--primary) !important;
+	color: var(--second) !important;
 }
 
 @media (min-width: 1024px) {
 	.errorText:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		color: var(--primary) !important;
+		color: var(--second) !important;
 	}
 }
