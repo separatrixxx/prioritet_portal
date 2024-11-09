@@ -15,10 +15,16 @@
 
 	width: 50px;
 	height: 50px;
+	padding: 0;
 
 	cursor: pointer;
+	transition-duration: 500ms;
+
+	border: none;
 
 	border-radius: 5px;
+	outline: none;
+	background: none;
 	justify-items: center;
 }
 
@@ -41,6 +47,32 @@
 	transition-duration: 500ms;
 }
 
+.activeButton > div {
+	opacity: 1;
+}
+
+.activeButton > svg {
+	fill: var(--white);
+}
+
+.favoriteButton:active > div {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	opacity: 1 !important;
+}
+
+.favoriteButton:active > svg {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--white);
+}
+
+.activeButton:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
 @media (min-width: 1024px) {
 	.favoriteButton:hover > div {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,6 +84,12 @@
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		fill: var(--white);
+	}
+
+	.activeButton:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
 	}
 }
 

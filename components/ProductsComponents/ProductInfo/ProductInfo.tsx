@@ -45,7 +45,7 @@ export const ProductInfo = ({ product, commonProduct }: ProductInfoProps): JSX.E
                                     <Htag tag='xxl' className={styles.productPrice}>
                                         {formatPrice(product?.result.sklad_price || 0)}
                                     </Htag>
-                                    <ProductBuyBlock />
+                                    <ProductBuyBlock productId={product.result.id} />
                                 </>
                             : <></>
                         }

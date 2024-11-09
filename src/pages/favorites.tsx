@@ -2,10 +2,30 @@ import { FavoritesPage } from '../../page_components/FavoritesPage/FavoritesPage
 import Head from 'next/head';
 import { setLocale } from '../../helpers/locale.helper';
 import { useSetup } from '../../hooks/useSetup';
+import { useEffect } from 'react';
+import { setFiltersDefault } from '../../features/filters/filtersSlice';
+import { setDisplay } from '../../features/display/displaySlice';
+import { getProducts } from '../../helpers/products.helper';
+import { setFavorites } from '../../features/favorites/favoritesSlice';
+import { getFavorites } from '../../helpers/favorites.helper';
 
 
 function Favorites(): JSX.Element {
-    const { router } = useSetup();
+    const { router, dispatch, filters, favorites } = useSetup();
+
+    useEffect(() => {
+        dispatch(setFavorites(getFavorites()));
+      }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(setFiltersDefault());
+        dispatch(setDisplay('grid'));
+        
+        getProducts({
+          dispatch: dispatch,
+          filters: filters,
+        }, true);
+      }, [filters, favorites, dispatch]);
 
     return (
         <>

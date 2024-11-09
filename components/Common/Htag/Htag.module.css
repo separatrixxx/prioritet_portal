@@ -40,6 +40,10 @@
 	font-size: 16px;
 }
 
+.xs {
+	font-size: 12px;
+}
+
 @media (max-width: 1400px) {
 	.xxxl {
 		font-size: 70px;
@@ -74,6 +78,10 @@
 	.s {
 		font-size: 14px;
 	}
+
+	.xs {
+		font-size: 10px;
+	}
 }
 
 @media (max-width: 580px) {
@@ -100,6 +108,10 @@
 	.s {
 		font-size: 12px;
 	}
+
+	.xs {
+		font-size: 8px;
+	}
 }
 
 @media (max-width: 300px) {
@@ -125,6 +137,10 @@
 
 	.s {
 		font-size: 10px;
+	}
+
+	.xs {
+		font-size: 6px;
 	}
 }
 

@@ -1,4 +1,6 @@
 .headerWebLink {
+	position: relative;
+
 	display: grid;
 	align-items: center;
 
@@ -29,6 +31,20 @@
 
 .linkText {
 	color: var(--primary);
+
+	font-weight: 500 !important;
+}
+
+.totalProducts {
+	position: absolute;
+	top: -17px;
+	right: -7px;
+
+	padding: 2px 5px;
+
+	color: var(--light) !important;
+	border-radius: 5px;
+	background: var(--primary);
 
 	font-weight: 500 !important;
 }

@@ -17,6 +17,7 @@ import cn from 'classnames';
 
 export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
     const { router } = useSetup();
+    
     const previousUrl = usePreviousUrl();
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
@@ -34,7 +35,8 @@ export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
                         <>
                             {
                                 router.asPath !== '/' ?
-                                    <Link href={type !== 'catalog' ? previousUrl : '/'} className={styles.headerButton}>
+                                    <Link href={type === 'catalog' ? '/' : type === 'favorites' ? '/catalog' : previousUrl}
+                                        className={styles.headerButton}>
                                         <BackIcon />
                                     </Link>
                                 : <></>

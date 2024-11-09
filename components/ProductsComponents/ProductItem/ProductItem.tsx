@@ -7,21 +7,32 @@ import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
 import { ProductPriceBlock } from '../ProductPriceBlock/ProductPriceBlock';
 import FavoriteIcon from './favorite.svg';
+import FavoriteFilledIcon from './favoriteFilled.svg';
 import { useState } from 'react';
+import { checkFavorite, setFavorite } from '../../../helpers/favorites.helper';
 import cn from 'classnames';
+import { toggleFavorite } from '../../../features/favorites/favoritesSlice';
 
 
 export const ProductItem = ({ productId, type, name, description, price, url, isImage, isMain }: ProductItemProps): JSX.Element => {
-    const { router, filters, display } = useSetup();
+    const { router, dispatch, filters, display } = useSetup();
 
     const [isHovered, setIsHovered] = useState<boolean>(false);
+    const [isFavorite, setIsFavorite] = useState<boolean>(checkFavorite(productId));
+
+    let FavIcon = FavoriteIcon;
+
+    if (!isFavorite) {
+        FavIcon = FavoriteIcon;
+    } else {
+        FavIcon = FavoriteFilledIcon;
+    }
 
     return (
         <Link href={`/${type}/${productId}`} className={cn(styles.productItem, {
             [styles.displayLines]: display.display === 'lines' && !isMain,
         })}
             onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}
-            onMouseDown={() => setIsHovered(true)} onMouseUp={() => setIsHovered(false)}
             onTouchStart={() => setIsHovered(true)} onTouchEnd={() => setIsHovered(false)}
             aria-label={`${type} link`}>
             {
@@ -40,9 +51,12 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
             <div className={styles.productNameDiv}>
                 <Htag tag={'m'} className={styles.productName}>
                     {name}
-                    <FavoriteIcon className={styles.favoriteButton} onClick={(e: React.MouseEvent<SVGElement>) => {
+                    <FavIcon className={styles.favoriteButton} onClick={(e: any) => {
                         e.stopPropagation();
                         e.preventDefault();
+                        dispatch(toggleFavorite(productId));
+                        setIsFavorite(!isFavorite);
+                        setFavorite(productId);
                     }} />
                 </Htag>
                 {
@@ -62,7 +76,7 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
             }
             {
                 filters.start.class === 'product' ?
-                    <ProductPriceBlock price={price} isMain={isMain} isHovered={isHovered} />
+                    <ProductPriceBlock productId={productId} price={price} isMain={isMain} isHovered={isHovered} />
                 : <></>
             }
         </Link>

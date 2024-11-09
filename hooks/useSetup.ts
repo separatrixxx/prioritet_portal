@@ -12,6 +12,7 @@ export const useSetup = () => {
     const products = useSelector((state: AppState) => state.products.products);
     const filters = useSelector((state: AppState) => state.filters.filters);
     const display = useSelector((state: AppState) => state.display.display);
+    const favorites = useSelector((state: AppState) => state.favorites.favorites);
 
     return {
         router,
@@ -21,5 +22,6 @@ export const useSetup = () => {
         products,
         filters,
         display,
+        favorites,
     };
 };

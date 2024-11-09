@@ -1,8 +1,15 @@
 .sidebar {
+	position: sticky;
+	z-index: 23;
+	top: 100px;
+
 	display: grid;
+	overflow: auto;
 
 	width: calc(100% - 40px);
-	height: auto;
+	height: max-content;
+	height: calc((100vh - 160px));
+
 	padding: 20px;
 
 	border-radius: 5px;
@@ -11,9 +18,29 @@
 	grid-template-rows: auto auto auto 1fr;
 }
 
+.sidebar::-webkit-scrollbar {
+	width: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+	background-color: var(--second);
+}
+
+@media (max-width: 1400px) {
+	.sidebar {
+		top: 110px;
+
+		height: calc((100vh - 175px));
+	}
+}
+
 @media (max-width: 1024px) {
 	.sidebar {
 		gap: 15px;
+
+		top: 90px;
+
+		height: calc((100vh - 150px));
 	}
 }
 

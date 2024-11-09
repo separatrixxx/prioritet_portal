@@ -75,4 +75,5 @@ export const en = {
     favorites: "Favorites",
     go_back: "Go back",
     filters: "Filters",
+    show_more: "Show more",
 };

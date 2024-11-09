@@ -2,7 +2,7 @@ import { SidebarContentProps } from './SidebarContent.props';
 import styles from './SidebarContent.module.css';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
-import { setCategoryId, setClass } from '../../../features/filters/filtersSlice';
+import { setCategoryId, setClass, setLimit, setOffset } from '../../../features/filters/filtersSlice';
 import { setLocale } from '../../../helpers/locale.helper';
 import ArrowIcon from './arrow.svg';
 import { motion } from 'framer-motion';
@@ -20,6 +20,8 @@ export const SidebarContent = ({ setDropdownOpen }: SidebarContentProps): JSX.El
                         [styles.active]: filters.start.class === c.class_tag && !filters.start.categoryId,
                     })}
                         onClick={() => {
+                            dispatch(setLimit(12));
+                            dispatch(setOffset(0));                    
                             dispatch(setCategoryId(0));
                             dispatch(setClass(c.class_tag));
                         }}>
@@ -39,6 +41,8 @@ export const SidebarContent = ({ setDropdownOpen }: SidebarContentProps): JSX.El
                                         [styles.active]: filters.start.categoryId === c.id,
                                     })}
                                         onClick={() => {
+                                            dispatch(setLimit(12));
+                                            dispatch(setOffset(0));                                    
                                             setDropdownOpen ? setDropdownOpen(false) : null;
                                             dispatch(setCategoryId(c.id));
                                         }}>

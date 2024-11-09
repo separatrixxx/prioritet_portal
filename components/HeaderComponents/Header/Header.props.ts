@@ -1,3 +1,3 @@
 export interface HeaderProps {
-    type: 'main' | 'catalog' | 'other',
+    type: 'main' | 'catalog' | 'favorites' | 'other',
 }

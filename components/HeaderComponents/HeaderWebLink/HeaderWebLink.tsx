@@ -7,10 +7,14 @@ import FavoritesIcon from './favorites.svg';
 import ProfileIcon from './profile.svg';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
+import { getFavorites } from '../../../helpers/favorites.helper';
 
 
 export const HeaderWebLink = ({ type }: HeaderWebLinkProps): JSX.Element => {
-    const { router } = useSetup();
+    const { router, favorites } = useSetup();
+
+    const totalFavorites = getFavorites().length;
+    const totalCart = 0;
 
     return (
         <Link href={`/${type}`} className={styles.headerWebLink}
@@ -26,6 +30,13 @@ export const HeaderWebLink = ({ type }: HeaderWebLinkProps): JSX.Element => {
             <Htag tag='s' className={styles.linkText}>
                 {setLocale(router.locale)[type as 'catalog']}
             </Htag>
+            {
+                type === 'favorites' && favorites.length ?
+                    <Htag tag='xs' className={styles.totalProducts}>
+                        {type === 'favorites' ? favorites.length : ''}
+                    </Htag>
+                : <></>
+            }
         </Link>
     );
 };

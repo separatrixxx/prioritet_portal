@@ -5,10 +5,17 @@ import { setLocale } from "../../../helpers/locale.helper";
 import { ProductById } from "../../../interfaces/product.interface";
 import { GetServerSideProps } from "next";
 import axios, { AxiosResponse } from "axios";
+import { useEffect } from 'react';
+import { setFavorites } from "../../../features/favorites/favoritesSlice";
+import { getFavorites } from "../../../helpers/favorites.helper";
 
 
 function Product({ product }: ProductProps): JSX.Element {
-    const { router } = useSetup();
+    const { router, dispatch } = useSetup();
+
+    useEffect(() => {
+        dispatch(setFavorites(getFavorites()));
+    }, [dispatch]);
 
     return (
         <>

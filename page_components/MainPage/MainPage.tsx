@@ -25,7 +25,7 @@ export const MainPage = (): JSX.Element => {
                 <Header type='main' />
                 <MainImage />
                 <Htag tag='xl' className={styles.productTitle}>
-                    {setLocale(router.locale).popular_products + ':'}
+                    {setLocale(router.locale).popular_products}
                 </Htag>
                 <MainProductList />
                 <Footer />

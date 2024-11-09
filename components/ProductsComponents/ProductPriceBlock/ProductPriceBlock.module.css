@@ -69,6 +69,18 @@
 	fill: var(--light);
 }
 
+.activeButton > div {
+	opacity: 1;
+}
+
+.activeButton > svg {
+	fill: var(--white);
+}
+
+.hoveredActiveButton > svg {
+	fill: var(--second);
+}
+
 .productButton:active > div {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 

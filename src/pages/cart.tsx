@@ -2,10 +2,17 @@ import { CartPage } from '../../page_components/CartPage/CartPage';
 import Head from 'next/head';
 import { setLocale } from '../../helpers/locale.helper';
 import { useSetup } from '../../hooks/useSetup';
+import { useEffect } from 'react';
+import { setFavorites } from '../../features/favorites/favoritesSlice';
+import { getFavorites } from '../../helpers/favorites.helper';
 
 
 function Cart(): JSX.Element {
-    const { router } = useSetup();
+    const { router, dispatch } = useSetup();
+
+    useEffect(() => {
+        dispatch(setFavorites(getFavorites()));
+    }, [dispatch]);
 
     return (
         <>

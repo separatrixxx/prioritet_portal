@@ -75,4 +75,5 @@ export const ru = {
     favorites: "Избранное",
     go_back: "Вернуться назад",
     filters: "Фильтры",
+    show_more: "Показать больше",
 };

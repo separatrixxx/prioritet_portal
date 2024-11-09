@@ -1,8 +1,10 @@
 .footer {
 	display: grid;
 	align-items: center;
+	align-self: end;
 
 	width: calc(100% - 160px);
+	height: fit-content;
 	padding: 40px 80px;
 
 	background: var(--white);
