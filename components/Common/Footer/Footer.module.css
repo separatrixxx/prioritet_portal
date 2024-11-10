@@ -14,7 +14,7 @@
 
 .footer > h1,
 .footerLink > h1 {
-	color: var(--primary);
+	color: var(--darkLight);
 
 	font-weight: 500;
 }
