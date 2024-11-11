@@ -1,0 +1,47 @@
+.cartList {
+	display: grid;
+
+	width: 100%;
+	gap: 20px;
+}
+
+.spinnerDiv {
+	display: grid;
+
+	width: 100%;
+	margin: 80px 0 120px 0;
+	justify-items: center;
+}
+
+.emptyText {
+	color: var(--darkLight);
+
+	font-weight: 500;
+	justify-self: left;
+}
+
+@media (max-width: 1024px) {
+	.cartList {
+		gap: 15px;
+	}
+
+	.spinnerDiv {
+		margin: 60px 0 90px 0;
+	}
+}
+
+@media (max-width: 580px) {
+	.cartList {
+		gap: 10px;
+	}
+
+	.spinnerDiv {
+		margin: 40px 0 60px 0;
+	}
+}
+
+@media (max-width: 300px) {
+	.spinnerDiv {
+		margin: 20px 0 40px 0;
+	}
+}

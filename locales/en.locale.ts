@@ -76,4 +76,13 @@ export const en = {
     go_back: "Go back",
     filters: "Filters",
     show_more: "Show more",
+    in_cart: "In the cart",
+    total: "Total",
+    pay: "Pay",
+    cart_is_empty: "Cart is empty",
+    format_products: {
+        gen: "products",
+        nom: "products",
+        sin: "product",
+    },
 };

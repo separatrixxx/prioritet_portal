@@ -6,8 +6,6 @@ import { useEffect } from "react";
 import { getProducts } from "../../helpers/products.helper";
 import { setFiltersDefault } from "../../features/filters/filtersSlice";
 import { setDisplay } from "../../features/display/displaySlice";
-import { setFavorites } from "../../features/favorites/favoritesSlice";
-import { getFavorites } from "../../helpers/favorites.helper";
 
 
 function Main(): JSX.Element {
@@ -16,7 +14,6 @@ function Main(): JSX.Element {
   useEffect(() => {
     dispatch(setFiltersDefault());
     dispatch(setDisplay('grid'));
-    dispatch(setFavorites(getFavorites()));
     
     getProducts({
       dispatch: dispatch,

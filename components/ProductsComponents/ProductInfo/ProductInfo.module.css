@@ -41,14 +41,13 @@
 
 	height: fit-content;
 
-	transition-duration: 500ms;
 	gap: 5px;
 }
 
 .productName {
 	display: grid;
 
-	width: 100%;
+	width: 100% !important;
 
 	color: var(--primary) !important;
 	grid-template-columns: 1fr auto;

@@ -2,17 +2,10 @@ import { ProfilePage } from '../../page_components/ProfilePage/ProfilePage';
 import Head from 'next/head';
 import { setLocale } from '../../helpers/locale.helper';
 import { useSetup } from '../../hooks/useSetup';
-import { useEffect } from 'react';
-import { setFavorites } from '../../features/favorites/favoritesSlice';
-import { getFavorites } from '../../helpers/favorites.helper';
 
 
 function Catalog(): JSX.Element {
-    const { router, dispatch } = useSetup();
-
-    useEffect(() => {
-        dispatch(setFavorites(getFavorites()));
-    }, [dispatch]);
+    const { router } = useSetup();
 
     return (
         <>

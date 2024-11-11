@@ -1,21 +1,29 @@
 import { ProductPriceBlockProps } from './ProductPriceBlock.props';
 import styles from './ProductPriceBlock.module.css';
 import { Htag } from '../../Common/Htag/Htag';
-import FavoriteIcon from './favorite.svg';
 import BuyIcon from './buy.svg';
 import { formatPrice } from '../../../helpers/format.helper';
 import { setLocale } from '../../../helpers/locale.helper';
 import { useSetup } from '../../../hooks/useSetup';
 import { checkFavorite, setFavorite } from '../../../helpers/favorites.helper';
-import { useState } from 'react';
-import cn from 'classnames';
+import { useEffect, useState } from 'react';
 import { toggleFavorite } from '../../../features/favorites/favoritesSlice';
+import { checkCart, setLocalCart } from '../../../helpers/cart.helper';
+import { toggleCart } from '../../../features/cart/cartSlice';
+import { ProductButton } from '../../Buttons/ProductButton/ProductButton';
+import cn from 'classnames';
 
 
 export const ProductPriceBlock = ({ productId, price, isMain, isHovered }: ProductPriceBlockProps): JSX.Element => {
     const { router, dispatch, display } = useSetup();
 
-    const [isFavorite, setIsFavorite] = useState<boolean>(checkFavorite(productId));
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+    const [isCart, setIsCart] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsFavorite(checkFavorite(productId));
+        setIsCart(checkCart(productId));
+    }, [productId]);
 
     return (
         <div className={cn(styles.productPriceBlock, {
@@ -29,29 +37,37 @@ export const ProductPriceBlock = ({ productId, price, isMain, isHovered }: Produ
             })}>
                 {formatPrice(price || 0)}
             </Htag>
-            <button className={cn(styles.productButton, {
-                [styles.hoveredButton]: isHovered,
-                [styles.activeButton]: isFavorite,
-                [styles.hoveredActiveButton]: isFavorite && isHovered,
+            <ProductButton className={styles.productButton} type='favorite' flag={isFavorite}
+                isHovered={isHovered} onClick={() => {
+                    dispatch(toggleFavorite(productId));
+                    setIsFavorite(!isFavorite);
+                    setFavorite(productId);
+                }} />
+            <ProductButton className={styles.productButton} type='buy' flag={isCart}
+                isHovered={isHovered} onClick={() => {
+                    if (!isCart) {
+                        dispatch(toggleCart(productId));
+                        setIsCart(true);
+                        setLocalCart(productId);
+                    } else {
+                        router.push('/cart');
+                    }
+                }} />
+            <button className={cn(styles.productMobButton, {
+                [styles.cartMobButton]: isCart,
             })} onClick={() => {
-                dispatch(toggleFavorite(productId));
-                setIsFavorite(!isFavorite);
-                setFavorite(productId);
-            }}>
-                <div />
-                <FavoriteIcon />
-            </button>
-            <button className={cn(styles.productButton, {
-                [styles.hoveredButton]: isHovered,
-            })}>
-                <div />
-                <BuyIcon />
-            </button>
-            <button className={styles.productMobButton}>
+                    if (!isCart) {
+                        dispatch(toggleCart(productId));
+                        setIsCart(true);
+                        setLocalCart(productId);
+                    } else {
+                        router.push('/cart');
+                    }
+                }}>
                 <div />
                 <BuyIcon />
                 <Htag tag='m' className={styles.buyText}>
-                    {setLocale(router.locale).buy}
+                    {setLocale(router.locale)[!isCart ? 'buy' : 'in_cart']}
                 </Htag>
             </button>
         </div>

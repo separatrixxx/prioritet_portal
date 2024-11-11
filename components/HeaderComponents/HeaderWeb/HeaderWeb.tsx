@@ -8,13 +8,19 @@ import Link from 'next/link';
 import { Search } from '../../SearchComponents/Search/Search';
 import { setLocale } from '../../../helpers/locale.helper';
 import { usePreviousUrl } from '../../../hooks/usePreviousUrl';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 
 export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
     const { router } = useSetup();
 
-    const previousUrl = usePreviousUrl();
+    const [previousUrl, setPreviousUrl] = useState<string>('/');
+    const prev = usePreviousUrl();
+
+    useEffect(() => {
+        setPreviousUrl(prev);
+    }, [prev]);
 
     return (
         <header className={cn(styles.header, {
@@ -22,7 +28,7 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
         })}>
             {
                 type !== 'main' ?
-                    <Link href={type === 'catalog' ? '/' : type === 'favorites' ? '/catalog' : previousUrl}
+                    <Link href={type === 'catalog' ? '/' : type === 'product' ? '/catalog' : previousUrl}
                         className={styles.backLink}>
                         <BackIcon />
                         <Htag tag='s'>
@@ -44,7 +50,7 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
                     <>
                         <HeaderWebLink type='favorites' />
                         {
-                            type === 'catalog' ?
+                            type === 'catalog' || type === 'product' ?
                                 <HeaderWebLink type='cart' />
                             :
                                 <HeaderWebLink type='catalog' />

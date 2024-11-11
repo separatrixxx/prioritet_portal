@@ -6,6 +6,7 @@ import productsSlice from '../products/productsSlice';
 import filtersSlice from '../filters/filtersSlice';
 import displaySlice from '../display/displaySlice';
 import favoritesSlice from '../favorites/favoritesSlice';
+import cartSlice from '../cart/cartSlice';
 
 
 const makeStore = () =>
@@ -17,6 +18,7 @@ const makeStore = () =>
       filters: filtersSlice,
       display: displaySlice,
       favorites: favoritesSlice,
+      cart: cartSlice,
     },
     devTools: true,
 });

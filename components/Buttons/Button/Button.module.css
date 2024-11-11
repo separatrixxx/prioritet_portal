@@ -15,6 +15,10 @@
 	justify-items: center;
 }
 
+.heightCart {
+	height: 40px;
+}
+
 .buttonPrimary {
 	background: var(--primary);
 }
@@ -62,5 +66,10 @@
 @media (max-width: 580px) {
 	.button {
 		padding: 5px 10px;
+	}
+
+	.heightCart {
+		height: 35px;
+		padding: 0;
 	}
 }

@@ -6,16 +6,12 @@ import { useSetup } from '../../hooks/useSetup';
 import { getClasses } from '../../helpers/classes.helper';
 import { getProducts } from '../../helpers/products.helper';
 import { getCategories } from '../../helpers/categories.helper';
-import { setFavorites } from '../../features/favorites/favoritesSlice';
-import { getFavorites } from '../../helpers/favorites.helper';
 
 
 function Catalog(): JSX.Element {
     const { router, dispatch, filters } = useSetup();
 
     useEffect(() => {
-        dispatch(setFavorites(getFavorites()));
-
         getClasses({
             dispatch: dispatch,
         });

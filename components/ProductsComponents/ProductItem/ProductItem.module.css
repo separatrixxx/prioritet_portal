@@ -4,6 +4,8 @@
 	width: calc(100% - 30px);
 	padding: 15px;
 
+	cursor: pointer;
+
 	transition-duration: 500ms;
 
 	border-radius: 5px;

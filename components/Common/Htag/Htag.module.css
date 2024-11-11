@@ -84,6 +84,20 @@
 	}
 }
 
+@media (max-width: 800px) {
+	.xxxl {
+		font-size: 55px;
+	}
+
+	.xxl {
+		font-size: 34px;
+	}
+
+	.xl {
+		font-size: 26px;
+	}
+}
+
 @media (max-width: 580px) {
 	.xxxl {
 		font-size: 50px;

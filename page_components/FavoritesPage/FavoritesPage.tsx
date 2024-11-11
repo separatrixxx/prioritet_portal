@@ -21,7 +21,7 @@ export const FavoritesPage = (): JSX.Element => {
                 }}
             />
             <div className={styles.wrapper}>
-                <Header type='favorites' />
+                <Header type='other' />
                 <Htag tag='xl' className={styles.favoriteTitle}>
                     {`${setLocale(router.locale).favorites} (${favorites.length})`}
                 </Htag>

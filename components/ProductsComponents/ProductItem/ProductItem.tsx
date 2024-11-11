@@ -8,17 +8,21 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { ProductPriceBlock } from '../ProductPriceBlock/ProductPriceBlock';
 import FavoriteIcon from './favorite.svg';
 import FavoriteFilledIcon from './favoriteFilled.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { checkFavorite, setFavorite } from '../../../helpers/favorites.helper';
-import cn from 'classnames';
 import { toggleFavorite } from '../../../features/favorites/favoritesSlice';
+import cn from 'classnames';
 
 
 export const ProductItem = ({ productId, type, name, description, price, url, isImage, isMain }: ProductItemProps): JSX.Element => {
     const { router, dispatch, filters, display } = useSetup();
 
     const [isHovered, setIsHovered] = useState<boolean>(false);
-    const [isFavorite, setIsFavorite] = useState<boolean>(checkFavorite(productId));
+    const [isFavorite, setIsFavorite] = useState<boolean>(false);
+
+    useEffect(() => {
+        setIsFavorite(checkFavorite(productId));
+    }, [productId]);
 
     let FavIcon = FavoriteIcon;
 

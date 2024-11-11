@@ -76,4 +76,13 @@ export const ru = {
     go_back: "Вернуться назад",
     filters: "Фильтры",
     show_more: "Показать больше",
+    in_cart: "В корзине",
+    total: "Итого",
+    pay: "Оплатить",
+    cart_is_empty: "Корзина пуста",
+    format_products: {
+        gen: "товаров",
+        nom: "товар",
+        sin: "товара",
+    },
 };

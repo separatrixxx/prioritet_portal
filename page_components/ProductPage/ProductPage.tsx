@@ -17,7 +17,7 @@ export const ProductPage = ({ product, commonProduct }: ProductPageProps): JSX.E
                 }}
             />
             <div className={styles.wrapper}>
-                <Header type='other' />
+                <Header type='product' />
                 <ProductInfo product={product} commonProduct={commonProduct} />
                 <Footer />
             </div>

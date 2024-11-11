@@ -1,0 +1,113 @@
+.cartController {
+	position: relative;
+
+	display: grid;
+	overflow: hidden;
+	align-items: center;
+
+	width: calc(100% - 40px);
+	height: 50px;
+	padding: 0 20px;
+
+	cursor: default;
+
+	border-radius: 5px;
+	grid-template-columns: 1fr 25px 1fr;
+	gap: 15px;
+	grid-area: cartController;
+	justify-items: center;
+}
+
+.smallController {
+	width: calc(100% - 20px);
+	height: 40px;
+	padding: 0 10px;
+	gap: 10px;
+}
+
+.cartController > div {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	pointer-events: none;
+
+	opacity: 0.15;
+	background: var(--second);
+}
+
+.controlIcon {
+	width: 24px;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+	fill: var(--second);
+}
+
+.smallController .controlIcon {
+	width: 18px;
+}
+
+.controlIcon:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.controlCountText {
+	user-select: none;
+
+	color: var(--second);
+
+	font-weight: 500;
+}
+
+@media (min-width: 1024px) {
+	.controlIcon:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
+@media (max-width: 1024px) {
+	.cartController {
+		width: calc(100% - 30px);
+		padding: 0 15px;
+	}
+}
+
+@media (max-width: 800px) {
+	.controlIcon {
+		width: 22px;
+	}
+}
+
+@media (max-width: 580px) {
+	.cartController {
+		width: calc(100% - 20px);
+		height: 40px;
+		padding: 0 10px;
+		gap: 10px;
+	}
+
+	.smallController {
+		height: 35px;
+	}
+}
+
+@media (max-width: 300px) {
+	.cartController {
+		width: calc(100% - 10px);
+		gap: 5px;
+
+		padding: 0 5px;
+	}
+
+	.controlIcon {
+		width: 18px;
+	}
+}

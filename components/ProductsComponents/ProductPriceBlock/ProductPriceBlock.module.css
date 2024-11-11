@@ -17,9 +17,10 @@
 	font-weight: 600;
 }
 
-.productButton,
 .productMobButton {
 	position: relative;
+
+	display: none;
 
 	overflow: hidden;
 	align-items: center;
@@ -38,103 +39,9 @@
 	justify-items: center;
 }
 
-.productButton {
-	display: grid;
-}
-
-.productButton > div {
-	width: 100%;
-	height: 100%;
-
-	transition-duration: 500ms;
-
-	opacity: 0.15;
-	background: var(--second);
-}
-
-.hoveredButton > div {
-	background: var(--light);
-}
-
-.productButton > svg {
-	position: absolute;
-
-	width: 24px;
-	fill: var(--second);
-
-	transition-duration: 500ms;
-}
-
-.hoveredButton > svg {
-	fill: var(--light);
-}
-
-.activeButton > div {
-	opacity: 1;
-}
-
-.activeButton > svg {
-	fill: var(--white);
-}
-
-.hoveredActiveButton > svg {
-	fill: var(--second);
-}
-
-.productButton:active > div {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	opacity: 1 !important;
-}
-
-.productButton:active > svg {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	fill: var(--white);
-}
-
-.hoveredButton:active > svg {
-	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-	fill: var(--second);
-}
-
-.productMobButton {
-	display: none;
-}
-
 @media (min-width: 1024px) {
-	.productButton:hover > div {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-		opacity: 1 !important;
-	}
-
-	.productButton:hover > svg {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-		fill: var(--white);
-	}
-
-	.hoveredButton:hover > svg {
-		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-
-		fill: var(--second);
-	}
-
 	.hoveredPrice {
 		color: var(--light);
-	}
-}
-
-@media (max-width: 1024px) {
-	.productButton {
-		width: 35px;
-		height: 35px;
-	}
-
-	.productButton > svg {
-		width: 22px;
 	}
 }
 
@@ -195,6 +102,18 @@
 		background: var(--second);
 	}
 
+	.cartMobButton > svg {
+		fill: var(--white);
+	}
+
+	.cartMobButton > div {
+		opacity: 0;
+	}
+
+	.cartMobButton .buyText {
+		color: var(--white);
+	}
+
 	.productMobButton:active {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -217,6 +136,10 @@
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		opacity: 0;
+	}
+
+	.cartMobButton {
+		background: var(--second);
 	}
 }
 

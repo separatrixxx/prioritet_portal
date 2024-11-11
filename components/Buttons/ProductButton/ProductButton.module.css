@@ -1,0 +1,119 @@
+.productButton {
+	position: relative;
+
+	display: grid;
+
+	overflow: hidden;
+	align-items: center;
+
+	width: 40px;
+	height: 40px;
+	padding: 0;
+
+	cursor: pointer;
+
+	border: none;
+
+	border-radius: 5px;
+	outline: none;
+	background: none;
+	justify-items: center;
+}
+
+.lSize {
+	width: 50px;
+	height: 50px;
+}
+
+.hoveredButton > div {
+	background: var(--light) !important;
+}
+
+.hoveredButton > svg {
+	fill: var(--light) !important;
+}
+
+.productButton > div {
+	width: 100%;
+	height: 100%;
+
+	transition-duration: 500ms;
+
+	opacity: 0.15;
+	background: var(--second);
+}
+
+.productButton > svg {
+	position: absolute;
+
+	width: 24px;
+	fill: var(--second);
+
+	transition-duration: 500ms;
+}
+
+.activeButton > div {
+	opacity: 1;
+}
+
+.activeButton > svg {
+	fill: var(--white);
+}
+
+.hoveredActiveButton > svg {
+	fill: var(--second) !important;
+}
+
+.productButton:active > div {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	opacity: 1 !important;
+}
+
+.productButton:active > svg {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--white) !important;
+}
+
+.hoveredButton:active > svg {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--second) !important;
+}
+
+@media (min-width: 1024px) {
+	.productButton:hover > div {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		opacity: 1 !important;
+	}
+
+	.productButton:hover > svg {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--white) !important;
+	}
+
+	.hoveredButton:hover > svg {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--second) !important;
+	}
+}
+
+@media (max-width: 1024px) {
+	.productButton {
+		width: 35px;
+		height: 35px;
+	}
+
+	.lSize {
+		width: 40px;
+		height: 40px;
+	}
+
+	.productButton > svg {
+		width: 22px;
+	}
+}

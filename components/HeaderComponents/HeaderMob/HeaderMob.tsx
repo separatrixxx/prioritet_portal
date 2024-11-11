@@ -1,6 +1,6 @@
 import { HeaderMobProps } from './HeaderMob.props';
 import styles from './HeaderMob.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSetup } from '../../../hooks/useSetup';
 import BackIcon from './back.svg';
@@ -18,7 +18,13 @@ import cn from 'classnames';
 export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
     const { router } = useSetup();
     
-    const previousUrl = usePreviousUrl();
+    const [previousUrl, setPreviousUrl] = useState<string>('/');
+    const prev = usePreviousUrl();
+
+    useEffect(() => {
+        setPreviousUrl(prev);
+    }, [prev]);
+    
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
     if (typeof window !== "undefined") {
@@ -35,7 +41,7 @@ export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
                         <>
                             {
                                 router.asPath !== '/' ?
-                                    <Link href={type === 'catalog' ? '/' : type === 'favorites' ? '/catalog' : previousUrl}
+                                    <Link href={type === 'catalog' ? '/' : type === 'product' ? '/catalog' : previousUrl}
                                         className={styles.headerButton}>
                                         <BackIcon />
                                     </Link>
