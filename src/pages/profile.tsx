@@ -4,7 +4,7 @@ import { setLocale } from '../../helpers/locale.helper';
 import { useSetup } from '../../hooks/useSetup';
 
 
-function Catalog(): JSX.Element {
+function Profile(): JSX.Element {
     const { router } = useSetup();
 
     return (
@@ -21,4 +21,4 @@ function Catalog(): JSX.Element {
     );
 }
 
-export default Catalog;
+export default Profile;

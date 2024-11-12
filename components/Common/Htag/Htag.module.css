@@ -3,7 +3,8 @@
 .xl,
 .l,
 .m,
-.s {
+.s,
+.xs {
 	width: fit-content;
 	margin: 0;
 
@@ -41,7 +42,7 @@
 }
 
 .xs {
-	font-size: 12px;
+	font-size: 14px;
 }
 
 @media (max-width: 1400px) {
@@ -80,7 +81,7 @@
 	}
 
 	.xs {
-		font-size: 10px;
+		font-size: 12px;
 	}
 }
 
@@ -124,7 +125,7 @@
 	}
 
 	.xs {
-		font-size: 8px;
+		font-size: 10px;
 	}
 }
 
@@ -152,10 +153,6 @@
 	.s {
 		font-size: 10px;
 	}
-
-	.xs {
-		font-size: 6px;
-	}
 }
 
 @media (max-width: 200px) {
@@ -181,5 +178,9 @@
 
 	.s {
 		font-size: 8px;
+	}
+
+	.xs {
+		font-size: 6px;
 	}
 }

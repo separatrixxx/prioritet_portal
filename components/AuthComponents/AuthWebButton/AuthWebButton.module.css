@@ -1,0 +1,50 @@
+.authButton {
+	position: relative;
+
+	display: grid;
+	align-items: center;
+
+	width: fit-content;
+	height: fit-content;
+	padding: 7px 15px;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	border-radius: 5px;
+	background: var(--light);
+	grid-template-columns: auto 1fr;
+	justify-items: center;
+	gap: 5px;
+}
+
+.authButton:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.authButton > svg {
+	width: 24px;
+	fill: var(--primary);
+}
+
+.authButtonText {
+	color: var(--primary);
+
+	font-weight: 500 !important;
+}
+
+@media (min-width: 1024px) {
+	.authButton:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
+@media (max-width: 1024px) {
+	.authButton {
+		display: none;
+	}
+}

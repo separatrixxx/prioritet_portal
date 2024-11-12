@@ -5,8 +5,9 @@ export const ToastSuccess = (message: string | undefined): void => {
         toast.error(message, {
             icon: '👍',
             style: {
-                borderRadius: '9999px',
-                color: 'var(--textDark)',
+                borderRadius: '5px',
+                color: 'var(--primary)',
+                fontWeight: 500,
             },
         });
     }
@@ -17,8 +18,9 @@ export const ToastError = (message: string | undefined): void => {
         toast.error(message, {
             icon: '👎',
             style: {
-                borderRadius: '9999px',
+                borderRadius: '5px',
                 color: 'var(--error)',
+                fontWeight: 500,
             },
         });
     }

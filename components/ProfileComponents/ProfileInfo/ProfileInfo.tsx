@@ -7,20 +7,36 @@ import { MyOrdersBlock } from '../MyOrdersBlock/MyOrdersBlock';
 import { ManagerBlock } from '../ManagerBlock/ManagerBlock';
 import LocationIcon from './location.svg';
 import WorkIcon from './work.svg';
+import { Button } from '../../Buttons/Button/Button';
+import { logOutUser } from '../../../helpers/auth.helper';
 
 
 export const ProfileInfo = ({ type }: ProfileInfoProps): JSX.Element => {
-    const { router } = useSetup();
+    const { router, dispatch, user } = useSetup();
+
+    if (!user.id) {
+        return (
+            <div className={styles.profileInfo}>
+                <Htag tag='l' className={styles.loginToViewText}>
+                    {setLocale(router.locale).login_to_view_profile}
+                </Htag>
+            </div>
+        );
+    }
 
     return (
         <div className={styles.profileInfo}>
             <div className={styles.nameDiv}>
                 <Htag tag='xl' className={styles.name}>
-                    {'Артём Бондаренко'}
+                    {`${user.first_name} ${user.last_name}`}
                 </Htag>
                 <Htag tag='m' className={styles.role}>
                     {setLocale(router.locale)[type]}
                 </Htag>
+                <Button text={setLocale(router.locale).log_out} isHeight={true}
+                    onClick={() => logOutUser({
+                        dispatch: dispatch,
+                    })} />
             </div>
             <div className={styles.profileInfoDiv}>
                 <div>
@@ -37,7 +53,7 @@ export const ProfileInfo = ({ type }: ProfileInfoProps): JSX.Element => {
                 </div>
             </div>
             {
-                type === 'customer' ?
+                type !== 'admin' ?
                     <MyOrdersBlock />
                 :
                     <ManagerBlock />

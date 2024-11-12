@@ -12,11 +12,12 @@ import { Search } from '../../SearchComponents/Search/Search';
 import { usePreviousUrl } from '../../../hooks/usePreviousUrl';
 import { HeaderMobLink } from '../HeaderMobLink/HeaderMobLink';
 import { setLocale } from '../../../helpers/locale.helper';
+import { AuthButton } from '../../AuthComponents/AuthButton/AuthButton';
 import cn from 'classnames';
 
 
 export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
-    const { router } = useSetup();
+    const { router, user } = useSetup();
     
     const [previousUrl, setPreviousUrl] = useState<string>('/');
     const prev = usePreviousUrl();
@@ -70,8 +71,12 @@ export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
                                 <HeaderMobLink link='catalog' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='favorites' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='cart' onClick={() => setIsMenuOpen(false)} />
-                                <HeaderMobLink link='profile' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='search' onClick={() => setIsMenuOpen(false)} />
+                                {
+                                    user.id ?
+                                        <HeaderMobLink link='profile' onClick={() => setIsMenuOpen(false)} />
+                                    : <AuthButton />
+                                }
                                 <div />
                             </motion.div>
                         )

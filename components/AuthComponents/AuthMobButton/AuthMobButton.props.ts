@@ -1,0 +1,6 @@
+import { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+
+
+export interface AuthMobButtonProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+	setIsActive: (e: boolean) => void,
+}

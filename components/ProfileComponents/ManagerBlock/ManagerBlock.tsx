@@ -2,7 +2,6 @@ import styles from './ManagerBlock.module.css';
 import { useSetup } from '../../../hooks/useSetup';
 import { Htag } from '../../Common/Htag/Htag';
 import { setLocale } from '../../../helpers/locale.helper';
-import { UserInterface } from '../../../interfaces/user.interface';
 import { Button } from '../../Buttons/Button/Button';
 import { ToastSuccess } from '../../Common/Toast/Toast';
 import { ManagerProductInterface } from '../../../interfaces/product.interface';
@@ -14,12 +13,12 @@ import { AttachFile } from '../../Common/AttachFile/AttachFile';
 export const ManagerBlock = (): JSX.Element => {
     const { router } = useSetup();
 
-    const users: UserInterface[] = [
+    const users = [
         {
             id: 1,
             name: 'Артём Бондаренко',
             email: 'arty@gmail.com',
-            role: 'manager',
+            role: 'buyer',
             location: 'Тбилиси',
             work: 'banana.codes',
         },
@@ -27,7 +26,7 @@ export const ManagerBlock = (): JSX.Element => {
             id: 2,
             name: 'Александр Евсин',
             email: 'a.evsin@gmail.com',
-            role: 'customer',
+            role: 'buyer',
             location: 'Батуми',
             work: 'banana.codes',
         },
@@ -117,7 +116,7 @@ export const ManagerBlock = (): JSX.Element => {
                                     </td>
                                     <td>
                                         <Htag tag='s'>
-                                            {setLocale(router.locale)[user.role as 'customer']}
+                                            {setLocale(router.locale)[user.role as 'buyer']}
                                         </Htag>
                                     </td>
                                     <td>

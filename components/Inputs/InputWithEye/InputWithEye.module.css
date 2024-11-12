@@ -1,0 +1,42 @@
+.label {
+	position: relative;
+
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+}
+
+.icon {
+	position: absolute;
+
+	right: 0;
+
+	width: 20px;
+	height: fit-content;
+
+	margin-right: 10px;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	fill: var(--darkLight);
+}
+
+.activeIcon {
+	fill: var(--primary);
+}
+
+.icon:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--primary);
+}
+
+@media (min-width: 1024px) {
+	.icon:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--primary);
+	}
+}

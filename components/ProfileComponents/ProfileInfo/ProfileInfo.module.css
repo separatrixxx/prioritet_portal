@@ -9,6 +9,12 @@
 	justify-items: left;
 }
 
+.loginToViewText {
+	color: var(--darkLight);
+
+	font-weight: 600;
+}
+
 .nameDiv {
 	display: grid;
 	gap: 5px;

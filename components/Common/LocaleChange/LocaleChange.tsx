@@ -12,7 +12,7 @@ import { useSetup } from '../../../hooks/useSetup';
 export const LocaleChange = (): JSX.Element => {
     const { router } = useSetup();
 
-    const [active, setActive] = useState<boolean>(false);
+    const [isActive, setIsActive] = useState<boolean>(false);
 
     const languages = [en, ru];
     const langIndex = languages.indexOf(setLocale(router.locale));
@@ -23,14 +23,14 @@ export const LocaleChange = (): JSX.Element => {
 
     return (
         <>
-            <Htag tag='m' className={styles.lang} onClick={() => setActive(true)}>
+            <Htag tag='m' className={styles.lang} onClick={() => setIsActive(true)}>
                 {setLocale(router.locale).language}
             </Htag>
-            <Modal active={active} setActive={setActive}>
+            <Modal isActive={isActive} setIsActive={setIsActive}>
                 <div className={styles.blockLanguages}>
                     {languages.map(m => (
                         <Link key={m.locale} href={router.asPath} locale={m.locale}
-                            onClick={() => setActive(false)} aria-label='change locale link'>
+                            onClick={() => setIsActive(false)} aria-label='change locale link'>
                             <Htag tag='l' className={styles.langLink}>{m.language}</Htag>
                         </Link>
                     ))}

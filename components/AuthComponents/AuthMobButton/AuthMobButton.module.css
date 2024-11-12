@@ -1,0 +1,46 @@
+.authButton {
+	display: grid;
+	align-items: center;
+
+	width: 100%;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+	grid-template-columns: 1fr auto;
+}
+
+.authButton:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.authButtonText {
+	color: var(--darkLight) !important;
+
+	font-weight: 500 !important;
+}
+
+.authButton > svg {
+	fill: var(--darkLight);
+
+	width: 30px;
+}
+
+@media (min-width: 1024px) {
+	.authButton {
+		display: none;
+	}
+}
+
+@media (max-width: 300px) {
+	.authButton > svg {
+		width: 20px;
+	}
+}
+
+@media (max-width: 200px) {
+	.authButton > svg {
+		display: none;
+	}
+}

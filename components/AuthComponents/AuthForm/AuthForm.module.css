@@ -1,0 +1,39 @@
+.authForm {
+	display: grid;
+	justify-items: center;
+	gap: 10px;
+
+	min-width: 30vw;
+}
+
+.authButton {
+	margin-top: 15px;
+}
+
+.authChange {
+	cursor: pointer;
+	user-select: none;
+	transition-duration: 500ms;
+
+	color: var(--darkLight);
+}
+
+.authChange:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+@media (min-width: 1024px) {
+	.authChange:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
+@media (max-width: 300px) {
+	.authForm {
+		gap: 5px;
+	}
+}

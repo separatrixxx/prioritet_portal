@@ -9,11 +9,12 @@ import { Search } from '../../SearchComponents/Search/Search';
 import { setLocale } from '../../../helpers/locale.helper';
 import { usePreviousUrl } from '../../../hooks/usePreviousUrl';
 import { useEffect, useState } from 'react';
+import { AuthButton } from '../../AuthComponents/AuthButton/AuthButton';
 import cn from 'classnames';
 
 
 export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
-    const { router } = useSetup();
+    const { router, user } = useSetup();
 
     const [previousUrl, setPreviousUrl] = useState<string>('/');
     const prev = usePreviousUrl();
@@ -57,7 +58,11 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
                         }
                     </>
             }
-            <HeaderWebLink type='profile' />
+            {
+                user.id ?
+                    <HeaderWebLink type='profile' />
+                : <AuthButton />
+            }
         </header>
     );
 };
