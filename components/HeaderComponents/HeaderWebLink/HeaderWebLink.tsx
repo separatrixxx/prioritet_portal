@@ -27,9 +27,9 @@ export const HeaderWebLink = ({ type }: HeaderWebLinkProps): JSX.Element => {
                 {setLocale(router.locale)[type as 'catalog']}
             </Htag>
             {
-                type === 'favorites' && favorites.length || type === 'cart' && cart.length ?
+                type === 'favorites' && favorites.length || type === 'cart' && cart.items_count > 0 ?
                     <Htag tag='xs' className={styles.totalProducts}>
-                        {type === 'favorites' ? favorites.length : cart.length}
+                        {type === 'favorites' ? favorites.length : cart.items_count}
                     </Htag>
                 : <></>
             }

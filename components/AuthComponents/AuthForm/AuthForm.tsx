@@ -33,8 +33,30 @@ export const AuthForm = ({ setIsActive }: AuthFormProps): JSX.Element => {
 
 	const [error, setError] = useState<CheckAuthInterface>(errType);
 
+    const handleAuth = () => {
+        checkAuth({
+            type: type,
+            router: router,
+            firstName: firstName,
+            lastName: lastName,
+            dispatch: dispatch,
+            email: email,
+            password: password,
+            confirmPassword: confirmPassword,
+            setError: setError,
+            setIsLoading: setIsLoading,
+            setIsActive: setIsActive,
+        });
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Enter') {
+            handleAuth();
+        }
+    };
+
     return (
-        <div className={styles.authForm}>
+        <div className={styles.authForm} onKeyDown={handleKeyDown} tabIndex={0}>
             {
                 type === 'login' ?
                     <LoginForm email={email} password={password} error={error}
@@ -45,19 +67,7 @@ export const AuthForm = ({ setIsActive }: AuthFormProps): JSX.Element => {
                     setPassword={setPassword} setConfirmPassword={setConfirmPassword} />
             }
             <Button className={styles.authButton} text={setLocale(router.locale)[type]}
-                isLoading={isLoading} isHeight={true} onClick={() => checkAuth({
-                    type: type,
-                    router: router,
-                    firstName: firstName,
-                    lastName: lastName,
-                    dispatch: dispatch,
-                    email: email,
-                    password: password,
-                    confirmPassword: confirmPassword,
-                    setError: setError,
-                    setIsLoading: setIsLoading,
-                    setIsActive: setIsActive,
-                })} />
+                isLoading={isLoading} isHeight={true} onClick={handleAuth} />
             <Htag tag='xs' className={styles.authChange}
                 onClick={() => setType(type === 'login' ? 'register' : 'login')}>
                 {setLocale(router.locale)[type === 'login' ? 'create_account' : 'login_to_your_account']}

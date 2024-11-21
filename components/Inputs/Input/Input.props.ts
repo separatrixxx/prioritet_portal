@@ -2,7 +2,7 @@ import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 
 export interface InputProps extends DetailedHTMLProps<HTMLAttributes<HTMLInputElement>, HTMLInputElement> {
-	type: 'text' | 'email' | 'password',
+	type: 'text' | 'email' | 'phone' | 'password',
 	text: string,
 	value: string,
 	isError?: boolean,

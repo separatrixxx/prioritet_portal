@@ -1,17 +1,17 @@
 import axios, { AxiosResponse } from "axios";
-import { BaseArguments } from "../interfaces/refactor.interface";
+import { BaseArguments, GetUserArguments } from "../interfaces/refactor.interface";
 import { UserInterface } from "../interfaces/user.interface";
 import { setUser, setUserDefault } from "../features/user/userSlice";
 
 
-export async function getUser(accessToken: string, args: BaseArguments, triedRefresh = false) {
-    const { dispatch } = args;
+export async function getUser(args: GetUserArguments, triedRefresh = false) {
+    const { userId, accessToken, dispatch } = args;
 
     try {
         dispatch(setUserDefault());
 
         const { data: response }: AxiosResponse<UserInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
-            '/users/get/2/profile',
+            `/users/get/${userId}/profile`,
             {
                 headers: {
                     Authorization: `Bearer ${accessToken}`,
@@ -20,8 +20,6 @@ export async function getUser(accessToken: string, args: BaseArguments, triedRef
 
         dispatch(setUser(response));
     } catch (err) {
-        console.error('Get user error: ' + err);
-
         if (!triedRefresh) {
             const refreshToken = localStorage.getItem('refresh_token');
             
@@ -29,13 +27,20 @@ export async function getUser(accessToken: string, args: BaseArguments, triedRef
                 const newAccessToken = await refreshUserToken(refreshToken, args);
 
                 if (newAccessToken) {
-                    return getUser(newAccessToken, args, true);
+                    getUser({
+                        userId: userId,
+                        accessToken: newAccessToken,
+                        dispatch: dispatch,
+                    }, true);
+                } else {
+                    localStorage.removeItem('authData');
                 }
             }
+        } else {
+            localStorage.removeItem('authData');
         }
 
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
+        console.error('Get user error: ' + err);
     }
 }
 
@@ -59,9 +64,6 @@ export async function refreshUserToken(refreshToken: string, args: BaseArguments
         if (err.response?.data?.error_code !== 'USER_EXISTS') {
             console.error('Refresh token error: ' + err);
         }
-
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
     }
 
     return null;

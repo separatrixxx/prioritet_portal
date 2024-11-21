@@ -1,74 +1,200 @@
-export async function setLocalCart(productId: number): Promise<void> {
-    if (typeof window !== 'undefined') {
-        let cart = getCart();
+import axios, { AxiosResponse } from "axios";
+import { setCart, setCartDefault } from "../features/cart/cartSlice";
+import { CartIdItem, UserCartsInterface } from "../interfaces/cart.interface";
+import { BaseArguments, CartAddArguments, GetUserArguments, UpdateCartArguments } from "../interfaces/refactor.interface";
 
-        const existingProduct = cart.find(item => item.id === productId);
 
-        if (existingProduct) {
-            cart = cart.filter(item => item.id !== productId);
-        } else {
-            cart.push({ id: productId, count: 1 });
+export async function getUserCart(args: GetUserArguments) {
+    const { userId, accessToken, dispatch } = args;
+
+    try {
+        const { data: response }: AxiosResponse<UserCartsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
+            `/users/get/${userId}/carts`,
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+
+        if (response.total_count === 0) {
+            createUserCart(userId, accessToken);
         }
 
-        localStorage.setItem('cart', JSON.stringify(cart));
+        getCartById(response.carts[0].id, {
+            dispatch: dispatch,
+        });
+    } catch (err) {
+        console.error('Get user cart error: ' + err);
     }
 }
 
-export function cartLocalPlus(productId: number, maxCount: number): void {
-    if (typeof window !== 'undefined') {
-        let cart = getCart();
+export async function getGuestCart(guestId: string | null, args: BaseArguments) {
+    const { dispatch } = args;
 
-        const product = cart.find(item => item.id === productId);
+    try {
+        const { data: response }: AxiosResponse<UserCartsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
+            '/cart/get/guest_active_cart?guest_id=' + guestId,
+        );
 
-        if (product) {
-            if (product.count < maxCount) {
-                product.count += 1;
+        if (response.total_count === 0) {
+            createGuestCart(guestId);
+        }
+
+        getCartById(response.carts[0].id, {
+            dispatch: dispatch,
+        });
+    } catch (err) {
+        console.error('Get guest cart error: ' + err);
+    }
+}
+
+export async function getCartById(cartId: number, args: BaseArguments) {
+    const { dispatch } = args;
+
+    try {
+        dispatch(setCartDefault());
+
+        const { data: response }: AxiosResponse<UserCartsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
+            '/cart/get/cart?cart_id=' + cartId,
+        );
+        console.log(response)
+
+        dispatch(setCart(response));
+    } catch (err) {
+        console.error('Get cart by id error: ' + err);
+    }
+}
+
+export async function createUserCart(userId: number, accessToken: string | null) {
+    try {
+        await axios.post(process.env.NEXT_PUBLIC_DOMAIN +
+            `/users/create/${userId}/cart`, {},
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+    } catch (err) {
+        console.error('Create cart error: ' + err);
+    }
+}
+
+export async function createGuestCart(guestId: string | null) {
+    try {
+        await axios.post(process.env.NEXT_PUBLIC_DOMAIN +
+            '/cart/create/guest_cart?guest_id=' + guestId,
+        );
+    } catch (err) {
+        console.error('Create guest error: ' + err);
+    }
+}
+
+export async function addCart(args: CartAddArguments) {
+    const { productId, cart, dispatch } = args;
+
+    const updatedItems: CartIdItem[] = [...cart.items.map(item => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+    }))];
+
+    const existingItem = updatedItems.find(item => item.product_id === productId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        updatedItems.push({
+            product_id: productId,
+            quantity: 1,
+        });
+    }
+
+    updateCart({
+        cartId: cart.id,
+        items: updatedItems,
+        dispatch: dispatch,
+    });
+}
+
+export async function removeCart(args: CartAddArguments) {
+    const { productId, cart, dispatch } = args;
+
+    const updatedItems: CartIdItem[] = cart.items
+        .filter(item => item.product_id !== productId)
+        .map(item => ({
+            product_id: item.product_id,
+            quantity: item.quantity,
+        }));
+
+    updateCart({
+        cartId: cart.id,
+        items: updatedItems,
+        dispatch: dispatch,
+    });
+}
+
+export async function minusCart(args: CartAddArguments) {
+    const { productId, cart, dispatch } = args;
+
+    const updatedItems: CartIdItem[] = [...cart.items.map(item => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+    }))];
+
+    const existingItem = updatedItems.find(item => item.product_id === productId);
+
+    if (existingItem) {
+        if (existingItem.quantity > 1) {
+            existingItem.quantity -= 1;
+        } else {
+            const index = updatedItems.indexOf(existingItem);
+
+            updatedItems.splice(index, 1);
+        }
+    }
+
+    updateCart({
+        cartId: cart.id,
+        items: updatedItems,
+        dispatch: dispatch,
+    });
+}
+
+export async function plusCart(args: CartAddArguments) {
+    const { productId, cart, dispatch } = args;
+
+    const updatedItems: CartIdItem[] = [...cart.items.map(item => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+    }))];
+
+    const existingItem = updatedItems.find(item => item.product_id === productId);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+    }
+
+    updateCart({
+        cartId: cart.id,
+        items: updatedItems,
+        dispatch: dispatch,
+    });
+}
+
+export async function updateCart(args: UpdateCartArguments) {
+    const { cartId, items, dispatch } = args;
+
+    try {
+        await axios.patch(process.env.NEXT_PUBLIC_DOMAIN +
+            '/cart/update/cart?cart_id=' + cartId,
+            {
+                items: items,
             }
-        } else {
-            cart.push({ id: productId, count: 1 });
-        }
+        );
 
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
-}
-
-export function cartLocalMinus(productId: number): void {
-    if (typeof window !== 'undefined') {
-        let cart = getCart();
-
-        const productIndex = cart.findIndex(item => item.id === productId);
-        if (productIndex !== -1) {
-            const product = cart[productIndex];
-
-            product.count -= 1;
-        }
-
-        localStorage.setItem('cart', JSON.stringify(cart));
-    }
-}
-
-export function getCart(): { id: number, count: number }[] {
-    if (typeof window !== 'undefined') {
-        const cart = localStorage.getItem('cart');
-        
-        return cart ? JSON.parse(cart) : [];
-    }
-
-    return [];
-}
-
-export function checkCart(productId: number): boolean {
-    const cart = getCart();
-
-    return cart.some(item => item.id === productId);
-}
-
-export function removeFromCart(productId: number): void {
-    if (typeof window !== 'undefined') {
-        let cart = getCart();
-
-        cart = cart.filter(item => item.id !== productId);
-
-        localStorage.setItem('cart', JSON.stringify(cart));
+        getCartById(cartId, {
+            dispatch: dispatch,
+        });
+    } catch (err) {
+        console.error('Update cart error: ' + err);
     }
 }

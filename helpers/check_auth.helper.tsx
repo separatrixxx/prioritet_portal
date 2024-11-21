@@ -5,6 +5,8 @@ import { loginUser, registerUser } from "./auth.helper";
 import { setLocale } from "./locale.helper";
 
 
+const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
+
 export function checkAuth(args: CheckAuthArguments) {
     const { type, router, dispatch, firstName, lastName, email, password, confirmPassword,
         setError, setIsLoading, setIsActive } = args;
@@ -44,8 +46,6 @@ export function checkAuth(args: CheckAuthArguments) {
         });
     }
 }
-
-const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
 
 export function checkLogin(checkAuth: CheckAuthInterface, args: LoginArguments) {
     const { router, dispatch, email, password, setError, setIsLoading } = args;

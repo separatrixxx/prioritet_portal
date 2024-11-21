@@ -11,7 +11,7 @@ import { OrderBlock } from '../../components/CartComponents/OrderBlock/OrderBloc
 
 export const CartPage = (): JSX.Element => {
     const { router, cart } = useSetup();
-    
+        
     return (
         <>
             <Toaster
@@ -24,7 +24,7 @@ export const CartPage = (): JSX.Element => {
             <div className={styles.wrapper}>
                 <Header type='other' />
                 <Htag tag='xl' className={styles.cartTitle}>
-                    {`${setLocale(router.locale).cart} (${cart.length})`}
+                    {`${setLocale(router.locale).cart} (${cart.items_count > 0 ? cart.items_count : 0})`}
                 </Htag>
                 <div className={styles.cartDiv}>
                     <CartList />

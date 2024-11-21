@@ -1,0 +1,64 @@
+.buttonLight {
+	display: grid;
+	align-items: center;
+	justify-content: center;
+
+	height: fit-content;
+	padding: 10.4px 15px;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	border: none;
+
+	border-radius: 5px;
+	outline: none;
+	background: var(--lightSecond);
+}
+
+.buttonLight > h1 {
+	color: var(--second);
+
+	font-weight: 600;
+}
+
+.buttonLight:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.95);
+}
+
+.spinner {
+	width: 10px;
+	height: 10px;
+
+	animation: spin 1s linear infinite;
+
+	border: 2px solid var(--white);
+	border-top: 2px solid var(--second);
+	border-radius: 50%;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+@media (min-width: 1024px) {
+	.buttonLight:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		filter: brightness(0.95);
+	}
+}
+
+@media (max-width: 1024px) {
+	.buttonLight {
+		padding: 7px 15px;
+	}
+}
+
+@media (max-width: 580px) {
+	.buttonLight {
+		padding: 5px 15px;
+	}
+}

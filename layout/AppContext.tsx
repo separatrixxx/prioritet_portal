@@ -2,9 +2,10 @@ import { createContext, useContext, useEffect } from 'react';
 import { setFavorites } from '../features/favorites/favoritesSlice';
 import { getFavorites } from '../helpers/favorites.helper';
 import { useSetup } from '../hooks/useSetup';
-import { setCart } from '../features/cart/cartSlice';
-import { getCart } from '../helpers/cart.helper';
-import { getUser, refreshUserToken } from '../helpers/user.helper';
+import { getUser } from '../helpers/user.helper';
+import { getGuestId } from '../helpers/guest.helper';
+import { AuthDataInterface } from '../interfaces/auth.interface';
+import { getGuestCart, getUserCart } from '../helpers/cart.helper';
 
 
 const AppContext = createContext<undefined>(undefined);
@@ -13,14 +14,26 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const { dispatch } = useSetup();
 
     useEffect(() => {
-        const accessToken = localStorage.getItem('access_token');
-        const refreshToken = localStorage.getItem('refresh_token');
+        const localAuthData = localStorage.getItem('authData');
         
         dispatch(setFavorites(getFavorites()));
-        dispatch(setCart(getCart()));
 
-        if (accessToken && refreshToken) {
-            getUser(accessToken, {
+        if (localAuthData) {
+            const authData: AuthDataInterface = JSON.parse(localAuthData);
+
+            getUser({
+                userId: authData.userId,
+                accessToken: authData.accessToken,
+                dispatch: dispatch,
+            });
+
+            getUserCart({
+                userId: authData.userId,
+                accessToken: authData.accessToken,
+                dispatch: dispatch,
+            });
+        } else {
+            getGuestId({
                 dispatch: dispatch,
             });
         }

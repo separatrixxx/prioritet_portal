@@ -1,5 +1,5 @@
 .attachFileContainer {
-	display: flex;
+	display: grid;
 	align-items: center;
 	justify-content: center;
 }
@@ -9,23 +9,22 @@
 }
 
 .customAttachFile {
-	display: flex;
+	display: grid;
 	align-items: center;
 	justify-content: center;
 
-	height: 30px;
-	padding: 5px 15px;
+	height: fit-content;
+	padding: 10px 15px;
 
 	cursor: pointer;
 	transition-duration: 500ms;
 
-	border: 2px solid var(--second);
 	border-radius: 5px;
-	background: var(--white);
+	background: var(--lightSecond);
 }
 
 .customAttachFile > h1 {
-	color: var(--darkLight);
+	color: var(--second);
 
 	font-weight: 600;
 }
@@ -33,13 +32,25 @@
 .customAttachFile:active {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	border-color: var(--primary);
+	filter: brightness(0.95);
 }
 
 @media (min-width: 1024px) {
 	.customAttachFile:hover {
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-		border-color: var(--primary);
+		filter: brightness(0.95);
+	}
+}
+
+@media (max-width: 1024px) {
+	.customAttachFile {
+		padding: 7px 15px;
+	}
+}
+
+@media (max-width: 580px) {
+	.customAttachFile {
+		padding: 5px 15px;
 	}
 }

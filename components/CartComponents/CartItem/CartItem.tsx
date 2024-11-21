@@ -10,13 +10,12 @@ import { ProductButton } from '../../Buttons/ProductButton/ProductButton';
 import { useEffect, useState } from 'react';
 import { checkFavorite, setFavorite } from '../../../helpers/favorites.helper';
 import { toggleFavorite } from '../../../features/favorites/favoritesSlice';
-import { removeCart } from '../../../features/cart/cartSlice';
-import { removeFromCart } from '../../../helpers/cart.helper';
+import { removeCart } from '../../../helpers/cart.helper';
 import cn from 'classnames';
 
 
 export const CartItem = ({ productId, name, url, price }: CartItemProps): JSX.Element => {
-    const { dispatch } = useSetup();
+    const { dispatch, cart } = useSetup();
 
     const [isFavorite, setIsFavorite] = useState<boolean>(false);
 
@@ -41,16 +40,18 @@ export const CartItem = ({ productId, name, url, price }: CartItemProps): JSX.El
                     {name}
                 </Htag>
                 <div className={styles.cartPriceDiv}>
-                    <CartController productId={productId} isCart={true} setIsCart={() => {}} />
+                    <CartController productId={productId} isCart={true} />
                     <ProductButton className={styles.favoriteButton} type='favorite' flag={isFavorite} onClick={() => {
                             dispatch(toggleFavorite(productId));
                             setIsFavorite(!isFavorite);
                             setFavorite(productId);
                         }} />
-                    <ProductButton className={styles.removeButton} type='remove' onClick={() => {
-                            dispatch(removeCart(productId));
-                            removeFromCart(productId);
-                        }} />
+                    <ProductButton className={styles.removeButton} type='remove' onClick={() => 
+                        removeCart({
+                            productId: productId,
+                            cart: cart,
+                            dispatch: dispatch,
+                        })} />
                     <Htag tag='l' className={cn(styles.cartText, styles.productPrice)}>
                         {formatPrice(price || 0)}
                     </Htag>

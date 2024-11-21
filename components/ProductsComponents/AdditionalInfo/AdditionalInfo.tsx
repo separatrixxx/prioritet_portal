@@ -16,6 +16,11 @@ export const AdditionalInfo = ({ product }: AdditionalInfoProps): JSX.Element =>
                 {setLocale(router.locale).additional_information + ':'}
             </Htag>
             <div className={styles.additionalInfoDiv}>
+                <AdditionalInfoItem text={setLocale(router.locale).related_products}
+                    item={product.result.related_products?.map(p => ({
+                        name: p.name,
+                        url: `/product/${p.id}`
+                    }))} />
                 <AdditionalInfoItem text={setLocale(router.locale).types.active_ingredient}
                     item={product.result.related_active_ingredient?.map(i => ({
                         name: i.name,

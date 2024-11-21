@@ -16,3 +16,7 @@ export interface UserInterface {
     phone_verified: boolean,
     created_at: string,
 }
+
+export interface GuestInterface {
+    id: string,
+}

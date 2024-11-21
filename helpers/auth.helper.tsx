@@ -3,6 +3,10 @@ import { ToastError, ToastSuccess } from "../components/Common/Toast/Toast";
 import { setLocale } from "./locale.helper";
 import axios from "axios";
 import { setUser, setUserDefault } from "../features/user/userSlice";
+import { AuthDataInterface } from "../interfaces/auth.interface";
+import { setCartDefault } from "../features/cart/cartSlice";
+import { getUserCart } from "./cart.helper";
+import { getGuestId } from "./guest.helper";
 
 
 export async function loginUser(args: LoginArguments) {
@@ -17,23 +21,35 @@ export async function loginUser(args: LoginArguments) {
             setIsLoading(false);
             dispatch(setUser(r.data));
 
-            localStorage.setItem('access_token', r.data.access_token);
-            localStorage.setItem('refresh_token', r.data.refresh_token);
+            const authData: AuthDataInterface = {
+                userId: r.data.id,
+                accessToken: r.data.access_token,
+                refreshToken: r.data.refresh_token,
+            }
+
+            getUserCart({
+                userId: authData.userId,
+                accessToken: authData.accessToken,
+                dispatch: dispatch,
+            });
+
+            localStorage.removeItem('guestId');
+            localStorage.setItem('authData', JSON.stringify(authData));
         });
     } catch (err: any) {
-        if (err.response.data.error_code === 'USER_NOT_FOUND') {
+        if (err.response.data && err.response.data.error_code === 'USER_NOT_FOUND') {
             setError({
                 errEmail: true,
             });
 
             ToastError(setLocale(router.locale).auth_errors.error_not_found);
-        } else if (err.response.data.error_code === 'INVALID_CREDENTIALS') {
+        } else if (err.response.data && err.response.data.error_code === 'INVALID_CREDENTIALS') {
             setError({
                 errPassword: true,
             });
 
             ToastError(setLocale(router.locale).auth_errors.error_incorrect_password);
-        } else if (err.response.data.error_code === 'ACCOUNT_PENDING_APPROVAL') {
+        } else if (err.response.data && err.response.data.error_code === 'ACCOUNT_PENDING_APPROVAL') {
              ToastError(setLocale(router.locale).auth_errors.error_verify);
         } else {
             ToastError(setLocale(router.locale).auth_errors.error_login);
@@ -41,13 +57,12 @@ export async function loginUser(args: LoginArguments) {
 
         setIsLoading(false);
 
-        console.log(err)
         console.error('Login user error: ' + err);
     }
 }
 
 export async function registerUser(args: RegisterArguments) {
-    const { router, dispatch, firstName, lastName, email, password,
+    const { router, firstName, lastName, email, password,
         setError, setIsLoading, setIsActive } = args;
 
     try {
@@ -64,7 +79,7 @@ export async function registerUser(args: RegisterArguments) {
             ToastSuccess(setLocale(router.locale).confirmation_letter_sent_to_email);
         });
     } catch (err: any) {
-        if (err.response.data.error_code === 'USER_EXISTS') {
+        if (err.response.data && err.response.data.error_code === 'USER_EXISTS') {
             setError({
                 errEmail: true,
             });
@@ -84,7 +99,11 @@ export function logOutUser(args: BaseArguments) {
     const { dispatch } = args;
 
     dispatch(setUserDefault());
+    dispatch(setCartDefault());
 
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    getGuestId({
+        dispatch: dispatch,
+    });
+
+    localStorage.removeItem('authData');
 }

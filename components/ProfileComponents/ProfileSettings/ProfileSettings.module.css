@@ -1,0 +1,37 @@
+.profileSettings {
+	display: grid;
+	gap: 5px;
+	justify-items: left;
+}
+
+.settingsTitle {
+	color: var(--primary);
+
+	font-weight: 500;
+}
+
+.settingsText {
+	color: var(--darkLight);
+
+	font-weight: 500;
+}
+
+.settingsText,
+.editUserButton {
+	margin-top: 15px;
+}
+
+.emailToggle {
+	margin: 5px 0;
+}
+
+.logOutButton {
+	background: var(--error) !important;
+}
+
+@media (max-width: 580px) {
+	.settingsText,
+	.editUserButton {
+		margin-top: 10px;
+	}
+}

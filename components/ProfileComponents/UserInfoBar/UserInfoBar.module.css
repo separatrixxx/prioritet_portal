@@ -1,0 +1,20 @@
+.userInfoBar {
+	display: grid;
+	align-items: center;
+	gap: 40px;
+	grid-template-columns: auto auto 1fr;
+}
+
+@media (max-width: 1024px) {
+	.userInfoBar {
+		gap: 20px 30px;
+		grid-template-columns: auto 1fr;
+	}
+}
+
+@media (max-width: 580px) {
+	.userInfoBar {
+		gap: 20px;
+		grid-template-columns: auto;
+	}
+}

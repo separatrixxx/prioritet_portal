@@ -1,0 +1,42 @@
+.userTableBlock {
+	display: grid;
+
+	width: 100%;
+
+	justify-items: left;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.userTableTitle {
+	color: var(--primary);
+
+	font-weight: 600;
+}
+
+.loadDiv {
+	display: grid;
+
+	width: 100%;
+	grid-template-columns: 1fr auto auto;
+	justify-items: right;
+	gap: 20px;
+}
+
+@media (max-width: 1024px) {
+	.loadDiv {
+		gap: 15px;
+	}
+}
+
+@media (max-width: 580px) {
+	.userTableBlock {
+		margin-top: 10px;
+	}
+
+	.loadDiv {
+		gap: 10px;
+		grid-template-columns: auto;
+		justify-items: left;
+	}
+}

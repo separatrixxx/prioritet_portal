@@ -7,22 +7,19 @@ import { setLocale } from '../../../helpers/locale.helper';
 
 
 export const CartList = (): JSX.Element => {
-    const { router, products, cart } = useSetup();
-
-    const cartIds = new Set(cart.map((c) => c.id));
-    const filteredProducts = products.results.filter((product) => cartIds.has(product.id));
+    const { router, cart } = useSetup();
 
     return (
         <>
             {
-                cart.length === 0 ?
+                cart.items_count && cart.items_count === 0 ?
                     <Htag tag='m' className={styles.emptyText}>
                         {setLocale(router.locale).cart_is_empty}
                     </Htag>
-                : products.total_count > 0 ?
+                : !cart.items_count || cart.items_count > 0 ?
                     <div className={styles.cartList}>
-                        {filteredProducts.map(p =>
-                            <CartItem key={p.id} productId={p.id} name={p.name} price={p.price}
+                        {cart.items.map(c =>
+                            <CartItem key={c.product_id} productId={c.product_id} name={c.name} price={c.price}
                                 url={'/logo.svg'} />
                         )}
                     </div>

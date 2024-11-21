@@ -8,22 +8,9 @@ import { ToastSuccess } from '../../Common/Toast/Toast';
 
 
 export const OrderBlock = (): JSX.Element => {
-    const { router, products, cart } = useSetup();
+    const { router, cart } = useSetup();
 
-    const cartIds = new Set(cart.map((c) => c.id));
-    const filteredProducts = products.results.filter((product) => cartIds.has(product.id));
-
-    const totalCount = cart.reduce((total, item) => total + item.count, 0);
-
-    const totalPrice = cart.reduce((total, item) => {
-        const product = filteredProducts.find(p => p.id === item.id);
-
-        if (product && product.price) {
-            return total + product.price * item.count;
-        }
-
-        return total;
-    }, 0)
+    const total = cart.items.reduce((acc, item) => acc + item.quantity, 0);
 
     return (
         <div className={styles.orderBlock}>
@@ -31,12 +18,12 @@ export const OrderBlock = (): JSX.Element => {
                 {setLocale(router.locale).total}
             </Htag>
             <Htag tag='l' className={styles.orderText}>
-                {`${totalCount} ${setLocale(router.locale).format_products[formatText(totalCount)]}`}
-                <span>{formatPrice(totalPrice)}</span>
+                {`${total} ${setLocale(router.locale).format_products[formatText(total)]}`}
+                <span>{formatPrice(cart.totals.total_with_vat)}</span>
             </Htag>
-            <Button text={setLocale(router.locale)[cart.length ? 'buy' : 'catalog']} isPrimary={true} isHeight={true}
+            <Button text={setLocale(router.locale)[cart.items_count ? 'buy' : 'catalog']} isPrimary={true} isHeight={true}
                 onClick={() => {
-                    if (cart.length) {
+                    if (cart.items_count) {
                         ToastSuccess('Перенаправление на оформление заказа');
                     } else {
                         router.push('/catalog');

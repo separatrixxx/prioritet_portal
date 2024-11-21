@@ -21,6 +21,9 @@ export interface ProductById {
         product_category: number[] | null,
         product_class: string[] | null,
         description: string | null,
+        product_additional_info: {
+
+        },
         sklad_price: number | null,
         sklad_price_change: {
             [key: string]: {
@@ -48,6 +51,7 @@ export interface ProductById {
         related_harmful: RelatedItem[] | null,
         related_proceed: RelatedItem[] | null,
         related_active_ingredient: RelatedItem[] | null,
+        related_products: RelatedProductItem[] | null,
     }
 }
 
@@ -64,6 +68,21 @@ export interface RelatedItem {
     id: number,
     name: string,
     description: string,
+}
+
+export interface RelatedProductItem {
+    id: number,
+    name: string,
+    description: string,
+    price: number,
+    availability: boolean,
+    similarity_score: {
+        active_ingredient: number,
+        harmful: number,
+        proceed: number,
+        registrants: number,
+    },
+    rank: number,
 }
 
 export interface ManagerProductInterface {

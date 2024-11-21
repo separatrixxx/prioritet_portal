@@ -31,4 +31,16 @@ export function formatText(count: number): 'gen' | 'nom' | 'sin' {
     
     return 'gen';
 };
-  
+
+export function formatPhone(phone: string): string {
+  const digits = phone.replace(/\D/g, '');
+
+  if (digits.length === 11 && (digits.startsWith('8') || digits.startsWith('7'))) {
+      const normalized = digits.replace(/^8/, '7');
+
+      return `+${normalized[0]} (${normalized.slice(1, 4)}) ${normalized.slice(4, 7)}-${normalized.slice(7, 9)}-${normalized.slice(9)}`;
+  }
+
+  return phone;
+}
+

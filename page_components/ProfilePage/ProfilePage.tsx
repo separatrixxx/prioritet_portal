@@ -20,7 +20,7 @@ export const ProfilePage = (): JSX.Element => {
             />
             <div className={styles.wrapper}>
                 <Header type='other' />
-                <ProfileInfo type={user.role} />
+                <ProfileInfo />
                 <Footer />
             </div>
         </>

@@ -6,7 +6,7 @@ export const ToastSuccess = (message: string | undefined): void => {
             icon: '👍',
             style: {
                 borderRadius: '5px',
-                color: 'var(--primary)',
+                color: 'var(--second)',
                 fontWeight: 500,
             },
         });

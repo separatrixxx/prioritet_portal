@@ -8,22 +8,22 @@ import { useSetup } from '../../../hooks/useSetup';
 import { checkFavorite, setFavorite } from '../../../helpers/favorites.helper';
 import { useEffect, useState } from 'react';
 import { toggleFavorite } from '../../../features/favorites/favoritesSlice';
-import { checkCart, setLocalCart } from '../../../helpers/cart.helper';
-import { toggleCart } from '../../../features/cart/cartSlice';
 import { ProductButton } from '../../Buttons/ProductButton/ProductButton';
+import { CartByIdItem } from '../../../interfaces/cart.interface';
+import { addCart } from '../../../helpers/cart.helper';
 import cn from 'classnames';
 
 
 export const ProductPriceBlock = ({ productId, price, isMain, isHovered }: ProductPriceBlockProps): JSX.Element => {
-    const { router, dispatch, display } = useSetup();
+    const { router, dispatch, display, cart } = useSetup();
 
     const [isFavorite, setIsFavorite] = useState<boolean>(false);
     const [isCart, setIsCart] = useState<boolean>(false);
 
     useEffect(() => {
         setIsFavorite(checkFavorite(productId));
-        setIsCart(checkCart(productId));
-    }, [productId]);
+        setIsCart(cart.items.some((item: CartByIdItem) => item.product_id === productId));
+    }, [cart, productId]);
 
     return (
         <div className={cn(styles.productPriceBlock, {
@@ -46,9 +46,11 @@ export const ProductPriceBlock = ({ productId, price, isMain, isHovered }: Produ
             <ProductButton className={styles.productButton} type='buy' flag={isCart}
                 isHovered={isHovered} onClick={() => {
                     if (!isCart) {
-                        dispatch(toggleCart(productId));
-                        setIsCart(true);
-                        setLocalCart(productId);
+                        addCart({
+                            productId: productId,
+                            cart: cart,
+                            dispatch: dispatch,
+                        });
                     } else {
                         router.push('/cart');
                     }
@@ -57,9 +59,11 @@ export const ProductPriceBlock = ({ productId, price, isMain, isHovered }: Produ
                 [styles.cartMobButton]: isCart,
             })} onClick={() => {
                     if (!isCart) {
-                        dispatch(toggleCart(productId));
-                        setIsCart(true);
-                        setLocalCart(productId);
+                        addCart({
+                            productId: productId,
+                            cart: cart,
+                            dispatch: dispatch,
+                        });
                     } else {
                         router.push('/cart');
                     }

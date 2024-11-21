@@ -1,0 +1,30 @@
+.userCompanyInfo {
+	display: grid;
+	gap: 5px;
+	justify-items: left;
+}
+
+.infoTitle {
+	color: var(--primary);
+
+	font-weight: 500;
+}
+
+.companyInfoTitle,
+.companyInfoText {
+	color: var(--darkLight);
+}
+
+.companyInfoTitle {
+	margin-top: 15px;
+}
+
+.companyInfoText {
+	font-weight: 500;
+}
+
+@media (max-width: 580px) {
+	.companyInfoTitle {
+		margin-top: 10px;
+	}
+}

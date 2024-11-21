@@ -1,0 +1,69 @@
+.userInfoItem {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 10px;
+
+	align-items: center;
+}
+
+.userInfoText {
+	color: var(--darkLight);
+}
+
+.verifiedText {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 5px;
+
+	align-items: center;
+}
+
+.verifiedText > svg {
+	fill: var(--second);
+
+	width: 25px;
+	margin-top: 4px;
+}
+
+.companyInfo {
+	cursor: pointer;
+	transition-duration: 500ms;
+}
+
+.companyInfo:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--second);
+}
+
+@media (min-width: 1024px) {
+	.companyInfo:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--second);
+	}
+}
+
+@media (max-width: 1024px) {
+	.verifiedText > svg {
+		width: 20px;
+		margin-top: 3px;
+	}
+}
+
+@media (max-width: 580px) {
+	.verifiedText > svg {
+		width: 17px;
+	}
+}
+
+@media (max-width: 300px) {
+	.verifiedText {
+		gap: 3px;
+	}
+
+	.verifiedText > svg {
+		width: 15px;
+		margin-top: 2px;
+	}
+}

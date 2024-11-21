@@ -5,15 +5,14 @@ import { useState } from 'react';
 import PlusIcon from './plus.svg';
 import MinusIcon from './minus.svg';
 import { Htag } from '../../Common/Htag/Htag';
-import { cartLocalPlus, cartLocalMinus, removeFromCart } from '../../../helpers/cart.helper';
-import { minusCart, plusCart, removeCart } from '../../../features/cart/cartSlice';
+import { minusCart, plusCart, removeCart } from '../../../helpers/cart.helper';
 import cn from 'classnames';
 
 
-export const CartController = ({ productId, isCart, setIsCart }: CartControllerProps): JSX.Element => {
+export const CartController = ({ productId, isCart }: CartControllerProps): JSX.Element => {
     const { dispatch, cart } = useSetup();
 
-    const [count, setCount] = useState<number>(cart.find(item => item.id === productId)?.count || 0);
+    const count = cart.items.find(item => item.product_id === productId)?.quantity || 0;
     
     const maxCount = 10;
 
@@ -26,13 +25,17 @@ export const CartController = ({ productId, isCart, setIsCart }: CartControllerP
             }}>
             <MinusIcon className={styles.controlIcon} onClick={() => {
                     if (count > 1) {
-                        dispatch(minusCart(productId));
-                        setCount(count - 1);
-                        cartLocalMinus(productId);
+                        minusCart({
+                            productId: productId,
+                            cart: cart,
+                            dispatch: dispatch,
+                        });
                     } else {
-                        dispatch(removeCart(productId));
-                        setIsCart(false);
-                        removeFromCart(productId);
+                        removeCart({
+                            productId: productId,
+                            cart: cart,
+                            dispatch: dispatch,
+                        });
                     }
                 }} />
             <Htag tag={!isCart ? 'm' : 's'} className={styles.controlCountText} >
@@ -40,9 +43,11 @@ export const CartController = ({ productId, isCart, setIsCart }: CartControllerP
             </Htag>
             <PlusIcon className={styles.controlIcon} onClick={() => {
                     if (count < maxCount) {
-                        dispatch(plusCart(productId));
-                        setCount(count + 1);
-                        cartLocalPlus(productId, maxCount);
+                        plusCart({
+                            productId: productId,
+                            cart: cart,
+                            dispatch: dispatch,
+                        });
                     }
                 }} />
             <div />

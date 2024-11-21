@@ -33,10 +33,17 @@ export const Modal = ({ isActive, setIsActive, children }: ModalProps): JSX.Elem
 
         document.addEventListener('keydown', handleEsc);
 
+        if (isActive) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+
         return () => {
             document.removeEventListener('keydown', handleEsc);
+            document.body.style.overflow = '';
         };
-    }, [setIsActive]);
+    }, [isActive, setIsActive]);
 
     return (
         <motion.div className={cn(styles.modal, {

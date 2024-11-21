@@ -2,19 +2,10 @@ import { CartPage } from '../../page_components/CartPage/CartPage';
 import Head from 'next/head';
 import { setLocale } from '../../helpers/locale.helper';
 import { useSetup } from '../../hooks/useSetup';
-import { getProducts } from '../../helpers/products.helper';
-import { useEffect } from 'react';
 
 
 function Cart(): JSX.Element {
-    const { router, dispatch, filters } = useSetup();
-
-    useEffect(() => {       
-        getProducts({
-          dispatch: dispatch,
-          filters: filters,
-        });
-      }, [filters, dispatch]);
+    const { router } = useSetup();
 
     return (
         <>
