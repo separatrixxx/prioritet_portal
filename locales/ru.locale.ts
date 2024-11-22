@@ -133,5 +133,5 @@ export const ru = {
     order_successfully_created: "Заказ успешно создан",
     status: "Статус",
     you_have_not_had_orders: "У вас пока нет заказов",
-    return_to_home_page: "вернуться на главную",
+    to_main_page: "на главную",
 };
