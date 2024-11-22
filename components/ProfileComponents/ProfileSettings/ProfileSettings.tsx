@@ -10,6 +10,7 @@ import { CheckSettingsInterface } from '../../../interfaces/auth.interface';
 import { Button } from '../../Buttons/Button/Button';
 import { checkEditUser } from '../../../helpers/edit_user.helper';
 import { Toggle } from '../../Common/Toggle/Toggle';
+import SettingsIcon from './settings.svg';
 import { logOutUser } from '../../../helpers/auth.helper';
 
 
@@ -72,7 +73,7 @@ export const ProfileSettings = (): JSX.Element => {
 
     return (
         <>
-            <Icon type='settings' onClick={() => setIsActive(true)} />
+            <SettingsIcon className={styles.settingsButton} onClick={() => setIsActive(true)} />
             <Modal isActive={isActive} setIsActive={setIsActive}>
                 <div className={styles.profileSettings} onKeyDown={handleKeyDown} tabIndex={0}>
                     <Htag tag='l' className={styles.settingsTitle}>

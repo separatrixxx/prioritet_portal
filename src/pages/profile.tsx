@@ -4,16 +4,27 @@ import { setLocale } from '../../helpers/locale.helper';
 import { useSetup } from '../../hooks/useSetup';
 import { useEffect } from 'react';
 import { getUserOrders } from '../../helpers/orders.helper';
+import { setFiltersDefault } from '../../features/filters/filtersSlice';
+import { setDisplay } from '../../features/display/displaySlice';
+import { getProducts } from '../../helpers/products.helper';
 
 
 function Profile(): JSX.Element {
-    const { router, dispatch, user } = useSetup();
+    const { router, dispatch, user, filters } = useSetup();
 
     useEffect(() => {
+        dispatch(setFiltersDefault());
+        dispatch(setDisplay('grid'));
+        
         getUserOrders({
             dispatch: dispatch,
         });
-    }, [user.id, dispatch]);
+
+        getProducts({
+            dispatch: dispatch,
+            filters: filters,
+        });
+    }, [user.id, filters, dispatch]);
 
     return (
         <>

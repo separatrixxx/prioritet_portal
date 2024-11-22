@@ -7,7 +7,6 @@ import { Htag } from '../../Common/Htag/Htag';
 import Link from 'next/link';
 import { Search } from '../../SearchComponents/Search/Search';
 import { setLocale } from '../../../helpers/locale.helper';
-import { usePreviousUrl } from '../../../hooks/usePreviousUrl';
 import { useEffect, useState } from 'react';
 import { AuthButton } from '../../AuthComponents/AuthButton/AuthButton';
 import cn from 'classnames';
@@ -16,24 +15,17 @@ import cn from 'classnames';
 export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
     const { router, user } = useSetup();
 
-    const [previousUrl, setPreviousUrl] = useState<string>('/');
-    const prev = usePreviousUrl();
-
-    useEffect(() => {
-        setPreviousUrl(prev);
-    }, [prev]);
-
     return (
         <header className={cn(styles.header, {
             [styles.mainHeader]: type === 'main',
         })}>
             {
                 type !== 'main' ?
-                    <Link href={type === 'catalog' ? '/' : type === 'product' ? '/catalog' : previousUrl}
+                    <Link href={type === 'product' ? '/catalog' : '/'}
                         className={styles.backLink}>
                         <BackIcon />
                         <Htag tag='s'>
-                            {setLocale(router.locale).go_back}
+                            {setLocale(router.locale)[type === 'product' ? 'to_catalog' : 'to_main_page']}
                         </Htag>
                     </Link>
                 : <></>

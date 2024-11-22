@@ -1,10 +1,7 @@
 .profileInfo {
 	display: grid;
 
-	width: calc(100% - 80px);
-	height: fit-content;
-	margin: 100px 0 20px 0;
-	padding: 20px 40px;
+	width: 100%;
 
 	gap: 40px;
 
@@ -26,14 +23,14 @@
 
 .name {
 	display: grid;
-	align-items: start;
+	align-items: center;
 
 	width: 100%;
 
 	color: var(--primary);
 
 	font-weight: 600;
-	grid-template-columns: 1fr auto;
+	grid-template-columns: auto 1fr;
 	gap: 20px;
 }
 
@@ -72,27 +69,15 @@
 	color: var(--darkLight);
 }
 
-@media (max-width: 1400px) {
-	.profileInfo {
-		width: calc(100% - 60px);
-		padding: 30px;
-	}
-}
-
 @media (max-width: 1024px) {
-	.profileInfo {
-		width: calc(100% - 40px);
-		margin-top: 80px;
-		padding: 20px;
+	.name {
+		gap: 15px;
 	}
 }
 
 @media (max-width: 580px) {
 	.profileInfo {
-		width: calc(100% - 30px);
-		margin-bottom: 10px;
-		padding: 20px 15px;
-		gap: 30px;
+		gap: 20px;
 	}
 
 	.profileInfoDiv {
@@ -101,9 +86,7 @@
 }
 
 @media (max-width: 300px) {
-	.profileInfo {
-		width: calc(100% - 20px);
-		margin-top: 65px;
-		padding: 15px 10px;
+	.name {
+		gap: 10px;
 	}
 }

@@ -1,0 +1,50 @@
+.interestingProductsDiv {
+	display: grid;
+	gap: 20px;
+	justify-items: left;
+}
+
+.interestingProductsDiv > h1 {
+	color: var(--primary);
+
+	font-weight: 600;
+}
+
+.interestingProducts {
+	display: grid;
+
+	width: 100%;
+	gap: 20px;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 1400px) {
+	.interestingProducts {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media (max-width: 1024px) {
+	.interestingProducts {
+		gap: 15px;
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media (max-width: 800px) {
+	.interestingProducts {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 580px) {
+	.interestingProducts {
+		gap: 10px;
+	}
+}
+
+@media (max-width: 300px) {
+	.interestingProducts {
+		grid-template-columns: auto;
+	}
+}

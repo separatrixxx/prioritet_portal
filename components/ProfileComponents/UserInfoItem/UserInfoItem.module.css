@@ -22,7 +22,7 @@
 	fill: var(--second);
 
 	width: 25px;
-	margin-top: 4px;
+	margin-top: 3px;
 }
 
 .companyInfo {
@@ -47,13 +47,13 @@
 @media (max-width: 1024px) {
 	.verifiedText > svg {
 		width: 20px;
-		margin-top: 3px;
 	}
 }
 
 @media (max-width: 580px) {
 	.verifiedText > svg {
 		width: 17px;
+		margin-top: 2px;
 	}
 }
 
@@ -64,6 +64,5 @@
 
 	.verifiedText > svg {
 		width: 15px;
-		margin-top: 2px;
 	}
 }

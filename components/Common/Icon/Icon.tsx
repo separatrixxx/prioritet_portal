@@ -3,7 +3,6 @@ import styles from './Icon.module.css';
 import EmailIcon from './email.svg';
 import PhoneIcon from './phone.svg';
 import CompanyIcon from './company.svg';
-import SettingsIcon from './settings.svg';
 import cn from 'classnames';
 
 
@@ -17,7 +16,7 @@ export const Icon = ({ type, onClick }: IconProps): JSX.Element => {
     } else if (type === 'company_name') {
         UserInfoIcon = CompanyIcon;
     } else {
-        UserInfoIcon = SettingsIcon;
+        UserInfoIcon = EmailIcon;
     }
 
     return (

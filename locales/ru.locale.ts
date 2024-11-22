@@ -133,5 +133,7 @@ export const ru = {
     order_successfully_created: "Заказ успешно создан",
     status: "Статус",
     you_have_not_had_orders: "У вас пока нет заказов",
-    to_main_page: "на главную",
+    to_main_page: "На главную",
+    to_catalog: "В каталог",
+    you_might_be_interested: "Вас заинтересует",
 };

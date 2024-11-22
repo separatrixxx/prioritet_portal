@@ -133,5 +133,7 @@ export const en = {
     order_successfully_created: "Order successfully created",
     status: "Status",
     you_have_not_had_orders: "You haven't had any orders yet",
-    to_main_page: "to home page",
+    to_main_page: "To home page",
+    to_catalog: "To catalog",
+    you_might_be_interested: "You might be interested",
 };

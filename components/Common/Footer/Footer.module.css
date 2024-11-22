@@ -13,7 +13,6 @@
 }
 
 .footer > h1,
-.footerText,
 .footerLink > h1 {
 	color: var(--darkLight) !important;
 

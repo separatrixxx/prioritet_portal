@@ -9,7 +9,6 @@ import CloseIcon from './close.svg';
 import { Htag } from '../../Common/Htag/Htag';
 import Link from 'next/link';
 import { Search } from '../../SearchComponents/Search/Search';
-import { usePreviousUrl } from '../../../hooks/usePreviousUrl';
 import { HeaderMobLink } from '../HeaderMobLink/HeaderMobLink';
 import { setLocale } from '../../../helpers/locale.helper';
 import { AuthButton } from '../../AuthComponents/AuthButton/AuthButton';
@@ -18,13 +17,6 @@ import cn from 'classnames';
 
 export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
     const { router, user } = useSetup();
-    
-    const [previousUrl, setPreviousUrl] = useState<string>('/');
-    const prev = usePreviousUrl();
-
-    useEffect(() => {
-        setPreviousUrl(prev);
-    }, [prev]);
     
     const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
@@ -42,7 +34,7 @@ export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
                         <>
                             {
                                 router.asPath !== '/' ?
-                                    <Link href={type === 'catalog' ? '/' : type === 'product' ? '/catalog' : previousUrl}
+                                    <Link href={type === 'product' ? '/catalog' : '/'}
                                         className={styles.headerButton}>
                                         <BackIcon />
                                     </Link>

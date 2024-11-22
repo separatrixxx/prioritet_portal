@@ -20,7 +20,7 @@
 
 .backLink {
 	display: grid;
-	align-items: center;
+	align-items: start;
 
 	width: fit-content;
 

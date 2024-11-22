@@ -56,7 +56,7 @@
 	}
 
 	.productButton {
-		display: none;
+		display: none !important;
 	}
 
 	.productMobButton {

@@ -4,6 +4,22 @@
 	justify-items: left;
 }
 
+.settingsButton {
+	width: 35px;
+	margin-top: 7px;
+
+	cursor: pointer;
+
+	transition-duration: 500ms;
+	fill: var(--second);
+}
+
+.settingsButton:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
 .settingsTitle {
 	color: var(--primary);
 
@@ -29,9 +45,31 @@
 	background: var(--error) !important;
 }
 
+@media (min-width: 1024px) {
+	.settingsButton:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
+@media (max-width: 1024px) {
+	.settingsButton {
+		width: 30px;
+		margin-top: 5px;
+	}
+}
+
 @media (max-width: 580px) {
 	.settingsText,
 	.editUserButton {
 		margin-top: 10px;
+	}
+}
+
+@media (max-width: 300px) {
+	.settingsButton {
+		width: 25px;
+		margin-bottom: 1px;
 	}
 }

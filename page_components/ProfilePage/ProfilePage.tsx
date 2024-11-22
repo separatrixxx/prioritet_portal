@@ -4,6 +4,7 @@ import { Footer } from '../../components/Common/Footer/Footer';
 import { useSetup } from '../../hooks/useSetup';
 import { ProfileInfo } from '../../components/ProfileComponents/ProfileInfo/ProfileInfo';
 import { Header } from '../../components/HeaderComponents/Header/Header';
+import { InterestingProducts } from '../../components/ProductsComponents/InterestingProducts/InterestingProducts';
 
 
 export const ProfilePage = (): JSX.Element => {
@@ -20,7 +21,10 @@ export const ProfilePage = (): JSX.Element => {
             />
             <div className={styles.wrapper}>
                 <Header type='other' />
-                <ProfileInfo />
+                <div className={styles.profileDiv}>
+                    <ProfileInfo />
+                    <InterestingProducts />
+                </div>
                 <Footer />
             </div>
         </>
