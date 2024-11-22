@@ -9,7 +9,7 @@ const EMAIL_REGEXP = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@((
 
 export function checkAuth(args: CheckAuthArguments) {
     const { type, router, dispatch, firstName, lastName, email, password, confirmPassword,
-        setError, setIsLoading, setIsActive } = args;
+        setError, setIsLoading, setType } = args;
 
     let checkAuth: CheckAuthInterface = {
         errFirstName: false,
@@ -42,7 +42,7 @@ export function checkAuth(args: CheckAuthArguments) {
             confirmPassword: confirmPassword,
             setError: setError,
             setIsLoading: setIsLoading,
-            setIsActive: setIsActive,
+            setType: setType,
         });
     }
 }
@@ -78,7 +78,7 @@ export function checkLogin(checkAuth: CheckAuthInterface, args: LoginArguments) 
 
 export function checkRegister(checkAuth: CheckAuthInterface, args: RegisterArguments) {
     const { router, dispatch, firstName, lastName, email, password, confirmPassword,
-        setError, setIsLoading, setIsActive } = args;
+        setError, setIsLoading, setType } = args;
 
     if (firstName.trim() && lastName.trim() && EMAIL_REGEXP.test(email)&& password.length >= 8
         && password.length <= 32 && password === confirmPassword) {
@@ -92,7 +92,7 @@ export function checkRegister(checkAuth: CheckAuthInterface, args: RegisterArgum
             confirmPassword: confirmPassword,
             setError: setError,
             setIsLoading: setIsLoading,
-            setIsActive: setIsActive,
+            setType: setType,
         });
     } else {
         if (!firstName.trim()) {

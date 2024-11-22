@@ -6,40 +6,40 @@ import { UserInfoBar } from '../UserInfoBar/UserInfoBar';
 import { UserTableBlock } from '../UserTableBlock/UserTableBlock';
 import { TableDataInterface } from '../../../interfaces/table.interface';
 import { formatPrice } from '../../../helpers/format.helper';
-import { OrderInterface } from '../../../interfaces/orders.interface';
 import { ManagerProductInterface } from '../../../interfaces/product.interface';
 import { ProfileSettings } from '../ProfileSettings/ProfileSettings';
 
 
 export const ProfileInfo = (): JSX.Element => {
-    const { router, user } = useSetup();
+    const { router, user, orders } = useSetup();
+    console.log(orders)
 
-    const orders: OrderInterface[] = [
-        {
-            orderId: 1,
-            productId: '80',
-            name: 'Абига-Пик ВС(400г/л) 1,25кг',
-            quantity: 3,
-            total_price: 9000,
-            date: '21.10.2024',
-        },
-        {
-            orderId: 2,
-            productId: '82',
-            name: 'Абсолют Дуст ( 10кг)',
-            quantity: 5,
-            total_price: 15000,
-            date: '04.10.2024',
-        },
-        {
-            orderId: 3,
-            productId: '89',
-            name: 'Авентрол, КЭ(960г/л) 10л',
-            quantity: 1,
-            total_price: 3000,
-            date: '13.09.2024',
-        },
-    ];
+    // const orders: OrderInterface[] = [
+    //     {
+    //         orderId: 1,
+    //         productId: '80',
+    //         name: 'Абига-Пик ВС(400г/л) 1,25кг',
+    //         quantity: 3,
+    //         total_price: 9000,
+    //         date: '21.10.2024',
+    //     },
+    //     {
+    //         orderId: 2,
+    //         productId: '82',
+    //         name: 'Абсолют Дуст ( 10кг)',
+    //         quantity: 5,
+    //         total_price: 15000,
+    //         date: '04.10.2024',
+    //     },
+    //     {
+    //         orderId: 3,
+    //         productId: '89',
+    //         name: 'Авентрол, КЭ(960г/л) 10л',
+    //         quantity: 1,
+    //         total_price: 3000,
+    //         date: '13.09.2024',
+    //     },
+    // ];
 
     const users = [
         {
@@ -76,17 +76,13 @@ export const ProfileInfo = (): JSX.Element => {
     const ordersHeaders = [
         setLocale(router.locale).order_date,
         setLocale(router.locale).order_id,
-        setLocale(router.locale).product_name,
-        setLocale(router.locale).quantity,
-        setLocale(router.locale).price,
+        setLocale(router.locale).status,
     ];
 
-    const ordersData: TableDataInterface[][] = orders.map(o => [
-        { text: o.date },
-        { text: String(o.orderId), isActive: true },
-        { text: o.name, link: `/product/${o.productId}` },
-        { text: String(o.quantity) },
-        { text: formatPrice(o.total_price) },
+    const ordersData: TableDataInterface[][] = orders.orders.map(o => [
+        { text: o.created_at },
+        { text: String(o.id), isActive: true },
+        { text: o.status },
     ]);
 
     const usersHeaders = [
@@ -144,7 +140,8 @@ export const ProfileInfo = (): JSX.Element => {
             {
                 user.role !== 'admin' ?
                     <UserTableBlock type='orders' title={setLocale(router.locale).my_orders}
-                        headers={ordersHeaders} data={ordersData} />
+                        headers={ordersHeaders} data={ordersData} isReady={orders.total_count > -1} />
+
                 :
                     <>
                         <UserTableBlock type='users' title={setLocale(router.locale).users}

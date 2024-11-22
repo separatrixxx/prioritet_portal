@@ -8,7 +8,6 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { Input } from '../../Inputs/Input/Input';
 import { CheckSettingsInterface } from '../../../interfaces/auth.interface';
 import { Button } from '../../Buttons/Button/Button';
-import { checkRegister } from '../../../helpers/check_auth.helper';
 import { checkEditUser } from '../../../helpers/edit_user.helper';
 import { Toggle } from '../../Common/Toggle/Toggle';
 import { logOutUser } from '../../../helpers/auth.helper';
@@ -128,7 +127,7 @@ export const ProfileSettings = (): JSX.Element => {
                     <Button className={styles.editUserButton} text={setLocale(router.locale).save}
                         isLoading={isLoading} isHeight={true} onClick={handleEditUser} />
                     <Button className={styles.logOutButton} text={setLocale(router.locale).log_out}
-                        isLoading={isLoading} isHeight={true} onClick={() => logOutUser({
+                        isLoading={isLoading} isHeight={true} onClick={() => logOutUser(router, {
                             dispatch: dispatch,
                         })} />
                 </div>

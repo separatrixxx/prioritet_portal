@@ -20,15 +20,15 @@ export interface CheckAuthArguments extends BaseArguments {
     confirmPassword: string,
     setError: (e: CheckAuthInterface) => void,
     setIsLoading: (e: boolean) => void,
-    setIsActive: (e: boolean) => void,
+    setType: (e: 'login' | 'register') => void,
 }
 
 export interface LoginArguments extends
     Pick<CheckAuthArguments, 'router' | 'dispatch' | 'email' | 'password' | 'setError' | 'setIsLoading'> { };
 
-export interface RegisterArguments extends Omit<CheckAuthArguments, 'type'> { };
+export interface RegisterArguments extends Omit<CheckAuthArguments, 'type'> {};
 
-export interface EditUserArguments extends Omit<RegisterArguments, 'password' | 'confirmPassword'> {
+export interface EditUserArguments extends Omit<RegisterArguments, 'password' | 'confirmPassword' | 'setType'> {
     userId: number,
     middleName: string,
     phone: string,
@@ -39,6 +39,7 @@ export interface EditUserArguments extends Omit<RegisterArguments, 'password' | 
     position: string,
     notificationsEmail: boolean,
     notificationsPhone: boolean,
+    setIsActive: (e: boolean) => void,
 };
 
 export interface GetUserArguments extends BaseArguments {
@@ -54,4 +55,13 @@ export interface CartAddArguments extends BaseArguments {
 export interface UpdateCartArguments extends BaseArguments {
     cartId: number,
     items: CartIdItem[],
+}
+
+export interface AssignCartArguments {
+    userId: number,
+    accessToken: string | null,
+}
+
+export interface CreateOrderArguments extends Omit<GetUserArguments, 'accessToken'> {
+    cartId: number,
 }

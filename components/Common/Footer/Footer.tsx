@@ -12,9 +12,17 @@ export const Footer = (): JSX.Element => {
 
     return (
         <footer className={styles.footer}>
-            <Htag tag='s'>
-                {'© ' + setFooterYear(2024) + ' ' + setLocale(router.locale).prioritet_portal}
-            </Htag>
+            <div className={styles.footerDiv}>
+                <Htag tag='s' className={styles.footerText}>
+                    {'© ' + setFooterYear(2024) + ' ' + setLocale(router.locale).prioritet_portal}
+                </Htag>
+                <Link href='/' className={styles.footerLink}
+                    aria-label='footer main link'>
+                    <Htag tag='xs'>
+                        {setLocale(router.locale).return_to_home_page}
+                    </Htag>
+                </Link>
+            </div>
             <Link href='/' className={styles.footerLink}
                 aria-label='footer legal information link'>
                 <Htag tag='s'>

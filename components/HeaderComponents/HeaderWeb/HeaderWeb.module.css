@@ -15,7 +15,7 @@
 }
 
 .mainHeader {
-	grid-template-columns: 1fr 1fr repeat(2, auto);
+	grid-template-columns: 1fr 1fr repeat(3, auto);
 }
 
 .backLink {

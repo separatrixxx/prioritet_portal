@@ -113,6 +113,7 @@ export const ru = {
     password: "Пароль",
     confirm_password: "Подтвердите пароль",
     confirmation_letter_sent_to_email: "Письмо с подтверждением было отправлено на вашу почту",
+    you_have_successfully_registered: "Вы успешно зарегистрировались",
     company_info: "Информация о компании",
     company_name: "Название",
     company_inn: "ИНН",
@@ -128,4 +129,9 @@ export const ru = {
     contact_details: "Контактные данные",
     notifications: "Уведомления",
     sms: "СМС",
+    login_to_profile_to_place_order: "Войдите в свой профиль, чтобы оформить заказ",
+    order_successfully_created: "Заказ успешно создан",
+    status: "Статус",
+    you_have_not_had_orders: "У вас пока нет заказов",
+    return_to_home_page: "вернуться на главную",
 };

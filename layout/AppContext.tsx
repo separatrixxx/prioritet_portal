@@ -5,7 +5,7 @@ import { useSetup } from '../hooks/useSetup';
 import { getUser } from '../helpers/user.helper';
 import { getGuestId } from '../helpers/guest.helper';
 import { AuthDataInterface } from '../interfaces/auth.interface';
-import { getGuestCart, getUserCart } from '../helpers/cart.helper';
+import { getUserCart } from '../helpers/cart.helper';
 
 
 const AppContext = createContext<undefined>(undefined);

@@ -7,4 +7,5 @@ export interface UserTableBlockProps extends DetailedHTMLProps<HTMLAttributes<HT
     title: string,
     headers: string[],
     data: TableDataInterface[][],
+    isReady?: boolean,
 }

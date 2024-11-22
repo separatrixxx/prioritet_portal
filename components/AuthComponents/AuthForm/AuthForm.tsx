@@ -45,7 +45,7 @@ export const AuthForm = ({ setIsActive }: AuthFormProps): JSX.Element => {
             confirmPassword: confirmPassword,
             setError: setError,
             setIsLoading: setIsLoading,
-            setIsActive: setIsActive,
+            setType: setType,
         });
     };
 

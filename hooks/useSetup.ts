@@ -15,6 +15,7 @@ export const useSetup = () => {
     const favorites = useSelector((state: AppState) => state.favorites.favorites);
     const cart = useSelector((state: AppState) => state.cart.cart);
     const user = useSelector((state: AppState) => state.user.user);
+    const orders = useSelector((state: AppState) => state.orders.orders);
 
     return {
         router,
@@ -27,5 +28,6 @@ export const useSetup = () => {
         favorites,
         cart,
         user,
+        orders,
     };
 };

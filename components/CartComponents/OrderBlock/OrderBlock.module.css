@@ -10,7 +10,8 @@
 	gap: 5px;
 }
 
-.totalText {
+.totalText,
+.loginToOrderText {
 	color: var(--darkLight);
 }
 

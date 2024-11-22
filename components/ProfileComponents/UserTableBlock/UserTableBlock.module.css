@@ -23,6 +23,10 @@
 	gap: 20px;
 }
 
+.haveNotText {
+	color: var(--darkLight);
+}
+
 @media (max-width: 1024px) {
 	.loadDiv {
 		gap: 15px;

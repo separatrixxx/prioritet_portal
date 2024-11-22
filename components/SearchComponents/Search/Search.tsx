@@ -81,6 +81,9 @@ export const Search = ({ isHeader }: SearchProps): JSX.Element => {
                     type='text'
                     name='text search'
                     aria-label='text search'
+                    readOnly={true}
+                    onFocus={(e) => e.target.removeAttribute('readonly')}
+                    autoComplete='off'
                 />
                 <SearchIcon className={styles.searchIcon} />
                 {

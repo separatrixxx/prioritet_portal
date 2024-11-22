@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { setCart, setCartDefault } from "../features/cart/cartSlice";
 import { CartIdItem, UserCartsInterface } from "../interfaces/cart.interface";
-import { BaseArguments, CartAddArguments, GetUserArguments, UpdateCartArguments } from "../interfaces/refactor.interface";
+import { AssignCartArguments, BaseArguments, CartAddArguments, GetUserArguments, UpdateCartArguments } from "../interfaces/refactor.interface";
 
 
 export async function getUserCart(args: GetUserArguments) {
@@ -16,11 +16,11 @@ export async function getUserCart(args: GetUserArguments) {
                 },
             });
 
-        if (response.total_count === 0) {
+        if (response.carts.filter(c => c.status === 'active').length === 0) {
             createUserCart(userId, accessToken);
         }
 
-        getCartById(response.carts[0].id, {
+        getCartById(response.carts.filter(c => c.status === 'active')[0].id, {
             dispatch: dispatch,
         });
     } catch (err) {
@@ -36,11 +36,11 @@ export async function getGuestCart(guestId: string | null, args: BaseArguments) 
             '/cart/get/guest_active_cart?guest_id=' + guestId,
         );
 
-        if (response.total_count === 0) {
+        if (!response.id && response.carts.length === 0) {
             createGuestCart(guestId);
         }
 
-        getCartById(response.carts[0].id, {
+        getCartById((response.id ? response.id : response.carts[0].id), {
             dispatch: dispatch,
         });
     } catch (err) {
@@ -57,7 +57,6 @@ export async function getCartById(cartId: number, args: BaseArguments) {
         const { data: response }: AxiosResponse<UserCartsInterface> = await axios.get(process.env.NEXT_PUBLIC_DOMAIN +
             '/cart/get/cart?cart_id=' + cartId,
         );
-        console.log(response)
 
         dispatch(setCart(response));
     } catch (err) {
@@ -196,5 +195,23 @@ export async function updateCart(args: UpdateCartArguments) {
         });
     } catch (err) {
         console.error('Update cart error: ' + err);
+    }
+}
+
+export async function assignCart(args: AssignCartArguments) {
+    const { userId, accessToken } = args;
+
+    const guestId = localStorage.getItem('guestId');
+
+    try {
+        await axios.patch(process.env.NEXT_PUBLIC_DOMAIN +
+            `/cart/update/${userId}/assing_to_user?guest_id=${guestId}`, {},
+            {
+                headers: {
+                    Authorization: `Bearer ${accessToken}`,
+                },
+            });
+    } catch (err) {
+        console.error('Assign cart error: ' + err);
     }
 }

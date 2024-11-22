@@ -2,11 +2,12 @@ import { BaseArguments, LoginArguments, RegisterArguments } from "../interfaces/
 import { ToastError, ToastSuccess } from "../components/Common/Toast/Toast";
 import { setLocale } from "./locale.helper";
 import axios from "axios";
-import { setUser, setUserDefault } from "../features/user/userSlice";
+import { setUserDefault } from "../features/user/userSlice";
 import { AuthDataInterface } from "../interfaces/auth.interface";
 import { setCartDefault } from "../features/cart/cartSlice";
-import { getUserCart } from "./cart.helper";
+import { assignCart, getGuestCart, getUserCart } from "./cart.helper";
 import { getGuestId } from "./guest.helper";
+import { getUser } from "./user.helper";
 
 
 export async function loginUser(args: LoginArguments) {
@@ -19,13 +20,23 @@ export async function loginUser(args: LoginArguments) {
             password: password
         }).then(r => {
             setIsLoading(false);
-            dispatch(setUser(r.data));
 
             const authData: AuthDataInterface = {
                 userId: r.data.id,
                 accessToken: r.data.access_token,
                 refreshToken: r.data.refresh_token,
             }
+
+            assignCart({
+                userId: authData.userId,
+                accessToken: authData.accessToken,
+            });
+
+            getUser({
+                userId: authData.userId,
+                accessToken: authData.accessToken,
+                dispatch: dispatch,
+            });
 
             getUserCart({
                 userId: authData.userId,
@@ -63,7 +74,7 @@ export async function loginUser(args: LoginArguments) {
 
 export async function registerUser(args: RegisterArguments) {
     const { router, firstName, lastName, email, password,
-        setError, setIsLoading, setIsActive } = args;
+        setError, setIsLoading, setType } = args;
 
     try {
         await axios.post(process.env.NEXT_PUBLIC_DOMAIN +
@@ -74,9 +85,9 @@ export async function registerUser(args: RegisterArguments) {
             last_name: lastName,
         }).then(() => {
             setIsLoading(false);
-            setIsActive(false);
+            setType('login');
             
-            ToastSuccess(setLocale(router.locale).confirmation_letter_sent_to_email);
+            ToastSuccess(setLocale(router.locale).you_have_successfully_registered);
         });
     } catch (err: any) {
         if (err.response.data && err.response.data.error_code === 'USER_EXISTS') {
@@ -95,8 +106,10 @@ export async function registerUser(args: RegisterArguments) {
     }
 }
 
-export function logOutUser(args: BaseArguments) {
+export function logOutUser(router: any, args: BaseArguments) {
     const { dispatch } = args;
+    
+    router.reload();
 
     dispatch(setUserDefault());
     dispatch(setCartDefault());

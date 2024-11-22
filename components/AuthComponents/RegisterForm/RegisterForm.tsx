@@ -32,7 +32,7 @@ export const RegisterForm = ({ firstName, lastName, email, password, confirmPass
             </InputWithEye>
             <InputWithEye isActive={pswdConfType === 'text'}
                 onClick={() => setPswdConfType(pswdConfType === 'text' ? 'password' : 'text')}>
-                <Input type={pswdType} text={setLocale(router.locale).confirm_password}
+                <Input type={pswdConfType} text={setLocale(router.locale).confirm_password}
                     value={confirmPassword} isError={error.errConfirmPassword} isHeight={true}
                     onChange={(e) => setConfirmPassword(e.target.value)} />
             </InputWithEye>

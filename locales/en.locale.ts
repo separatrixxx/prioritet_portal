@@ -113,6 +113,7 @@ export const en = {
     password: "Password",
     confirm_password: "Confirm password",
     confirmation_letter_sent_to_email: "A confirmation letter has been sent to your email",
+    you_have_successfully_registered: "You have successfully registered",
     company_info: "Company info",
     company_name: "Name",
     company_inn: "INN",
@@ -128,4 +129,9 @@ export const en = {
     contact_details: "Contact details",
     notifications: "Notifications",
     sms: "SMS",
+    login_to_profile_to_place_order: "Log in to your profile to place an order",
+    order_successfully_created: "Order successfully created",
+    status: "Status",
+    you_have_not_had_orders: "You haven't had any orders yet",
+    return_to_home_page: "return to home page",
 };

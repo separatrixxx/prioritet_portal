@@ -1,11 +1,13 @@
 import { ModalProps } from './Modal.props';
 import styles from './Modal.module.css';
 import { motion } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 
 export const Modal = ({ isActive, setIsActive, children }: ModalProps): JSX.Element => {
+    const [isDragging, setIsDragging] = useState<boolean>(false);
+
     const variants = {
         visible: {
             opacity: 1,
@@ -24,6 +26,20 @@ export const Modal = ({ isActive, setIsActive, children }: ModalProps): JSX.Elem
         }
     };
 
+    const handleMouseDown = () => {
+        setIsDragging(false);
+    };
+
+    const handleMouseUp = () => {
+        if (!isDragging) {
+            setIsActive(false);
+        }
+    };
+
+    const handleMouseMove = () => {
+        setIsDragging(true);
+    };
+
     useEffect(() => {
         const handleEsc = (event: KeyboardEvent) => {
             if (event.key === 'Escape') {
@@ -32,13 +48,7 @@ export const Modal = ({ isActive, setIsActive, children }: ModalProps): JSX.Elem
         };
 
         document.addEventListener('keydown', handleEsc);
-
-        if (isActive) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-
+        
         return () => {
             document.removeEventListener('keydown', handleEsc);
             document.body.style.overflow = '';
@@ -48,12 +58,16 @@ export const Modal = ({ isActive, setIsActive, children }: ModalProps): JSX.Elem
     return (
         <motion.div className={cn(styles.modal, {
             [styles.active]: isActive,
-        })} onClick={() => setIsActive(false)}
+        })} onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
             variants={variants}
             initial={isActive ? 'visible' : 'hidden'}
             transition={{ duration: 0.15 }}
             animate={isActive ? 'visible' : 'hidden'}>
             <motion.div className={styles.modalContent} onClick={e => e.stopPropagation()}
+                onMouseUp={(e) => e.stopPropagation()}
+                onMouseMove={(e) => e.stopPropagation()}
                 variants={variantsModal}
                 initial={isActive ? 'visible' : 'hidden'}
                 transition={{ duration: 0.15 }}

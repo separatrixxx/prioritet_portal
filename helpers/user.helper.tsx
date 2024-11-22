@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { BaseArguments, GetUserArguments } from "../interfaces/refactor.interface";
+import { GetUserArguments } from "../interfaces/refactor.interface";
 import { UserInterface } from "../interfaces/user.interface";
 import { setUser, setUserDefault } from "../features/user/userSlice";
 
@@ -24,7 +24,7 @@ export async function getUser(args: GetUserArguments, triedRefresh = false) {
             const refreshToken = localStorage.getItem('refresh_token');
             
             if (refreshToken) {
-                const newAccessToken = await refreshUserToken(refreshToken, args);
+                const newAccessToken = await refreshUserToken(refreshToken);
 
                 if (newAccessToken) {
                     getUser({
@@ -44,12 +44,8 @@ export async function getUser(args: GetUserArguments, triedRefresh = false) {
     }
 }
 
-export async function refreshUserToken(refreshToken: string, args: BaseArguments): Promise<string | null> {
-    const { dispatch } = args;
-
+export async function refreshUserToken(refreshToken: string): Promise<string | null> {
     try {
-        dispatch(setUserDefault());
-
         const response = await axios.post(process.env.NEXT_PUBLIC_DOMAIN + '/auth/refresh', {
             refresh_token: refreshToken
         });

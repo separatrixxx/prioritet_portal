@@ -1,6 +1,6 @@
 .footer {
 	display: grid;
-	align-items: center;
+	align-items: start;
 	align-self: end;
 
 	width: calc(100% - 160px);
@@ -13,10 +13,16 @@
 }
 
 .footer > h1,
+.footerText,
 .footerLink > h1 {
-	color: var(--darkLight);
+	color: var(--darkLight) !important;
 
-	font-weight: 500;
+	font-weight: 500 !important;
+}
+
+.footerDiv {
+	display: grid;
+	gap: 5px;
 }
 
 .footerLink {

@@ -8,6 +8,7 @@ import displaySlice from '../display/displaySlice';
 import favoritesSlice from '../favorites/favoritesSlice';
 import cartSlice from '../cart/cartSlice';
 import userSlice from '../user/userSlice';
+import ordersSlice from '../orders/ordersSlice';
 
 
 const makeStore = () =>
@@ -21,6 +22,7 @@ const makeStore = () =>
       favorites: favoritesSlice,
       cart: cartSlice,
       user: userSlice,
+      orders: ordersSlice,
     },
     devTools: true,
 });

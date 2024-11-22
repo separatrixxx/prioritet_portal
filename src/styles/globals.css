@@ -44,6 +44,12 @@ a {
 	background: var(--primary) !important;
 }
 
+input:-webkit-autofill {
+	background: var(--light) !important;
+	box-shadow: 0 0 0 1000px var(--light) inset !important;
+	-webkit-text-fill-color: var(--primary) !important;
+}
+
 @media (max-width: 480px) {
 	::-webkit-scrollbar {
 		width: 5px;
