@@ -77,12 +77,14 @@ export const ProfileInfo = (): JSX.Element => {
         setLocale(router.locale).order_date,
         setLocale(router.locale).order_id,
         setLocale(router.locale).status,
+        setLocale(router.locale).product_id,
     ];
 
     const ordersData: TableDataInterface[][] = orders.orders.map(o => [
         { text: o.created_at },
         { text: String(o.id), isActive: true },
         { text: o.status },
+        { text: o.cart.reduce((acc, c) => (acc + String(c.product_id)) + ', ', '').slice(0, -2) },
     ]);
 
     const usersHeaders = [
