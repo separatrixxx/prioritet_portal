@@ -20,13 +20,11 @@ function Profile(): JSX.Element {
             dispatch: dispatch,
         });
 
-        if (products.total_count === -1) {
-            getProducts({
-                dispatch: dispatch,
-                filters: filters,
-            });
-        }
-    }, [products.total_count, user.id, filters, dispatch]);
+        getProducts({
+            dispatch: dispatch,
+            filters: filters,
+        });
+    }, [user.id, filters, dispatch]);
 
     return (
         <>

@@ -20,13 +20,11 @@ function Catalog(): JSX.Element {
             dispatch: dispatch,
         });
 
-        if (products.total_count === -1) {
-            getProducts({
-                dispatch: dispatch,
-                filters: filters,
-            });
-        }
-    }, [products.total_count, filters, dispatch]);
+        getProducts({
+            dispatch: dispatch,
+            filters: filters,
+        });
+    }, [filters, dispatch]);
 
     return (
         <>
