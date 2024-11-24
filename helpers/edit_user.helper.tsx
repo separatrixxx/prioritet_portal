@@ -119,6 +119,7 @@ export async function editUser(args: EditUserArguments) {
                 getUser({
                     userId: authData.userId,
                     accessToken: authData.accessToken,
+                    refreshToken: authData.refreshToken,
                     dispatch: dispatch,
                 });
             }
