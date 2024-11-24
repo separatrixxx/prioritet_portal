@@ -1,10 +1,10 @@
 import axios, { AxiosResponse } from "axios";
 import { setCart, setCartDefault } from "../features/cart/cartSlice";
 import { CartIdItem, UserCartsInterface } from "../interfaces/cart.interface";
-import { AssignCartArguments, BaseArguments, CartAddArguments, GetUserArguments, UpdateCartArguments } from "../interfaces/refactor.interface";
+import { AssignCartArguments, BaseArguments, CartAddArguments, GetUserCartArguments, UpdateCartArguments } from "../interfaces/refactor.interface";
 
 
-export async function getUserCart(args: GetUserArguments) {
+export async function getUserCart(args: GetUserCartArguments) {
     const { userId, accessToken, dispatch } = args;
 
     try {

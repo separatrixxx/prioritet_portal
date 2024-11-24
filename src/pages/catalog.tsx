@@ -9,7 +9,7 @@ import { getCategories } from '../../helpers/categories.helper';
 
 
 function Catalog(): JSX.Element {
-    const { router, dispatch, filters } = useSetup();
+    const { router, dispatch, filters, products } = useSetup();
 
     useEffect(() => {
         getClasses({
@@ -20,11 +20,13 @@ function Catalog(): JSX.Element {
             dispatch: dispatch,
         });
 
-        getProducts({
-            dispatch: dispatch,
-            filters: filters,
-        });
-    }, [filters, dispatch]);
+        if (products.total_count === -1) {
+            getProducts({
+                dispatch: dispatch,
+                filters: filters,
+            });
+        }
+    }, [products.total_count, filters, dispatch]);
 
     return (
         <>

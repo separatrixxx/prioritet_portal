@@ -35,6 +35,7 @@ export async function loginUser(args: LoginArguments) {
             getUser({
                 userId: authData.userId,
                 accessToken: authData.accessToken,
+                refreshToken: authData.refreshToken,
                 dispatch: dispatch,
             });
 

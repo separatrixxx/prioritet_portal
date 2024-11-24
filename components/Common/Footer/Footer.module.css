@@ -12,7 +12,7 @@
 	grid-template-columns: auto auto auto 1fr;
 }
 
-.footer > h1,
+.footerText,
 .footerLink > h1 {
 	color: var(--darkLight) !important;
 
@@ -35,16 +35,24 @@
 }
 
 .footerLink:active > h1 {
-	color: var(--second);
+	color: var(--primary) !important;
 }
 
 .bananaLink {
 	justify-self: end;
 }
 
+.bananaLink:active > h1 {
+	color: var(--banana) !important;
+}
+
 @media (min-width: 1024px) {
 	.footerLink:hover > h1 {
-		color: var(--second);
+		color: var(--primary) !important;
+	}
+
+	.bananaLink:hover > h1 {
+		color: var(--banana) !important;
 	}
 }
 

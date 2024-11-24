@@ -10,7 +10,7 @@ import { getProducts } from '../../helpers/products.helper';
 
 
 function Profile(): JSX.Element {
-    const { router, dispatch, user, filters } = useSetup();
+    const { router, dispatch, user, filters, products, orders } = useSetup();
 
     useEffect(() => {
         dispatch(setFiltersDefault());
@@ -20,11 +20,13 @@ function Profile(): JSX.Element {
             dispatch: dispatch,
         });
 
-        getProducts({
-            dispatch: dispatch,
-            filters: filters,
-        });
-    }, [user.id, filters, dispatch]);
+        if (products.total_count === -1) {
+            getProducts({
+                dispatch: dispatch,
+                filters: filters,
+            });
+        }
+    }, [products.total_count, user.id, filters, dispatch]);
 
     return (
         <>

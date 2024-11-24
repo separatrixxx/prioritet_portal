@@ -42,9 +42,13 @@ export interface EditUserArguments extends Omit<RegisterArguments, 'password' | 
     setIsActive: (e: boolean) => void,
 };
 
-export interface GetUserArguments extends BaseArguments {
+export interface GetUserCartArguments extends BaseArguments {
     userId: number,
     accessToken: string | null,
+}
+
+export interface GetUserArguments extends GetUserCartArguments {
+    refreshToken: string | null,
 }
 
 export interface CartAddArguments extends BaseArguments {
@@ -62,6 +66,6 @@ export interface AssignCartArguments {
     accessToken: string | null,
 }
 
-export interface CreateOrderArguments extends Omit<GetUserArguments, 'accessToken'> {
+export interface CreateOrderArguments extends Omit<GetUserArguments, 'accessToken' | 'refreshToken'> {
     cartId: number,
 }

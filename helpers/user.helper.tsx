@@ -2,10 +2,11 @@ import axios, { AxiosResponse } from "axios";
 import { GetUserArguments } from "../interfaces/refactor.interface";
 import { UserInterface } from "../interfaces/user.interface";
 import { setUser, setUserDefault } from "../features/user/userSlice";
+import { AuthDataInterface } from "../interfaces/auth.interface";
 
 
 export async function getUser(args: GetUserArguments, triedRefresh = false) {
-    const { userId, accessToken, dispatch } = args;
+    const { userId, accessToken, refreshToken, dispatch } = args;
 
     try {
         dispatch(setUserDefault());
@@ -21,30 +22,31 @@ export async function getUser(args: GetUserArguments, triedRefresh = false) {
         dispatch(setUser(response));
     } catch (err) {
         if (!triedRefresh) {
-            const refreshToken = localStorage.getItem('refresh_token');
-            
             if (refreshToken) {
-                const newAccessToken = await refreshUserToken(refreshToken);
+                const newAccessToken = await refreshUserToken(userId, refreshToken);
 
                 if (newAccessToken) {
                     getUser({
                         userId: userId,
                         accessToken: newAccessToken,
+                        refreshToken: refreshToken,
                         dispatch: dispatch,
                     }, true);
                 } else {
                     localStorage.removeItem('authData');
+
+                    console.error('Refresh token has expired: ' + err);
                 }
             }
         } else {
             localStorage.removeItem('authData');
-        }
 
-        console.error('Get user error: ' + err);
+            console.error('Get user error: ' + err);
+        }
     }
 }
 
-export async function refreshUserToken(refreshToken: string): Promise<string | null> {
+export async function refreshUserToken(userId: number, refreshToken: string): Promise<string | null> {
     try {
         const response = await axios.post(process.env.NEXT_PUBLIC_DOMAIN + '/auth/refresh', {
             refresh_token: refreshToken
@@ -52,7 +54,14 @@ export async function refreshUserToken(refreshToken: string): Promise<string | n
 
         if (response.data.new_access_token) {
             const newAccessToken = response.data.new_access_token;
-            localStorage.setItem('access_token', newAccessToken);
+
+            const authData: AuthDataInterface = {
+                userId: userId,
+                accessToken: newAccessToken,
+                refreshToken: refreshToken,
+            }
+            
+            localStorage.setItem('authData', JSON.stringify(authData));
 
             return newAccessToken;
         }

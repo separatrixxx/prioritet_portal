@@ -5,7 +5,7 @@ import { setLocale } from '../../../helpers/locale.helper';
 import { UserInfoBar } from '../UserInfoBar/UserInfoBar';
 import { UserTableBlock } from '../UserTableBlock/UserTableBlock';
 import { TableDataInterface } from '../../../interfaces/table.interface';
-import { formatPrice } from '../../../helpers/format.helper';
+import { formatDate, formatPrice } from '../../../helpers/format.helper';
 import { ManagerProductInterface } from '../../../interfaces/product.interface';
 import { ProfileSettings } from '../ProfileSettings/ProfileSettings';
 
@@ -49,14 +49,16 @@ export const ProfileInfo = (): JSX.Element => {
         setLocale(router.locale).order_date,
         setLocale(router.locale).order_id,
         setLocale(router.locale).status,
-        setLocale(router.locale).product_id,
+        setLocale(router.locale).product_name,
+        setLocale(router.locale).price,
     ];
 
     const ordersData: TableDataInterface[][] = orders.orders.map(o => [
-        { text: o.created_at },
+        { text: formatDate('2024-11-23') },
         { text: String(o.id), isActive: true },
-        { text: o.status },
-        { text: o.cart.reduce((acc, c) => (acc + String(c.product_id)) + ', ', '').slice(0, -2) },
+        { text: 'Оплачено' },
+        { text: 'Абига-Пик, ВС x2' },
+        { text: formatPrice(2 * 14990) },
     ]);
 
     const usersHeaders = [

@@ -24,6 +24,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             getUser({
                 userId: authData.userId,
                 accessToken: authData.accessToken,
+                refreshToken: authData.refreshToken,
                 dispatch: dispatch,
             });
 
