@@ -21,11 +21,11 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
         })}>
             {
                 type !== 'main' ?
-                    <Link href={type === 'product' ? '/catalog' : '/'}
+                    <Link href={type === 'product' || type === 'favorites' ? '/catalog' : '/'}
                         className={styles.backLink}>
                         <BackIcon />
                         <Htag tag='s'>
-                            {setLocale(router.locale)[type === 'product' ? 'to_catalog' : 'to_main_page']}
+                            {setLocale(router.locale)[type === 'product' || type === 'favorites' ? 'to_catalog' : 'to_main_page']}
                         </Htag>
                     </Link>
                 : <></>
@@ -46,7 +46,7 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
                     <>
                         <HeaderWebLink type='favorites' />
                         {
-                            type === 'catalog' || type === 'product' ?
+                            type === 'catalog' || type === 'product' || type === 'favorites' ?
                                 <HeaderWebLink type='cart' />
                             :
                                 <HeaderWebLink type='catalog' />
