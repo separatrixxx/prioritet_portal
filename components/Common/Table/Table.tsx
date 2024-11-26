@@ -25,21 +25,31 @@ export const Table = ({ headers, data }: TableProps): JSX.Element => {
                         <tr key={i}>
                             {dv.map((d, i) => (
                                 <td key={i} className={cn({
-                                    [styles.tdLink]: d.link,
+                                    [styles.tdLink]: typeof d.link === 'string',
                                 })}>
                                     {
-                                        !d.link ?
+                                        Array.isArray(d.link) ?
+                                            d.link.map((item, idx) => (
+                                                <Link href={item.url} key={idx} className={styles.tableLink}
+                                                    aria-label={`table product link`}>
+                                                    <Htag tag='s' className={styles.productLink}>
+                                                        {item.name}
+                                                    </Htag>
+                                                </Link>
+                                            ))
+                                        : d.link ?
+                                            <Link href={d.link} className={styles.tableLink}
+                                                aria-label={`table ${d.text} link`}>
+                                                <Htag tag='s'>
+                                                    {d.text}
+                                                </Htag>
+                                            </Link>
+                                        :
                                             <Htag tag='s' className={cn({
                                                 [styles.tdActive]: d.isActive,
                                             })}>
                                                 {d.text}
                                             </Htag>
-                                        :
-                                            <Link href={d.link} aria-label={`table ${d.text} link`}>
-                                                <Htag tag='s'>
-                                                    {d.text}
-                                                </Htag>
-                                            </Link>
                                     }
                                 </td>
                             ))}

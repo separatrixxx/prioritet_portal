@@ -29,7 +29,7 @@ export const Footer = (): JSX.Element => {
             </Link>
             <Link href='https://www.banana.codes' className={cn(styles.footerLink, styles.bananaLink)}
                 target='_blank' aria-label='footer by link'>
-                <Htag tag='s'>
+                <Htag tag='m'>
                     {'by 🍌 codes'}
                 </Htag>
             </Link>

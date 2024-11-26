@@ -1,5 +1,5 @@
 export interface TableDataInterface {
     text: string | null,
-    link?: string,
+    link?: string | { name: string; url: string }[],
     isActive?: boolean,
 }

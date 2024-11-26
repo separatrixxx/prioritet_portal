@@ -53,13 +53,22 @@ export const ProfileInfo = (): JSX.Element => {
         setLocale(router.locale).price,
     ];
 
-    const ordersData: TableDataInterface[][] = orders.orders.map(o => [
-        { text: formatDate('2024-11-23') },
-        { text: String(o.id), isActive: true },
-        { text: 'Оплачено' },
-        { text: 'Абига-Пик, ВС x2' },
-        { text: formatPrice(2 * 14990) },
-    ]);
+    const ordersData: TableDataInterface[][] = [...orders.orders]
+        .sort((a, b) => b.id - a.id)
+        .map(o => [
+            { text: formatDate(o.created_at || '') },
+            { text: String(o.id), isActive: true },
+            { text: 'Оплачено' },
+            { 
+                text: null,
+                link: o.cart.items.map(i => ({
+                    name: i.name,
+                    url: `/product/${i.product_id}`,
+                })),
+            },
+            { text: formatPrice(o.cart.totals.total_with_vat) },
+        ]);
+
 
     const usersHeaders = [
         setLocale(router.locale).user_id,
@@ -117,7 +126,6 @@ export const ProfileInfo = (): JSX.Element => {
                 user.role !== 'admin' ?
                     <UserTableBlock type='orders' title={setLocale(router.locale).my_orders}
                         headers={ordersHeaders} data={ordersData} isReady={orders.total_count > -1} />
-
                 :
                     <>
                         <UserTableBlock type='users' title={setLocale(router.locale).users}

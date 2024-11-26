@@ -32,7 +32,14 @@
 	font-weight: 500;
 }
 
-.tdLink {
+.tableLink {
+	display: grid;
+
+	width: fit-content;
+}
+
+.tdLink,
+.productLink {
 	cursor: pointer;
 	transition-duration: 500ms;
 }
@@ -41,6 +48,12 @@
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 	background: var(--light);
+}
+
+.productLink:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	color: var(--primary);
 }
 
 .tableContainer::-webkit-scrollbar {
@@ -52,6 +65,12 @@
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		background: var(--light);
+	}
+
+	.productLink:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		color: var(--primary);
 	}
 }
 

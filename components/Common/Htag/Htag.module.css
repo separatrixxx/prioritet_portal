@@ -20,29 +20,29 @@
 }
 
 .xxl {
-	font-size: 48px;
+	font-size: 44px;
 	font-weight: 700;
 }
 
 .xl {
-	font-size: 32px;
+	font-size: 30px;
 	font-weight: 700;
 }
 
 .l {
-	font-size: 24px;
+	font-size: 22px;
 }
 
 .m {
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .s {
-	font-size: 16px;
+	font-size: 15px;
 }
 
 .xs {
-	font-size: 14px;
+	font-size: 13px;
 }
 
 @media (max-width: 1400px) {
@@ -51,7 +51,7 @@
 	}
 
 	.xxl {
-		font-size: 40px;
+		font-size: 38px;
 	}
 }
 
@@ -61,41 +61,41 @@
 	}
 
 	.xxl {
-		font-size: 36px;
-	}
-
-	.xl {
-		font-size: 28px;
-	}
-
-	.l {
-		font-size: 22px;
-	}
-
-	.m {
-		font-size: 18px;
-	}
-
-	.s {
-		font-size: 14px;
-	}
-
-	.xs {
-		font-size: 12px;
-	}
-}
-
-@media (max-width: 800px) {
-	.xxxl {
-		font-size: 55px;
-	}
-
-	.xxl {
 		font-size: 34px;
 	}
 
 	.xl {
 		font-size: 26px;
+	}
+
+	.l {
+		font-size: 20px;
+	}
+
+	.m {
+		font-size: 16px;
+	}
+
+	.s {
+		font-size: 13px;
+	}
+
+	.xs {
+		font-size: 11px;
+	}
+}
+
+@media (max-width: 800px) {
+	.xxxl {
+		font-size: 54px;
+	}
+
+	.xxl {
+		font-size: 32px;
+	}
+
+	.xl {
+		font-size: 24px;
 	}
 }
 
@@ -105,49 +105,49 @@
 	}
 
 	.xxl {
-		font-size: 32px;
+		font-size: 30px;
 	}
 
 	.xl {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.l {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	.m {
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	.s {
-		font-size: 12px;
+		font-size: 11px;
 	}
 
 	.xs {
-		font-size: 10px;
+		font-size: 9px;
 	}
 }
 
 @media (max-width: 300px) {
 	.xxxl {
-		font-size: 32px;
+		font-size: 30px;
 	}
 
 	.xxl {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.xl {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	.l {
-		font-size: 16px;
+		font-size: 14px;
 	}
 
 	.m {
-		font-size: 12px;
+		font-size: 11px;
 	}
 
 	.s {
@@ -157,27 +157,27 @@
 
 @media (max-width: 200px) {
 	.xxxl {
-		font-size: 24px;
+		font-size: 22px;
 	}
 
 	.xxl {
-		font-size: 20px;
+		font-size: 18px;
 	}
 
 	.xl {
-		font-size: 16px;
-	}
-
-	.l {
 		font-size: 14px;
 	}
 
+	.l {
+		font-size: 12px;
+	}
+
 	.m {
-		font-size: 10px;
+		font-size: 9px;
 	}
 
 	.s {
-		font-size: 8px;
+		font-size: 7px;
 	}
 
 	.xs {

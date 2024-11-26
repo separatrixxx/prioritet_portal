@@ -5,8 +5,8 @@
 }
 
 .settingsButton {
-	width: 35px;
-	margin-top: 7px;
+	width: 40px;
+	margin-top: 9px;
 
 	cursor: pointer;
 
@@ -70,6 +70,5 @@
 @media (max-width: 300px) {
 	.settingsButton {
 		width: 25px;
-		margin-bottom: 1px;
 	}
 }
