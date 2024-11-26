@@ -62,7 +62,7 @@ export const ProfileInfo = (): JSX.Element => {
             { 
                 text: null,
                 link: o.cart.items.map(i => ({
-                    name: i.name,
+                    name: i.quantity > 1 ? i.quantity + 'x ' + i.name : i.name,
                     url: `/product/${i.product_id}`,
                 })),
             },
