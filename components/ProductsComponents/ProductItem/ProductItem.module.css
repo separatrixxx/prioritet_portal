@@ -48,9 +48,11 @@
 }
 
 .productName {
-	display: grid;
+	display: -webkit-box;
+	overflow: hidden;
 
 	transition-duration: 300ms;
+	text-overflow: ellipsis;
 	word-break: break-word;
 	hyphens: auto;
 
@@ -58,6 +60,9 @@
 
 	font-weight: 600;
 	grid-template-columns: 1fr;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 .favoriteButton {
