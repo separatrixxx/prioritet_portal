@@ -53,8 +53,10 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
                 : <></>
             }
             <div className={styles.productNameDiv}>
-                <Htag tag={'m'} className={styles.productName}>
-                    {name}
+                <div>
+                    <Htag tag={'m'} className={styles.productName}>
+                        {name}
+                    </Htag>
                     <FavIcon className={styles.favoriteButton} onClick={(e: any) => {
                         e.stopPropagation();
                         e.preventDefault();
@@ -62,7 +64,7 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
                         setIsFavorite(!isFavorite);
                         setFavorite(productId);
                     }} />
-                </Htag>
+                </div>
                 {
                     display.display !== 'lines' ?
                         <Htag tag='s' className={styles.productCategory}>
