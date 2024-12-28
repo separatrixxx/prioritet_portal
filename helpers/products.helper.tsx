@@ -14,6 +14,8 @@ export async function getProducts(args: GetProductsArguments, isFavorite?: boole
         apiUrl = `/category/${filters.start.categoryId}?limit=${filters.start.limit}&offset=${filters.start.offset}&${filters.sort}${filters.is_available === 'True' ? `&by_sklad_available=${filters.is_available}` : ''}`;
     }
 
+    console.log(apiUrl)
+
     try {
         dispatch(setProductsDefault());
 

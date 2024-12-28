@@ -1,5 +1,124 @@
 .paginationBar {
 	display: grid;
+	align-items: center;
+
+	width: calc(100% - 50px);
+	padding: 15px 25px;
+
+	border-radius: 5px;
+	outline: 1px solid var(--light);
+	background: var(--white);
+	grid-template-columns: repeat(2, auto) 1fr repeat(2, auto);
+	gap: 25px;
+	justify-items: center;
+}
+
+.nextPage {
+	height: 15px;
+	fill: var(--darkLight);
+
+	transform-origin: center;
+}
+
+.activeArrow {
+	cursor: pointer;
+	transition-duration: 500ms;
+}
+
+.leftArrow {
+	transform: rotate(180deg);
+}
+
+.activeArrow:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--second);
+}
+
+.pageNumbers,
+.pageNumber {
+	display: grid;
+	align-items: center;
+	justify-items: center;
+}
+
+.pageNumbers {
+	gap: 10px;
 
 	width: 100%;
+}
+
+.pageNumber {
+	width: 80%;
+	padding: 10px 0;
+
+	cursor: pointer;
+	transition-duration: 500ms;
+
+	border-radius: 5px;
+	outline-color: var(--second);
+	outline-offset: -1px;
+}
+
+.pageNumber:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	outline: 1px solid var(--second);
+}
+
+.pageNumber > h1 {
+	color: var(--darkLight);
+
+	font-weight: 500;
+}
+
+.activePage {
+	background: var(--second);
+}
+
+.activePage > h1 {
+	color: var(--white);
+}
+
+@media (min-width: 1024px) {
+	.activeArrow:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--second) !important;
+	}
+
+	.pageNumber:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		outline: 1px solid var(--second);
+	}
+}
+
+@media (max-width: 1024px) {
+	.paginationBar {
+		width: calc(100% - 40px);
+		padding: 15px 20px;
+		gap: 20px;
+	}
+}
+
+@media (max-width: 580px) {
+	.paginationBar {
+		width: calc(100% - 30px);
+		padding: 15px;
+		gap: 15px;
+	}
+
+	.nextPage {
+		height: 10px;
+	}
+
+	.pageNumbers {
+		gap: 5px;
+	}
+
+	.pageNumber {
+		width: 100%;
+		padding: 5px 0;
+	}
 }

@@ -9,7 +9,7 @@ import { setDisplay } from "../../features/display/displaySlice";
 
 
 function Main(): JSX.Element {
-  const { router, dispatch, filters, user } = useSetup();
+  const { router, dispatch, filters } = useSetup();
 
   useEffect(() => {
     dispatch(setFiltersDefault());

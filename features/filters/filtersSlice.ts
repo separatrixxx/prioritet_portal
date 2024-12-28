@@ -6,7 +6,7 @@ const filtersData: FiltersInterface = {
   start: {
     class: 'product',
     categoryId: 0,
-    limit: 200,
+    limit: 30,
     offset: 0,
   },
   sort: 'by_name=asc',

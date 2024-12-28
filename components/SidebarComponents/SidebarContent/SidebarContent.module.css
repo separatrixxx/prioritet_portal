@@ -30,9 +30,11 @@
 
 .classTitle > span > svg {
 	width: 5px;
-	fill: var(--primary);
+
+	transition-duration: 500ms;
 
 	transform-origin: center;
+	fill: var(--primary);
 }
 
 .active > span > svg {
@@ -64,6 +66,12 @@
 	color: var(--second);
 }
 
+.classTitle:active > span > svg {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	fill: var(--second);
+}
+
 .active {
 	color: var(--second) !important;
 }
@@ -74,6 +82,12 @@
 		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 		color: var(--second) !important;
+	}
+
+	.classTitle:hover > span > svg {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		fill: var(--second) !important;
 	}
 }
 

@@ -30,7 +30,7 @@
 }
 
 .linkText {
-	color: var(--primary);
+	color: var(--primary) !important;
 
 	font-weight: 500 !important;
 }

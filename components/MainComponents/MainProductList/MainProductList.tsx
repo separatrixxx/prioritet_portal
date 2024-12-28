@@ -7,6 +7,8 @@ import { ProductItem } from '../../ProductsComponents/ProductItem/ProductItem';
 export const MainProductList = (): JSX.Element => {
     const { products } = useSetup();
 
+    console.log(products)
+
     return (
         <>
             {

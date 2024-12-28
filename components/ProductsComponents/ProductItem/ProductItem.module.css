@@ -48,7 +48,7 @@
 }
 
 .productName {
-	display: -webkit-box;
+	display: grid;
 	overflow: hidden;
 
 	transition-duration: 300ms;
