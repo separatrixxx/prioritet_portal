@@ -34,9 +34,16 @@ export const ProductInfo = ({ product, commonProduct }: ProductInfoProps): JSX.E
                             {
                                 product ?
                                     <Htag tag='m' className={styles.productCategory}>
-                                        {product.result.product_category || setLocale(router.locale).category}
+                                        {(product.result.categories[0] &&
+                                            product.result.categories[0].name) ||
+                                            setLocale(router.locale).category}
                                     </Htag>
-                                : <></>
+                                :
+                                    <Htag tag='m' className={styles.productCategory}>
+                                        {(commonProduct && commonProduct.result.categories[0] &&
+                                            commonProduct.result.categories[0].name) ||
+                                            setLocale(router.locale).category}
+                                    </Htag>
                             }
                         </div>
                         {

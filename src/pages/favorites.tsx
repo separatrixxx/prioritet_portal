@@ -23,14 +23,14 @@ function Favorites(): JSX.Element {
 
     return (
         <>
-            {/* <Head>
+            <Head>
                 <title>{setLocale(router.locale).prioritet_portal + ' - ' + setLocale(router.locale).cart}</title>
                 <meta name='description' content={setLocale(router.locale).prioritet_portal + ' - ' + setLocale(router.locale).cart} />
                 <meta property='og:title' content={setLocale(router.locale).prioritet_portal + ' - ' + setLocale(router.locale).cart} />
                 <meta name='og:description' content={setLocale(router.locale).prioritet_portal + ' - ' + setLocale(router.locale).cart} />
                 <meta charSet="utf-8" />
             </Head>
-            <FavoritesPage /> */}
+            <FavoritesPage />
         </>
     );
 }

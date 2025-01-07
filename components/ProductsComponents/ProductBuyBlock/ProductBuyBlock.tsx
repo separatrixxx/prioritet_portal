@@ -29,7 +29,7 @@ export const ProductBuyBlock = ({ productId }: ProductBuyBlockProps): JSX.Elemen
         <div className={cn(styles.productBuyBlock, {
             [styles.cartBlock]: isCart,
         })}>
-            <Button text={setLocale(router.locale)[!isCart ? 'buy' : 'in_cart']} isHeight={true}
+            <Button text={setLocale(router.locale)[!isCart ? 'buy' : 'in_cart']}
                 className={styles.buyButton} onClick={() => {
                     if (!isCart) {
                         addCart({
@@ -46,12 +46,12 @@ export const ProductBuyBlock = ({ productId }: ProductBuyBlockProps): JSX.Elemen
                     <CartController productId={productId} />
                 : <></>
             }
-            {/* <ProductButton className={styles.favoriteButton} type='favorite' flag={isFavorite} size='l'
+            <ProductButton className={styles.favoriteButton} type='favorite' flag={isFavorite} size='l'
                 onClick={() => {
                     dispatch(toggleFavorite(productId));
                     setIsFavorite(!isFavorite);
                     setFavorite(productId);
-                }} /> */}
+                }} />
         </div>
     );
 };

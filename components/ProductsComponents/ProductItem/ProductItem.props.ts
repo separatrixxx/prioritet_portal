@@ -10,4 +10,5 @@ export interface ProductItemProps extends DetailedHTMLProps<HTMLAttributes<HTMLL
     url: string,
     isImage?: boolean,
     isMain?: boolean,
+    category?: string,
 }

@@ -21,7 +21,7 @@ export const ProductList = (): JSX.Element => {
                             {products.results.map(p =>
                                 <ProductItem key={p.id} productId={p.id} type={p.type} name={p.name}
                                     description={p.description} price={p.price} url='/logo.svg'
-                                    isImage={false} />
+                                    isImage={false} category={p.categories[0] && p.categories[0].name} />
                             )}
                         </div>
                         <PaginationBar />

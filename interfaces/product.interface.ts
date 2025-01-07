@@ -12,18 +12,23 @@ export interface ProductItem {
     description: string | null,
     price: number | null,
     availability: boolean | null,
+    categories: ProductCategoryItem[],
+}
+
+export interface ProductCategoryItem {
+    id: number,
+    name: string,
+    category_for: string,
 }
 
 export interface ProductById {
     result: {
         id: number,
         name: string,
-        product_category: number[] | null,
         product_class: string[] | null,
         description: string | null,
-        product_additional_info: {
-
-        },
+        product_additional_info: any | null,
+        categories: ProductCategoryItem[],
         sklad_price: number | null,
         sklad_price_change: {
             [key: string]: {
@@ -61,6 +66,7 @@ export interface CommonProductById {
         name: string,
         description: string | null,
         additional_info: any | null,
+        categories: ProductCategoryItem[],
     }
 }
 

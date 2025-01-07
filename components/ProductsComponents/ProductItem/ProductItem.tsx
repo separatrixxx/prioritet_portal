@@ -14,7 +14,7 @@ import { toggleFavorite } from '../../../features/favorites/favoritesSlice';
 import cn from 'classnames';
 
 
-export const ProductItem = ({ productId, type, name, description, price, url, isImage, isMain }: ProductItemProps): JSX.Element => {
+export const ProductItem = ({ productId, type, name, description, price, url, isImage, isMain, category }: ProductItemProps): JSX.Element => {
     const { router, dispatch, filters, display } = useSetup();
 
     const [isHovered, setIsHovered] = useState<boolean>(false);
@@ -57,18 +57,18 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
                     <Htag tag={'m'} className={styles.productName}>
                         {name}
                     </Htag>
-                    {/* <FavIcon className={styles.favoriteButton} onClick={(e: any) => {
+                    <FavIcon className={styles.favoriteButton} onClick={(e: any) => {
                         e.stopPropagation();
                         e.preventDefault();
                         dispatch(toggleFavorite(productId));
                         setIsFavorite(!isFavorite);
                         setFavorite(productId);
-                    }} /> */}
+                    }} />
                 </div>
                 {
                     display.display !== 'lines' ?
                         <Htag tag='s' className={styles.productCategory}>
-                            {setLocale(router.locale).types[type as 'product']}
+                            {category || setLocale(router.locale).types[type as 'product']}
                         </Htag>
                     : <></>
                 }

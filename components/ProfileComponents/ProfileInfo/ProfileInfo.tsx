@@ -8,12 +8,10 @@ import { TableDataInterface } from '../../../interfaces/table.interface';
 import { formatDate, formatPrice } from '../../../helpers/format.helper';
 import { ManagerProductInterface } from '../../../interfaces/product.interface';
 import { ProfileSettings } from '../ProfileSettings/ProfileSettings';
-import { Button } from '../../Buttons/Button/Button';
-import { logOutUser } from '../../../helpers/auth.helper';
 
 
 export const ProfileInfo = (): JSX.Element => {
-    const { router, user, orders, dispatch } = useSetup();
+    const { router, user, orders } = useSetup();
 
     const users = [
         {
@@ -117,22 +115,18 @@ export const ProfileInfo = (): JSX.Element => {
             <div className={styles.nameDiv}>
                 <Htag tag='xxl' className={styles.name}>
                     {`${user.first_name} ${user.middle_name ? user.middle_name : ''} ${user.last_name}`}
-                    {/* <ProfileSettings /> */}
+                    <ProfileSettings />
                 </Htag>
                 <Htag tag='l' className={styles.role}>
                     {setLocale(router.locale)[user.role]}
                 </Htag>
-                <Button className={styles.logOutButton} text={setLocale(router.locale).log_out}
-                    isHeight={true} onClick={() => logOutUser(router, {
-                        dispatch: dispatch,
-                    })} />
             </div>
-            {/* <UserInfoBar /> */}
+            <UserInfoBar />
             {
                 user.role !== 'admin' ?
                     <UserTableBlock type='orders' title={setLocale(router.locale).my_orders}
                         headers={ordersHeaders} data={ordersData} isReady={orders.total_count > -1} />
-                    :
+                :
                     <>
                         <UserTableBlock type='users' title={setLocale(router.locale).users}
                             headers={usersHeaders} data={usersData} />
