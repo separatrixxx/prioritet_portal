@@ -7,7 +7,13 @@ import { Spinner } from '../../Common/Spinner/Spinner';
 
 
 export const InterestingProducts = (): JSX.Element => {
-    const { router, products } = useSetup();
+    const { router, products, user } = useSetup();
+
+    if (!user.id) {
+        return (
+            <></>
+        );
+    }
 
     return (
         <>

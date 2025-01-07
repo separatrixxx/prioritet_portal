@@ -1,13 +1,14 @@
-import styles from './ProfilePage.module.css';
+import styles from './ContactsPage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { Footer } from '../../components/Common/Footer/Footer';
 import { useSetup } from '../../hooks/useSetup';
 import { ProfileInfo } from '../../components/ProfileComponents/ProfileInfo/ProfileInfo';
 import { Header } from '../../components/HeaderComponents/Header/Header';
 import { InterestingProducts } from '../../components/ProductsComponents/InterestingProducts/InterestingProducts';
+import { ContactsBlock } from '../../components/ContactsComponents/ContactsBlock/ContactsBlock';
 
 
-export const ProfilePage = (): JSX.Element => {
+export const ContactsPage = (): JSX.Element => {
     return (
         <>
             <Toaster
@@ -19,11 +20,7 @@ export const ProfilePage = (): JSX.Element => {
             />
             <div className={styles.wrapper}>
                 <Header type='other' />
-                <div className={styles.profileDiv}>
-                    <ProfileInfo />
-                    <InterestingProducts />
-                </div>
-                <Footer />
+                <ContactsBlock />
             </div>
         </>
     );

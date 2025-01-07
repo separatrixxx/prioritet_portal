@@ -12,10 +12,12 @@ export const HeaderMobLink = ({ link, isFirst, onClick }: HeaderMobLinkProps): J
     const { router } = useSetup();
 
     return (
-        <Link href={`/${link !== 'main' ? link : ''}`} className={cn(styles.headerMobLink, {
-            [styles.firstLink]: isFirst,
-            [styles.searchLink]: link === 'search',
-        })} onClick={onClick} aria-label='header mobile link'>
+        <Link href={link === 'warehouse' ? 'https://prioritet-sklad.ru' : `/${link !== 'main' ? link : ''}`}
+            className={cn(styles.headerMobLink, {
+                [styles.firstLink]: isFirst,
+                [styles.searchLink]: link === 'search',
+            })} onClick={onClick} aria-label='header mobile link'
+            target={link === 'warehouse' ? '_blank' : undefined}>
             <Htag tag='xxl' className={styles.linkText}>
                 {setLocale(router.locale)[link as 'main']}
             </Htag>

@@ -1,0 +1,126 @@
+.mainBlock {
+	display: grid;
+	align-items: center;
+
+	width: calc(100% - 160px);
+	height: fit-content;
+	margin-top: 80px;
+	padding: 40px 80px;
+	gap: 40px;
+
+	justify-items: center;
+	grid-template-areas:
+		"mainTextDiv"
+		"mainImages";
+}
+
+.mainTextDiv {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	justify-items: left;
+
+	align-items: start;
+	gap: 40px;
+	grid-area: mainTextDiv;
+}
+
+.mainImageTitle {
+	max-width: 640px;
+	margin-top: -15px;
+
+	color: var(--primary);
+
+	font-family: "Unbounded", serif;
+	font-weight: 600;
+}
+
+.mainTextDiv > div {
+	display: grid;
+	gap: 40px;
+}
+
+.mainImageText {
+	color: var(--darkLight);
+}
+
+@media (max-width: 1400px) {
+	.mainImageTitle {
+		max-width: 540px;
+		margin-top: -12px;
+	}
+}
+
+@media (max-width: 1024px) {
+	.mainBlock {
+		width: calc(100% - 120px);
+		padding: 30px 60px;
+		grid-template-areas:
+			"mainImages"
+			"mainTextDiv";
+	}
+
+	.mainTextDiv {
+		gap: 30px;
+		grid-template-columns: auto;
+	}
+
+	.mainImageTitle {
+		max-width: 480px;
+		margin-top: -10px;
+	}
+
+	.mainTextDiv > div {
+		gap: 30px;
+	}
+}
+
+@media (max-width: 800px) {
+	.mainBlock {
+		width: calc(100% - 80px);
+		padding: 20px 40px;
+	}
+
+	.mainTextDiv {
+		width: 100%;
+		gap: 10px;
+	}
+
+	.mainImageTitle {
+		max-width: none;
+	}
+
+	.mainTextDiv > div {
+		gap: 20px;
+	}
+}
+
+@media (max-width: 580px) {
+	.mainBlock {
+		width: calc(100% - 40px);
+		margin-top: 80px;
+		padding: 10px 20px;
+		gap: 30px;
+	}
+
+	.mainImageTitle {
+		font-size: 30px;
+	}
+}
+
+@media (max-width: 300px) {
+	.mainBlock {
+		width: calc(100% - 20px);
+		margin-top: 70px;
+		padding: 10px;
+	}
+
+	.mainImageTitle {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 200px) {
+	.mainImageTitle {
+		font-size: 14px;
+	}
+}

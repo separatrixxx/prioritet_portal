@@ -39,6 +39,7 @@ export const HeaderWeb = ({ type }: HeaderWebProps): JSX.Element => {
             {
                 type === 'main' ?
                     <>
+                        <HeaderWebLink type='warehouse' />
                         <HeaderWebLink type='catalog' />
                         <HeaderWebLink type='cart' />
                     </>

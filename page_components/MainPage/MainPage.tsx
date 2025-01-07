@@ -1,7 +1,7 @@
 import styles from './MainPage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { Footer } from '../../components/Common/Footer/Footer';
-import { MainImage } from '../../components/MainComponents/MainImage/MainImage';
+import { MainBlock } from '../../components/MainComponents/MainBlock/MainBlock';
 import { Header } from '../../components/HeaderComponents/Header/Header';
 import { Htag } from '../../components/Common/Htag/Htag';
 import { setLocale } from '../../helpers/locale.helper';
@@ -23,7 +23,7 @@ export const MainPage = (): JSX.Element => {
             />
             <div className={styles.wrapper}>
                 <Header type='main' />
-                <MainImage />
+                <MainBlock />
                 <Htag tag='xl' className={styles.productTitle}>
                     {setLocale(router.locale).popular_products}
                 </Htag>

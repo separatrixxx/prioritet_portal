@@ -3,6 +3,7 @@ export const en = {
     language: "English",
     lang: "EN",
     prioritet_portal: "Prioritet | Portal",
+    prioritet_portal2: "PRIORITET PORTAL",
     error404: "Page not found, 404 error",
     error500: "Server failure, error 500",
     catalog: "Catalog",
@@ -136,4 +137,15 @@ export const en = {
     to_main_page: "To home page",
     to_catalog: "To catalog",
     you_might_be_interested: "You might be interested",
+    go_to_catalog: "Go to catalog",
+    warehouse: "Our warehouses",
+    prioritet_info: {
+        name: 'LLC "PRIORITET SNAB"',
+        ogrn: "OGRN",
+        inn: "INN",
+        kpp: "KPP",
+        director: "Director",
+    },
+    contacts: "Contacts",
+    prioritet_about: "Effective means for combating plant diseases and pests. We offer only proven products that will help protect your plants from unwanted guests. Delivery across the country and convenient payment methods make shopping with us easy and comfortable.",
 };

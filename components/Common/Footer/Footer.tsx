@@ -13,7 +13,7 @@ export const Footer = (): JSX.Element => {
     return (
         <footer className={styles.footer}>
             <Htag tag='s' className={styles.footerText}>
-                {'© ' + setFooterYear(2024) + ' ' + setLocale(router.locale).prioritet_portal}
+                {'© ' + setFooterYear(2008) + ' ' + setLocale(router.locale).prioritet_info.name}
             </Htag>
             <Link href='/' className={styles.footerLink}
                 aria-label='footer legal information link'>
@@ -25,6 +25,12 @@ export const Footer = (): JSX.Element => {
                 aria-label='footer privacy policy link'>
                 <Htag tag='s'>
                     {setLocale(router.locale).privacy_policy}
+                </Htag>
+            </Link>
+            <Link href='/contacts' className={styles.footerLink}
+                aria-label='footer contacts link'>
+                <Htag tag='s'>
+                    {setLocale(router.locale).contacts}
                 </Htag>
             </Link>
             <Link href='https://www.banana.codes' className={cn(styles.footerLink, styles.bananaLink)}

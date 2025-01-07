@@ -64,6 +64,7 @@ export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
                                 <HeaderMobLink link='favorites' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='cart' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='search' onClick={() => setIsMenuOpen(false)} />
+                                <HeaderMobLink link='warehouse' onClick={() => setIsMenuOpen(false)} />
                                 {
                                     user.id ?
                                         <HeaderMobLink link='profile' onClick={() => setIsMenuOpen(false)} />
