@@ -61,7 +61,7 @@ export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
                                 transition={{ duration: 0.5 }}>
                                 <HeaderMobLink link='main' isFirst={true} onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='catalog' onClick={() => setIsMenuOpen(false)} />
-                                <HeaderMobLink link='favorites' onClick={() => setIsMenuOpen(false)} />
+                                {/* <HeaderMobLink link='favorites' onClick={() => setIsMenuOpen(false)} /> */}
                                 <HeaderMobLink link='cart' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='search' onClick={() => setIsMenuOpen(false)} />
                                 <HeaderMobLink link='warehouse' onClick={() => setIsMenuOpen(false)} />

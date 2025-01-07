@@ -21,7 +21,7 @@ export const ProfilePage = (): JSX.Element => {
                 <Header type='other' />
                 <div className={styles.profileDiv}>
                     <ProfileInfo />
-                    <InterestingProducts />
+                    {/* <InterestingProducts /> */}
                 </div>
                 <Footer />
             </div>

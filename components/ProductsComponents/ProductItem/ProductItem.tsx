@@ -57,13 +57,13 @@ export const ProductItem = ({ productId, type, name, description, price, url, is
                     <Htag tag={'m'} className={styles.productName}>
                         {name}
                     </Htag>
-                    <FavIcon className={styles.favoriteButton} onClick={(e: any) => {
+                    {/* <FavIcon className={styles.favoriteButton} onClick={(e: any) => {
                         e.stopPropagation();
                         e.preventDefault();
                         dispatch(toggleFavorite(productId));
                         setIsFavorite(!isFavorite);
                         setFavorite(productId);
-                    }} />
+                    }} /> */}
                 </div>
                 {
                     display.display !== 'lines' ?

@@ -37,12 +37,12 @@ export const ProductPriceBlock = ({ productId, price, isMain, isHovered }: Produ
             })}>
                 {formatPrice(price || 0)}
             </Htag>
-            <ProductButton className={styles.productButton} type='favorite' flag={isFavorite}
+            {/* <ProductButton className={styles.productButton} type='favorite' flag={isFavorite}
                 isHovered={isHovered} onClick={() => {
                     dispatch(toggleFavorite(productId));
                     setIsFavorite(!isFavorite);
                     setFavorite(productId);
-                }} />
+                }} /> */}
             <ProductButton className={styles.productButton} type='buy' flag={isCart}
                 isHovered={isHovered} onClick={() => {
                     if (!isCart) {
