@@ -1,5 +1,6 @@
 import toast from 'react-hot-toast';
 
+
 export const ToastSuccess = (message: string | undefined): void => {
     if (message) {
         toast.error(message, {
