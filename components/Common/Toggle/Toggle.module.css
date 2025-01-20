@@ -18,12 +18,12 @@
 	transition-duration: 500ms;
 
 	border-radius: 5px;
-	background-color: var(--light);
+	background: var(--light);
 	justify-items: left;
 }
 
 .toggleChecked {
-	background-color: var(--primary);
+	background: var(--primary);
 	justify-items: right;
 }
 
@@ -32,7 +32,7 @@
 	height: 10px;
 
 	border-radius: 2px;
-	background-color: var(--white);
+	background: var(--white);
 }
 
 .toggleText {
