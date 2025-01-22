@@ -27,13 +27,13 @@ export const AdditionalInfo = ({ product }: AdditionalInfoProps): JSX.Element =>
                         url: `/active_ingredient/${i.id}`
                     }))} />
                 <AdditionalInfoItem text={setLocale(router.locale).concentration}
-                    item='200 г/кг' />
+                    item={product.result.content} />
                 <AdditionalInfoItem text={setLocale(router.locale).supplied_packaging}
-                    item='Бутылка' />
-                <AdditionalInfoItem text={setLocale(router.locale).supplied_packaging_volume}
-                    item='10 л.' />
+                    item={product.result.type} />
+                {/* <AdditionalInfoItem text={setLocale(router.locale).supplied_packaging_volume}
+                    item='10 л.' /> */}
                 <AdditionalInfoItem text={setLocale(router.locale).toxicity_level}
-                    item='3/3' />
+                    item={product.result.dangerclass} />
                 <AdditionalInfoItem text={setLocale(router.locale).classes.harmful}
                     item={product.result.related_harmful?.map(h => ({
                         name: h.name,
@@ -44,6 +44,14 @@ export const AdditionalInfo = ({ product }: AdditionalInfoProps): JSX.Element =>
                         name: p.name,
                         url: `/proceed/${p.id}`
                     }))} />
+                <AdditionalInfoItem text={setLocale(router.locale).usage}
+                    item={product.result.usage.map(u => `${u.dose} ${u.description}`).join(', ')} />
+                <AdditionalInfoItem text={setLocale(router.locale).registrants}
+                    item={product.result.related_registrants
+                        .map(r => `${r.name}, ${setLocale(router.locale).license}
+                        №${r.licenses[0].license_number}, ${setLocale(router.locale).valid_until} 
+                        ${formatDate(r.licenses[0].valid_until)}`)
+                        .join(', ')} />
                 <AdditionalInfoItem text={setLocale(router.locale).latest_arrival_to_stock}
                     item={formatDate(product.result?.sklad_latest_arrivals?.data?.arrival_date || '2024-10-30')} />
             </div>

@@ -148,4 +148,8 @@ export const en = {
     },
     contacts: "Contacts",
     prioritet_about: "Effective means for combating plant diseases and pests. We offer only proven products that will help protect your plants from unwanted guests. Delivery across the country and convenient payment methods make shopping with us easy and comfortable.",
+    usage: "Usage",
+    registrants: "Registrants",
+    license: "license",
+    valid_until: "valid until",
 };

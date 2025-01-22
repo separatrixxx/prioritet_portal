@@ -57,6 +57,11 @@ export interface ProductById {
         related_proceed: RelatedItem[] | null,
         related_active_ingredient: RelatedItem[] | null,
         related_products: RelatedProductItem[] | null,
+        type: string,
+        content: string,
+        dangerclass: string,
+        usage: UsageInterface[],
+        related_registrants: RelatedRegistrantsItem[],
     }
 }
 
@@ -102,4 +107,30 @@ export interface ManagerProductInterface {
 export interface AdditionalInfoInterface {
     name: string,
     url: string,
+}
+
+export interface UsageInterface {
+    dose: string,
+    harmful: number[],
+    proceed: number[],
+    frequency: string,
+    harmful_id: string,
+    humans_day: string,
+    proceed_id: string,
+    description: string,
+    cooldown_days: number,
+}
+
+export interface RelatedRegistrantsItem {
+    id: number,
+    name: string,
+    description: string,
+    additional_info: string | null,
+    type: string | null,
+    photos: string[] | null,
+    licenses: {
+        for_product: number,
+        valid_until: string,
+        license_number: string,
+    }[],
 }
