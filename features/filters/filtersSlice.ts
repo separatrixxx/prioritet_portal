@@ -10,7 +10,7 @@ const filtersData: FiltersInterface = {
     offset: 0,
   },
   sort: 'by_name=asc',
-  is_available: 'False',
+  is_available: 'True',
   name: '',
 }
 
