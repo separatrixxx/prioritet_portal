@@ -3,7 +3,6 @@ import { ProductList } from '../../ProductsComponents/ProductList/ProductList';
 import { FiltersBar } from '../../FiltersComponens/FiltersBar/FiltersBar';
 import { TotalProducts } from '../TotalProducts/TotalProducts';
 import { Sidebar } from '../../SidebarComponents/Sidebar/Sidebar';
-import { PaginationBar } from '../../PaginationComponents/PaginationBar/PaginationBar';
 
 
 export const CatalogBlock = (): JSX.Element => {
@@ -16,7 +15,6 @@ export const CatalogBlock = (): JSX.Element => {
                     <TotalProducts />
                 </div>
                 <ProductList />
-                {/* <PaginationBar /> */}
             </div>
         </div>
     );
