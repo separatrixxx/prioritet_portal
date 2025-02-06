@@ -4,6 +4,10 @@
 	justify-items: left;
 }
 
+.userCompanyInfo > h1 {
+	max-width: 500px;
+}
+
 .infoTitle {
 	color: var(--primary);
 
@@ -24,7 +28,23 @@
 }
 
 @media (max-width: 580px) {
+	.userCompanyInfo > h1 {
+		max-width: 250px;
+	}
+
 	.companyInfoTitle {
 		margin-top: 10px;
+	}
+}
+
+@media (max-width: 300px) {
+	.userCompanyInfo > h1 {
+		max-width: 150px;
+	}
+}
+
+@media (max-width: 180px) {
+	.userCompanyInfo > h1 {
+		max-width: 100%;
 	}
 }

@@ -7,11 +7,22 @@
 }
 
 .userInfoText {
+	display: -webkit-box;
+	overflow: hidden;
+
+	max-width: 300px;
+
+	text-overflow: ellipsis;
+	word-break: break-word;
+	hyphens: auto;
+
 	color: var(--darkLight);
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 
 .verifiedText {
-	display: grid;
 	grid-template-columns: 1fr auto;
 	gap: 5px;
 

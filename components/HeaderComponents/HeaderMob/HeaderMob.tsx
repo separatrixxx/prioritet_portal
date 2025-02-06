@@ -47,7 +47,8 @@ export const HeaderMob = ({ type }: HeaderMobProps): JSX.Element => {
                                 {setLocale(router.locale).prioritet_portal}
                             </Htag>
                 }
-                    <button className={styles.headerButton} onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                    <button className={styles.headerButton} aria-label='menu button'
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}>
                         {isMenuOpen ? <CloseIcon /> : <BurgerIcon />}
                     </button>
                 </div>
