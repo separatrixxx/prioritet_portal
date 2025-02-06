@@ -128,7 +128,7 @@ export const ProfileSettings = (): JSX.Element => {
                     <Button className={styles.editUserButton} text={setLocale(router.locale).save}
                         isLoading={isLoading} isHeight={true} onClick={handleEditUser} />
                     <Button className={styles.logOutButton} text={setLocale(router.locale).log_out}
-                        isLoading={isLoading} isHeight={true} onClick={() => logOutUser(router, {
+                        isHeight={true} onClick={() => logOutUser(router, {
                             dispatch: dispatch,
                         })} />
                 </div>
