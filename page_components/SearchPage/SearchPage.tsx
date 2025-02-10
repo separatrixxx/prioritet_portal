@@ -8,7 +8,7 @@ import { Footer } from '../../components/Common/Footer/Footer';
 export const SearchPage = (): JSX.Element => {
     return (
         <>
-            <Toaster
+            {/* <Toaster
 				position="top-center"
 				reverseOrder={true}
 				toastOptions={{
@@ -19,7 +19,7 @@ export const SearchPage = (): JSX.Element => {
                 <Header type='other' />
                 <SearchList />
                 <Footer />
-            </div>
+            </div> */}
         </>
     );
 };

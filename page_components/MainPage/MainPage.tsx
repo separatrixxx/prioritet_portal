@@ -14,7 +14,7 @@ export const MainPage = (): JSX.Element => {
 
     return (
         <>
-            <Toaster
+            {/* <Toaster
                 position="top-center"
                 reverseOrder={true}
                 toastOptions={{
@@ -29,7 +29,7 @@ export const MainPage = (): JSX.Element => {
                 </Htag>
                 <MainProductList />
                 <Footer />
-            </div>
+            </div> */}
         </>
     );
 };

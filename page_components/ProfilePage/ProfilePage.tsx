@@ -10,7 +10,7 @@ import { InterestingProducts } from '../../components/ProductsComponents/Interes
 export const ProfilePage = (): JSX.Element => {
     return (
         <>
-            <Toaster
+            {/* <Toaster
                 position="top-center"
                 reverseOrder={true}
                 toastOptions={{
@@ -24,7 +24,7 @@ export const ProfilePage = (): JSX.Element => {
                     <InterestingProducts />
                 </div>
                 <Footer />
-            </div>
+            </div> */}
         </>
     );
 };

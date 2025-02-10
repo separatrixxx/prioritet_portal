@@ -11,7 +11,7 @@ import { ContactsBlock } from '../../components/ContactsComponents/ContactsBlock
 export const ContactsPage = (): JSX.Element => {
     return (
         <>
-            <Toaster
+            {/* <Toaster
                 position="top-center"
                 reverseOrder={true}
                 toastOptions={{
@@ -21,7 +21,7 @@ export const ContactsPage = (): JSX.Element => {
             <div className={styles.wrapper}>
                 <Header type='other' />
                 <ContactsBlock />
-            </div>
+            </div> */}
         </>
     );
 };
