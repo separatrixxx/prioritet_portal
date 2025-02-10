@@ -9,7 +9,7 @@ import { Header } from '../../components/HeaderComponents/Header/Header';
 export const ProductPage = ({ product, commonProduct }: ProductPageProps): JSX.Element => {
     return (
         <>
-            {/* <Toaster
+            <Toaster
                 position="top-center"
                 reverseOrder={true}
                 toastOptions={{
@@ -20,7 +20,7 @@ export const ProductPage = ({ product, commonProduct }: ProductPageProps): JSX.E
                 <Header type='product' />
                 <ProductInfo product={product} commonProduct={commonProduct} />
                 <Footer />
-            </div> */}
+            </div>
         </>
     );
 };

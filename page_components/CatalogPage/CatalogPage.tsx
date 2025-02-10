@@ -8,7 +8,7 @@ import { Footer } from '../../components/Common/Footer/Footer';
 export const CatalogPage = (): JSX.Element => {
     return (
         <>
-            {/* <Toaster
+            <Toaster
                 position="top-center"
                 reverseOrder={true}
                 toastOptions={{
@@ -19,7 +19,7 @@ export const CatalogPage = (): JSX.Element => {
                 <Header type='catalog' />
                 <CatalogBlock />
                 <Footer />
-            </div> */}
+            </div>
         </>
     );
 };

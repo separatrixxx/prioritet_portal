@@ -13,7 +13,7 @@ export const FavoritesPage = (): JSX.Element => {
 
     return (
         <>
-            {/* <Toaster
+            <Toaster
                 position="top-center"
                 reverseOrder={true}
                 toastOptions={{
@@ -27,7 +27,7 @@ export const FavoritesPage = (): JSX.Element => {
                 </Htag>
                 <MainProductList />
                 <Footer />
-            </div> */}
+            </div>
         </>
     );
 };

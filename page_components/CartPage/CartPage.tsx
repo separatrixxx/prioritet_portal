@@ -14,7 +14,7 @@ export const CartPage = (): JSX.Element => {
 
     return (
         <>
-            {/* <Toaster
+            <Toaster
                 position="top-center"
                 reverseOrder={true}
                 toastOptions={{
@@ -31,7 +31,7 @@ export const CartPage = (): JSX.Element => {
                     <OrderBlock />
                 </div>
                 <Footer />
-            </div> */}
+            </div>
         </>
     );
 };
